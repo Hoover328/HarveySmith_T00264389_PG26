@@ -3,33 +3,37 @@ using UnityEngine.InputSystem;
 
 public class PlayerMovement : MonoBehaviour
 {
+    public float speed = 5f;
+    public Transform camera; 
 
-    float speed = 10f;
-
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
-    void Start()
-    {
-        
-    }
-
-    // Update is called once per frame
     void Update()
     {
         if (Keyboard.current == null)
             return;
 
-        Vector3 move = Vector3.zero;
+        float xAxis = 0f;
+        float zAxis = 0f;
 
-        if (Keyboard.current.wKey.isPressed)
-            move += Vector3.forward;
-        if (Keyboard.current.sKey.isPressed)
-            move += Vector3.back;
-        if (Keyboard.current.aKey.isPressed)
-            move += Vector3.left;
-        if (Keyboard.current.dKey.isPressed)
-            move += Vector3.right;
+        if (Keyboard.current.wKey.isPressed) zAxis += 1;
+        if (Keyboard.current.sKey.isPressed) zAxis -= 1;
+        if (Keyboard.current.aKey.isPressed) xAxis -= 1;
+        if (Keyboard.current.dKey.isPressed) xAxis += 1;
 
-        move = move.normalized * speed * Time.deltaTime;
-        transform.Translate(move, Space.Self);
+        Vector3 input = new Vector3(xAxis, 0f, zAxis).normalized;
+
+        // Camera-relative directions
+        Vector3 vertical = camera.forward;
+        Vector3 horrizontal = camera.right;
+
+
+        vertical.y = 0f;
+        horrizontal.y = 0f;
+
+        vertical.Normalize();
+        horrizontal.Normalize();
+
+        Vector3 move = vertical * input.z + horrizontal * input.x;
+
+        transform.position += move * speed * Time.deltaTime;
     }
 }

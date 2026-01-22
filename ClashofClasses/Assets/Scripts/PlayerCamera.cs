@@ -1,13 +1,17 @@
 using UnityEngine;
 using UnityEngine.InputSystem;
 
-public class MouseLook : MonoBehaviour
+public class PlayerCamera : MonoBehaviour
 {
-    public float mouseSensitivity = 100f;
-    public Transform playerBody;
-
-    float xRotation = 0f;
-    float yRotation = 0f;
+    public Transform player;
+    public float mouseSensitivity = 120f;
+    public float followSpeed;
+    public float maxUp;
+    public float maxDown;
+    public float cameraHeight;
+    float yaw;
+    float pitch;
+    
 
     void Start()
     {
@@ -20,18 +24,22 @@ public class MouseLook : MonoBehaviour
         if (Mouse.current == null)
             return;
 
-        Vector2 mouseDelta = Mouse.current.delta.ReadValue();
+        Vector2 mouse = Mouse.current.delta.ReadValue();
 
-        float mouseX = mouseDelta.x * mouseSensitivity * Time.deltaTime;
-        float mouseY = mouseDelta.y * mouseSensitivity * Time.deltaTime;
+        yaw += mouse.x * mouseSensitivity * Time.deltaTime;
+        pitch -= mouse.y * mouseSensitivity * Time.deltaTime;
+        pitch = Mathf.Clamp(pitch, maxUp, maxDown);
 
-        // Vertical rotation (camera only)
-        xRotation -= mouseY;
-        yRotation -= mouseX;
-        xRotation = Mathf.Clamp(xRotation, -90f, 90f);
-        transform.localRotation = Quaternion.Euler(xRotation, 0f, 0f);
+        transform.rotation = Quaternion.Euler(pitch, yaw, 0f);
 
-        // Horizontal rotation (player body)
-        playerBody.Rotate(Vector3.up * mouseX);
+        
+        Vector3 forward = transform.forward;
+        forward.y = 0f;
+
+        transform.position = Vector3.Lerp(transform.position, player.position + Vector3.up * cameraHeight,
+            followSpeed * Time.deltaTime);
+
     }
+
+    
 }
