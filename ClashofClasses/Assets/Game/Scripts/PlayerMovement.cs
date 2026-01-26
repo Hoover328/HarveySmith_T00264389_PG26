@@ -8,6 +8,8 @@ public class PlayerMovement : MonoBehaviour
     public Rigidbody playerRigidBody;
     public float jumpForce = 5f;
     public float dashForce = 2f;
+    public float dashCooldown = 5f;
+    private float dashTimer = 0f;
     bool isGrounded;
 
 
@@ -65,35 +67,52 @@ public class PlayerMovement : MonoBehaviour
             }
         }
 
-        if (Keyboard.current.shiftKey.isPressed)
+        if (dashTimer > 0f)
         {
-   
-            Vector3 camForward = Camera.main.transform.forward;
-            Vector3 camRight = Camera.main.transform.right;
+            dashTimer -= Time.deltaTime;
+        }
+
+        if (Keyboard.current.shiftKey.isPressed && dashTimer <= 0f)
+        {
+            Vector3 camForward = camera.forward;
+            Vector3 camRight = camera.right;
+
             camForward.y = 0;
             camRight.y = 0;
             camForward.Normalize();
             camRight.Normalize();
 
+            Vector3 dashDirection = Vector3.zero;
+
             if (Keyboard.current.wKey.isPressed)
             {
-                playerRigidBody.AddForce(camForward * dashForce, ForceMode.Impulse);
+                dashDirection += camForward;
             }
 
             if (Keyboard.current.sKey.isPressed)
             {
-                playerRigidBody.AddForce(-camForward * dashForce, ForceMode.Impulse);
+                dashDirection -= camForward;
             }
+             
 
             if (Keyboard.current.aKey.isPressed)
             {
-                playerRigidBody.AddForce(-camRight * dashForce, ForceMode.Impulse);
+                dashDirection -= camRight;
             }
+               
 
             if (Keyboard.current.dKey.isPressed)
             {
-                playerRigidBody.AddForce(camRight * dashForce, ForceMode.Impulse);
+                dashDirection += camRight;
             }
+
+            if (dashDirection != Vector3.zero)
+            {
+                playerRigidBody.AddForce(dashDirection.normalized * dashForce, ForceMode.Impulse);
+                dashTimer = dashCooldown;
+            }
+
+
         }
 
 
