@@ -9,7 +9,7 @@ public class PlayerMovement : MonoBehaviour
     public float jumpForce = 5f;
     public float dashForce = 2f;
     public float dashCooldown = 5f;
-    private float dashTimer = 0f;
+    public float dashTimer = 0f;
     bool isGrounded;
 
 

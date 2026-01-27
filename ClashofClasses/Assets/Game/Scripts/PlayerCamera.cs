@@ -4,11 +4,11 @@ using UnityEngine.InputSystem;
 public class PlayerCamera : MonoBehaviour
 {
     public Transform player;
-    public float mouseSensitivity = 120f;
-    public float followSpeed;
-    public float maxUp;
-    public float maxDown;
-    public float cameraHeight;
+    public float mouseSensitivity = 150f;
+    public float followSpeed = 10f;
+    public float maxUp = -60f;
+    public float maxDown = 30f;
+    public float cameraHeight = 1.5f;
     float yaw;
     float pitch;
     
