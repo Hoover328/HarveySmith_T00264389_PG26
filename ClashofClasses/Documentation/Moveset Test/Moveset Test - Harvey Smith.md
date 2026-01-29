@@ -84,7 +84,7 @@ All testing for the moveset is located in the \*\*“Movement Test”\*\* scene,
 
 
 
-!\[Movement Test Scene](images/WhereToFind.png)
+![Location](images/WhereToFind.png)
 
 
 
@@ -96,7 +96,7 @@ I developed the UI on a small screen, but now when running in fullscreen the das
 
 
 
-!\[Movement Test Scene](images/TestIssues.png)
+![Issues](images/TestIssues.png)
 
 
 
@@ -154,9 +154,9 @@ The sprites used so far are shown below:
 
 
 
-!\[Movement Test Scene](images/Weapons.jpg)
+![Weapons](images/Weapons.jpg)
 
-!\[Movement Test Scene](images/Dummy.png)
+![Dummy](images/Dummy.png)
 
 
 
