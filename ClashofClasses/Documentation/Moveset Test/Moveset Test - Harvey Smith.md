@@ -154,7 +154,7 @@ The sprites used so far are shown below:
 
 
 
-![Weapons](images/Weapons.jpg)
+![Weapons](images/Weapons.jpeg)
 
 ![Dummy](images/Dummy.png)
 
