@@ -21,9 +21,9 @@ public class Enemy : MonoBehaviour
 
     }
 
-    void OnCollisionEnter(Collision collision)
+    void OnTriggerEnter(Collider attack)
     {
-        if (collision.gameObject.CompareTag("Attack"))
+        if (attack.CompareTag("Attack"))
         {
             Destroy(gameObject);
         }

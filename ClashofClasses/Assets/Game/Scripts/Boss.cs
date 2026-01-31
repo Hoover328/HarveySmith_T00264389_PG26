@@ -18,18 +18,6 @@ public class Boss : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-
-    }
-
-    void OnCollisionEnter(Collision collision)
-    {
-        if (collision.gameObject.CompareTag("Attack"))
-        {
-            StartCoroutine(HitCooldown());
-            bossHealth = -1;
-
-        }
-
         if (bossHealth <= 0)
         {
             Destroy(gameObject);
@@ -38,17 +26,31 @@ public class Boss : MonoBehaviour
 
     }
 
+    void OnTriggerEnter(Collider attack)
+    {
+        if (attack.CompareTag("Attack") && canBeHit)
+        {
+            StartCoroutine(HitCooldown());
+            bossHealth = -1;
+
+        }
+
+
+    }
+
+
+
     IEnumerator HitCooldown()
     {
         canBeHit = false;
 
-        // visual feedback
+   
         changeColor.material.color = Color.red;
-        yield return new WaitForSeconds(0.15f);
+        yield return new WaitForSeconds(1f);
         changeColor.material.color = defaultColor;
 
-        // remaining cooldown
-        yield return new WaitForSeconds(hitCooldown - 0.15f);
+       
+        yield return new WaitForSeconds(hitCooldown - 3f);
         canBeHit = true;
     }
 }

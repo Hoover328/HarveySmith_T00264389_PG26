@@ -27,9 +27,9 @@ public class TestDummy : MonoBehaviour
 
     }
 
-    void OnTriggerEnter(Collider other)
+    void OnTriggerEnter(Collider attack)
     {
-        if (other.CompareTag("Attack"))
+        if (attack.CompareTag("Attack"))
         {
           
             StartCoroutine(FlashRed());
