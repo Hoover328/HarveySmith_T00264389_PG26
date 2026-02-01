@@ -1,18 +1,22 @@
 using System;
+using UnityEditorInternal;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
 public class NpcBody : MonoBehaviour
 {
     public Transform player;
-    //bool spin;
+    public OutDoorTalking OutDoorTalking;
     public Rigidbody rb;
     public Collider playerNear;
-    bool spin = false;
-    float spinForce = 2000f;
+    public bool spin = false;
+    public bool talking = false;
+    public bool fadeTransition;
+    float spinForce = 3000f;
     void Start()
     {
         spin = false;
+        talking = false;
         
 
     }
@@ -31,11 +35,17 @@ public class NpcBody : MonoBehaviour
 
     void OnTriggerStay(Collider playerNear)
     {
-        
-        if (Keyboard.current.gKey.isPressed)
+        if (!playerNear.CompareTag("Player"))
+        {
+            return;
+        }
+
+        if (OutDoorTalking.noInputs == false && Keyboard.current.eKey.isPressed)
         {
             spin = true;
-            rb.AddTorque(Vector3.up * 3000f, ForceMode.Impulse);
+            talking = true;
+            fadeTransition = true;
+            rb.AddTorque(Vector3.up * spinForce, ForceMode.Impulse);
 
             
         }
@@ -43,7 +53,8 @@ public class NpcBody : MonoBehaviour
 
     void OnTriggerExit(Collider playerNear)
     {
-        spin = false;
+        
+
     }
 
 
