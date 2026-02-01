@@ -7,13 +7,14 @@ public class PlayerAttack : MonoBehaviour
 {
     public GameObject attack;
     public Image sword;
+    public OutDoorTalking OutDoorTalking;
 
 
     public float attackCooldown = 10f;
     public float attackDuration = 10f;
-
     float cooldownTimer;
     float attackTimer;
+    
 
 
 
@@ -43,7 +44,7 @@ public class PlayerAttack : MonoBehaviour
             sword.enabled = true;
         }
 
-        if (Mouse.current.leftButton.wasPressedThisFrame && cooldownTimer <= 0f)
+        if (OutDoorTalking.noInputs == false && Mouse.current.leftButton.wasPressedThisFrame && cooldownTimer <= 0f)
         {
             Transform cam = Camera.main.transform;
             sword.enabled = false;

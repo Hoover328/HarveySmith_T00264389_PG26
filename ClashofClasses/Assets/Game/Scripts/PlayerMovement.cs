@@ -5,6 +5,7 @@ using UnityEngine.UI;
 public class PlayerMovement : MonoBehaviour
 {
     public float speed;
+    public OutDoorTalking OutDoorTalking;
     public Transform camera;
     public Rigidbody playerRigidBody;
     public float jumpForce = 5f;
@@ -12,13 +13,14 @@ public class PlayerMovement : MonoBehaviour
     public float dashCooldown = 5f;
     public float dashTimer = 0f;
     bool isGrounded;
+    bool canMove = true;
 
 
 
     void Update()
     {
 
-        // Camera-relative directions
+       
         Vector3 vertical = camera.forward;
         Vector3 horrizontal = camera.right;
 
@@ -28,22 +30,22 @@ public class PlayerMovement : MonoBehaviour
         float xAxis = 0f;
         float zAxis = 0f;
 
-        if (Keyboard.current.wKey.isPressed) 
+        if (OutDoorTalking.noInputs == false && Keyboard.current.wKey.isPressed && canMove) 
         {
             zAxis += 1;
         }
 
-        if (Keyboard.current.sKey.isPressed) 
+        if (OutDoorTalking.noInputs == false && Keyboard.current.sKey.isPressed && canMove) 
         { 
             zAxis -= 1; 
         }
 
-        if (Keyboard.current.aKey.isPressed) 
+        if (OutDoorTalking.noInputs == false && Keyboard.current.aKey.isPressed && canMove) 
         {
             xAxis -= 1; 
         }
 
-        if (Keyboard.current.dKey.isPressed) 
+        if (OutDoorTalking.noInputs == false && Keyboard.current.dKey.isPressed && canMove) 
         { 
             xAxis += 1; 
         }
@@ -62,7 +64,7 @@ public class PlayerMovement : MonoBehaviour
 
         if (isGrounded )
         {
-            if(Keyboard.current.spaceKey.isPressed)
+            if(OutDoorTalking.noInputs == false && Keyboard.current.spaceKey.isPressed)
             {
                 playerRigidBody.AddForce(Vector3.up * jumpForce, ForceMode.Impulse);
             }
@@ -73,7 +75,7 @@ public class PlayerMovement : MonoBehaviour
             dashTimer -= Time.deltaTime;
         }
 
-        if (Keyboard.current.shiftKey.isPressed && dashTimer <= 0f)
+        if (OutDoorTalking.noInputs == false && Keyboard.current.shiftKey.isPressed && dashTimer <= 0f)
         {
             Vector3 camForward = camera.forward;
             Vector3 camRight = camera.right;
@@ -85,24 +87,24 @@ public class PlayerMovement : MonoBehaviour
 
             Vector3 dashDirection = Vector3.zero;
 
-            if (Keyboard.current.wKey.isPressed)
+            if (OutDoorTalking.noInputs == false && Keyboard.current.wKey.isPressed)
             {
                 dashDirection += camForward;
             }
 
-            if (Keyboard.current.sKey.isPressed)
+            if (OutDoorTalking.noInputs == false && Keyboard.current.sKey.isPressed)
             {
                 dashDirection -= camForward;
             }
              
 
-            if (Keyboard.current.aKey.isPressed)
+            if (OutDoorTalking.noInputs == false && Keyboard.current.aKey.isPressed)
             {
                 dashDirection -= camRight;
             }
                
 
-            if (Keyboard.current.dKey.isPressed)
+            if (OutDoorTalking.noInputs == false && Keyboard.current.dKey.isPressed)
             {
                 dashDirection += camRight;
             }
