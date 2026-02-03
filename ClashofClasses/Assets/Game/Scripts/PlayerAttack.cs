@@ -6,13 +6,13 @@ using UnityEngine.UI;
 public class PlayerAttack : MonoBehaviour
 {
     public GameObject attack;
-    public Image sword;
+   
     public OutDoorTalking OutDoorTalking;
 
 
     public float attackCooldown = 10f;
     public float attackDuration = 10f;
-    float cooldownTimer;
+    public float cooldownTimer;
     float attackTimer;
     
 
@@ -39,15 +39,10 @@ public class PlayerAttack : MonoBehaviour
             cooldownTimer -= Time.deltaTime;
         }
 
-        if (cooldownTimer <= 0f) 
-        {
-            sword.enabled = true;
-        }
-
         if (OutDoorTalking.noInputs == false && Mouse.current.leftButton.wasPressedThisFrame && cooldownTimer <= 0f)
         {
             Transform cam = Camera.main.transform;
-            sword.enabled = false;
+       
 
             GameObject atkInstance = Instantiate(attack, cam.position + cam.forward * 1f, cam.rotation);
             Destroy(atkInstance, attackDuration);
