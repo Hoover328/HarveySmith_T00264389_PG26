@@ -66,6 +66,15 @@ public class UiElements : MonoBehaviour
         }
     }
 
+    void OnTriggerEnter(Collider enemy)
+    {
+        if (enemy.CompareTag("Enemy") && canBeHurt)
+        {
+            StartCoroutine(HitCooldown());
+
+        }
+    }
+
     IEnumerator HitCooldown()
     {
         canBeHurt = false;

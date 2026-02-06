@@ -8,6 +8,7 @@ TagManager:
   - Attack
   - Boss
   - Hurt
+  - Enemy
   layers:
   - Default
   - TransparentFX
