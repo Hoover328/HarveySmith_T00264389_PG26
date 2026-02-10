@@ -31,4 +31,6 @@ public class SpiderDeath : MonoBehaviour
             dead = true;
         }
     }
+
+
 }

@@ -38,15 +38,20 @@ public class spiderMovement : MonoBehaviour
 
         }
     }
-
-     void OnTriggerStay(Collider player)
+    /*
+     void OnTriggerStay(Collider user)
     {
-        if (player.CompareTag("Player") && !playerMovement.isGrounded)
+        if (user.CompareTag("Player") && !playerMovement.isGrounded)
         {
-           notJumping = false;
-           movementSpeed = 30f;
+            Vector3 direction = transform.position - player.position;
+            if (direction.sqrMagnitude > 0.001f)
+                transform.rotation = Quaternion.LookRotation(direction);
+
+            //spiderRb.AddForce(-transform.up, ForceMode.Force);
+            spiderRb.AddForce(-transform.forward * jumpForce, ForceMode.Force);
+            notJumping = false;
            animator.SetTrigger("isJumping");
 
-        }
-    } 
+        }*/
+    
 }
