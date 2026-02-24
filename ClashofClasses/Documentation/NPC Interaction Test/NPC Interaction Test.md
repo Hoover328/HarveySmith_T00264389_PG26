@@ -39,11 +39,6 @@ My next focus is on improving enemies and expanding their behaviour systems.
 
 All testing for NPC interaction is located in the **“NPC Interaction Test”** scene.
 
-![NPC Interaction Test Scene](images/npcTest.png)
-*Figure 1: NPC Interaction Test scene used for dialogue system testing.*
-
----
-
 ## Interaction Limitation (Current Issue)
 
 The only issue I am currently experiencing is that the player can interact with the NPC as long as they are within the NPC's interaction range.
@@ -54,21 +49,20 @@ Ideally, the player should be:
 
 For now, the current implementation works well for testing purposes.
 
-![NPC Range Example](images/npcText.png)
-*Figure 2: Player within NPC interaction range.*
-
+![NPC Interaction Test Scene](images/npcTest.png)
+*Figure 1: NPC Interaction Test scene used for dialogue system testing*
 ---
 
 ## Interaction Screen
 
 Once the player presses **E** while near the NPC, they are brought to the interaction screen shown below.
 
-![NPC Dialogue Screen](images/npc-dialogue.png)
-*Figure 3: Dialogue interaction screen.*
+![NPC Dialogue Screen](images/npcText.png)
+*Figure 2: Dialogue interaction screen.*
 
 ---
 
 ## Artwork / Sprites
 
 ![NPC Sprite](images/npc.png)
-![NPC Background Screen](images/npcBackground.png)
+![NPC Background Screen](images/npcbackground.png)
