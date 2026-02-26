@@ -14,8 +14,8 @@ GameObject:
   - component: {fileID: 1307739796297784499}
   - component: {fileID: 772101987561328813}
   m_Layer: 0
-  m_Name: Projectile
-  m_TagString: Projectile
+  m_Name: Projectile Parry
+  m_TagString: Parry
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -68,7 +68,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: ebd0d4583495d954e991a2e5f0f26be3, type: 2}
+  - {fileID: 2100000, guid: e0226bc8cb3834a4cab1e4f940d2c029, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0

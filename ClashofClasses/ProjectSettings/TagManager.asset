@@ -9,6 +9,8 @@ TagManager:
   - Boss
   - Hurt
   - Enemy
+  - Projectile
+  - Parry
   layers:
   - Default
   - TransparentFX
