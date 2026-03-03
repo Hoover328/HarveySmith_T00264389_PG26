@@ -14,6 +14,7 @@ public class PlayerMovement : MonoBehaviour
     public float dashTimer = 0f;
     public bool isGrounded;
     public bool canMove = true;
+    public bool canJump = true;
 
 
 
@@ -62,7 +63,7 @@ public class PlayerMovement : MonoBehaviour
 
         transform.position += move * speed * Time.deltaTime;
 
-        if (isGrounded )
+        if (isGrounded && canJump)
         {
             if(OutDoorTalking.noInputs == false && Keyboard.current.spaceKey.isPressed)
             {
