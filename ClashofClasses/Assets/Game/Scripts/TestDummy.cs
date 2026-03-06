@@ -36,6 +36,14 @@ public class TestDummy : MonoBehaviour
             
             
         }
+
+        if (attack.CompareTag("Projectile"))
+        {
+
+            StartCoroutine(FlashRed());
+
+
+        }
     }
 
     IEnumerator FlashRed()

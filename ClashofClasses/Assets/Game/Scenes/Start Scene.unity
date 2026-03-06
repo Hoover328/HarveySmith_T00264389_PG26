@@ -3811,7 +3811,7 @@ MonoBehaviour:
   Npc: {fileID: 1849846674}
   player: {fileID: 1886974817}
   NpcSprite: {fileID: 1162412257}
-  NPC: {fileID: 1849846671}
+  NPCObject: {fileID: 1849846671}
   sword1: {fileID: 1370469165}
   sword2: {fileID: 611465813}
   sword3: {fileID: 1160689249}

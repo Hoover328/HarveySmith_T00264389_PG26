@@ -30,6 +30,48 @@ public class UiElements : MonoBehaviour
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
+        if (uiActive)
+        {
+            healthSlider.gameObject.SetActive(true);
+            dashSlider.gameObject.SetActive(true);
+            if (selectedSword == 1)
+            {
+                sword1.enabled = true;
+            }
+
+            if (selectedSword == 2)
+            {
+                sword2.enabled = true;
+            }
+
+            if (selectedSword == 3)
+            {
+                sword3.enabled = true;
+            }
+        }
+
+        else
+        {
+            healthSlider.gameObject.SetActive(false);
+            dashSlider.gameObject.SetActive(false);
+            if (sword1.IsActive())
+            {
+                selectedSword = 1;
+                sword1.enabled = false;
+            }
+
+            if (sword2.IsActive())
+            {
+                selectedSword = 2;
+                sword2.enabled = false;
+            }
+
+            if (sword3.IsActive())
+            {
+                selectedSword = 3;
+                sword3.enabled = false;
+            }
+        }
         currentHealth = healthSliderMax;
 
         if (dashSlider == null)
@@ -56,47 +98,7 @@ public class UiElements : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (uiActive)
-        {
-            healthSlider.gameObject.SetActive(true);
-            dashSlider.gameObject.SetActive(true);
-            if (selectedSword == 1)
-            {
-                sword1.enabled = true;
-            }
-
-            if (selectedSword == 2)
-            {
-                sword2.enabled = true;
-            }
-
-            if (selectedSword == 3)
-            {
-                sword3.enabled = true;
-            }
-        }
-
-        else {          
-            healthSlider.gameObject.SetActive(false);
-            dashSlider.gameObject.SetActive(false);
-            if (sword1.IsActive())
-            {
-                selectedSword = 1;
-                sword1.enabled = false;
-            }
-
-            if (sword2.IsActive())
-            {
-                selectedSword = 2;
-                sword2.enabled = false;
-            }
-
-            if (sword3.IsActive())
-            {
-                selectedSword = 3;
-                sword3.enabled = false;
-            }
-        }
+       
         float barTimer = Mathf.Clamp01(playerMovement.dashTimer / playerMovement.dashCooldown);
         dashSlider.value = (1f - barTimer) * 100f;
 
