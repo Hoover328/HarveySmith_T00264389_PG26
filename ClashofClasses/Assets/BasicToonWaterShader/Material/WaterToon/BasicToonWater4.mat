@@ -84,7 +84,7 @@ Material:
     - _AmbientStrength: 0.1
     - _Brightness: 0.92
     - _BumpScale: 1
-    - _CartoonFactor: 0.075
+    - _CartoonFactor: 0
     - _ColorSteps: 6.97
     - _Cutoff: 0.5
     - _DepthFactor: 3.81
@@ -112,7 +112,7 @@ Material:
     - _OcclusionStrength: 1
     - _Offset: 0.01
     - _OutlineThickness: 0.0254
-    - _OutlineWidth: 0.004
+    - _OutlineWidth: 0
     - _Parallax: 0.02
     - _PatternScale: 1
     - _RefractionStrength: 0.1
@@ -140,11 +140,11 @@ Material:
     - _WaveFrequency: 1
     - _WaveLength: 1.54
     - _WaveNormalStrength: 0.376
-    - _WaveSpeed: 0.04
-    - _WaveStrength: 0.591
+    - _WaveSpeed: 10
+    - _WaveStrength: 0.1
     - _ZWrite: 1
     m_Colors:
-    - _Color: {r: 0, g: 0.6698113, b: 0.04996887, a: 0.87058824}
+    - _Color: {r: 0, g: 0.8786826, b: 1, a: 0.92156863}
     - _DeepColor: {r: 0.4762816, g: 0.7215106, b: 0.7264151, a: 0}
     - _EdgeColor: {r: 1, g: 1, b: 1, a: 1}
     - _EmissionColor: {r: 0, g: 0, b: 0, a: 1}
@@ -155,3 +155,4 @@ Material:
     - _ShallowColor: {r: 0, g: 0.8595505, b: 1, a: 0.725}
     - _SpecularColor: {r: 1, g: 1, b: 1, a: 1}
   m_BuildTextureStacks: []
+  m_AllowLocking: 1

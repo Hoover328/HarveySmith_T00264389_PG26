@@ -24,6 +24,8 @@ public class Fade : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+
+
         if (OutDoorTalking.Npc.fadeTransition == true)
         {
 

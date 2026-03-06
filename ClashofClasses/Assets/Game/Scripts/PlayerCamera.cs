@@ -11,7 +11,8 @@ public class PlayerCamera : MonoBehaviour
     public float cameraHeight = 1.5f;
     float yaw;
     float pitch;
-    
+    public bool canMoveCamera = true;
+
 
     void Start()
     {
@@ -24,22 +25,25 @@ public class PlayerCamera : MonoBehaviour
         if (Mouse.current == null)
             return;
 
-        Vector2 mouse = Mouse.current.delta.ReadValue();
+        if (canMoveCamera)
+        {
 
-        yaw += mouse.x * mouseSensitivity * Time.deltaTime;
-        pitch -= mouse.y * mouseSensitivity * Time.deltaTime;
-        pitch = Mathf.Clamp(pitch, maxUp, maxDown);
+            Vector2 mouse = Mouse.current.delta.ReadValue();
 
-        transform.rotation = Quaternion.Euler(pitch, yaw, 0f);
+            yaw += mouse.x * mouseSensitivity * Time.deltaTime;
+            pitch -= mouse.y * mouseSensitivity * Time.deltaTime;
+            pitch = Mathf.Clamp(pitch, maxUp, maxDown);
 
-        
-        Vector3 forward = transform.forward;
-        forward.y = 0f;
+            transform.rotation = Quaternion.Euler(pitch, yaw, 0f);
 
-        transform.position = Vector3.Lerp(transform.position, player.position + Vector3.up * cameraHeight,
-            followSpeed * Time.deltaTime);
 
+            Vector3 forward = transform.forward;
+            forward.y = 0f;
+
+            transform.position = Vector3.Lerp(transform.position, player.position + Vector3.up * cameraHeight,
+                followSpeed * Time.deltaTime);
+
+        }
     }
-
     
 }

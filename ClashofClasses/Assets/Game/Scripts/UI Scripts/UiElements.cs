@@ -9,6 +9,9 @@ public class UiElements : MonoBehaviour
     public Slider healthSlider;
     public RectTransform rectTransform;
     public PlayerMovement playerMovement;
+    public Image sword1;
+    public Image sword2;
+    public Image sword3;
 
     public float duration = 2f;
     float dashSliderMax = 100f;
@@ -18,7 +21,10 @@ public class UiElements : MonoBehaviour
     float healthSliderMin = 0.0f;
     float hurtCoolDown = 2f;
     bool canBeHurt = true;
-  
+
+    public bool uiActive = true;
+    int selectedSword;
+
 
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
@@ -50,6 +56,47 @@ public class UiElements : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if (uiActive)
+        {
+            healthSlider.gameObject.SetActive(true);
+            dashSlider.gameObject.SetActive(true);
+            if (selectedSword == 1)
+            {
+                sword1.enabled = true;
+            }
+
+            if (selectedSword == 2)
+            {
+                sword2.enabled = true;
+            }
+
+            if (selectedSword == 3)
+            {
+                sword3.enabled = true;
+            }
+        }
+
+        else {          
+            healthSlider.gameObject.SetActive(false);
+            dashSlider.gameObject.SetActive(false);
+            if (sword1.IsActive())
+            {
+                selectedSword = 1;
+                sword1.enabled = false;
+            }
+
+            if (sword2.IsActive())
+            {
+                selectedSword = 2;
+                sword2.enabled = false;
+            }
+
+            if (sword3.IsActive())
+            {
+                selectedSword = 3;
+                sword3.enabled = false;
+            }
+        }
         float barTimer = Mathf.Clamp01(playerMovement.dashTimer / playerMovement.dashCooldown);
         dashSlider.value = (1f - barTimer) * 100f;
 
@@ -66,29 +113,14 @@ public class UiElements : MonoBehaviour
         }
     }
 
-    void OnTriggerEnter(Collider other)
+    void OnTriggerEnter(Collider enemy)
     {
-        if (other.CompareTag("Enemy") && canBeHurt)
-        {
-            StartCoroutine(HitCooldown());
-
-        }
-
-        if (other.CompareTag("Projectile") && canBeHurt)
-        {
-            StartCoroutine(HitCooldown());
-
-        }
-
-        if (other.CompareTag("Parry") && canBeHurt)
+        if (enemy.CompareTag("Enemy") && canBeHurt)
         {
             StartCoroutine(HitCooldown());
 
         }
     }
-
- 
-
 
     IEnumerator HitCooldown()
     {

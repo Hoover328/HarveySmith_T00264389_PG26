@@ -140,11 +140,11 @@ Material:
     - _WaveFrequency: 1
     - _WaveLength: 1.54
     - _WaveNormalStrength: 0.376
-    - _WaveSpeed: 0.04
+    - _WaveSpeed: 10
     - _WaveStrength: 0.591
     - _ZWrite: 1
     m_Colors:
-    - _Color: {r: 1, g: 0.046545908, b: 0, a: 0.87058824}
+    - _Color: {r: 1, g: 0, b: 0.46061277, a: 0.87058824}
     - _DeepColor: {r: 0.4762816, g: 0.7215106, b: 0.7264151, a: 0}
     - _EdgeColor: {r: 1, g: 0.5707547, b: 0.9057198, a: 0.90588236}
     - _EmissionColor: {r: 0, g: 0, b: 0, a: 1}
