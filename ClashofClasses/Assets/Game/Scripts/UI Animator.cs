@@ -1,17 +1,26 @@
 using UnityEngine;
 using UnityEngine.InputSystem;
 
-public class UIAnimator : MonoBehaviour
+public class UIAnimator1 : MonoBehaviour
 {
-    public Animator animator;
-    public PlayerAttack playerAttack;
+    private Animator animator;
+    private PlayerAttack playerAttack;
+
+    private void Awake()
+    {
+        animator = GetComponent<Animator>();
+        playerAttack = FindFirstObjectByType<PlayerAttack>();
+
+    }
 
     void Update()
     {
         if (Mouse.current.leftButton.wasPressedThisFrame && playerAttack.cooldownTimer <= 0) 
         {
-           
+
             animator.SetTrigger("Attack");
         }
+
+
     }
 }

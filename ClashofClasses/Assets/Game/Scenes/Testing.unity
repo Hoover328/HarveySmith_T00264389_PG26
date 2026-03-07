@@ -144,16 +144,16 @@ RectTransform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6512881}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0.7071068, w: 0.7071068}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 0.31759036, y: 10.02506, z: 0.35287815}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 1293185588}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: -90}
   m_AnchorMin: {x: 0, y: 0.25}
   m_AnchorMax: {x: 1, y: 0.75}
-  m_AnchoredPosition: {x: -5, y: 0}
+  m_AnchoredPosition: {x: -5.100006, y: -0.5}
   m_SizeDelta: {x: -10, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &6512883
@@ -169,15 +169,15 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0.10964756, g: 0.13854626, b: 0.3018868, a: 1}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 10907, guid: 0000000000000000f000000000000000, type: 0}
-  m_Type: 1
+  m_Sprite: {fileID: 21300000, guid: aac2fee474b1c4246b841e9030fcc720, type: 3}
+  m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
   m_FillMethod: 4
@@ -254,13 +254,13 @@ RectTransform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 48290815}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalRotation: {x: 0.7071068, y: 0.7071068, z: -0, w: 0}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 0.3175904, y: 10.02506, z: 0.3528782}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 1775073440}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 180, y: 0, z: -90}
   m_AnchorMin: {x: 0, y: 0.25}
   m_AnchorMax: {x: 1, y: 0.75}
   m_AnchoredPosition: {x: -5, y: 0}
@@ -279,15 +279,15 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0.10964756, g: 0.13854626, b: 0.3018868, a: 1}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 10907, guid: 0000000000000000f000000000000000, type: 0}
-  m_Type: 1
+  m_Sprite: {fileID: 21300000, guid: 0e6348bb80b23db4ebb84757ea7f3399, type: 3}
+  m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
   m_FillMethod: 4
@@ -1117,7 +1117,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -18, y: 8}
+  m_AnchoredPosition: {x: -27.4, y: 8}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &377055019
@@ -1176,7 +1176,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: cff1f8318c8425a4c9d5ed195c1bb8a2, type: 3}
+  m_Sprite: {fileID: 21300000, guid: f904213094db0e24395fc8d693be7105, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -1626,7 +1626,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -18, y: 8}
+  m_AnchoredPosition: {x: -22.7, y: 8}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &474342859
@@ -2043,7 +2043,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Color: {r: 0.08597367, g: 0.39576405, b: 0.7924528, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -2897,7 +2897,11 @@ MonoBehaviour:
   healthSlider: {fileID: 1293185589}
   rectTransform: {fileID: 1775073440}
   playerMovement: {fileID: 793181681}
+  sword1: {fileID: 0}
+  sword2: {fileID: 0}
+  sword3: {fileID: 0}
   duration: 10
+  uiActive: 1
 --- !u!136 &793181687
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -4014,8 +4018,8 @@ RectTransform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
-  - {fileID: 6512882}
   - {fileID: 124725954}
+  - {fileID: 6512882}
   - {fileID: 24746087}
   m_Father: {fileID: 1677856949}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 90}
@@ -4335,7 +4339,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Color: {r: 0.6132076, g: 0, b: 0, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -4674,7 +4678,6 @@ RectTransform:
   m_LocalScale: {x: 0, y: 0, z: 0}
   m_ConstrainProportionsScale: 0
   m_Children:
-  - {fileID: 1876476149}
   - {fileID: 288764847}
   - {fileID: 1826580984}
   - {fileID: 908193431}
@@ -4707,7 +4710,7 @@ MonoBehaviour:
   Npc: {fileID: 467024489}
   player: {fileID: 793181681}
   NpcSprite: {fileID: 288764845}
-  NPC: {fileID: 467024483}
+  NPCObject: {fileID: 0}
   sword1: {fileID: 772049121}
   sword2: {fileID: 474342861}
   sword3: {fileID: 377055021}
@@ -4821,8 +4824,8 @@ RectTransform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
-  - {fileID: 48290816}
   - {fileID: 1349647102}
+  - {fileID: 48290816}
   - {fileID: 170671434}
   m_Father: {fileID: 1677856949}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 90}
@@ -5234,11 +5237,11 @@ Transform:
   m_GameObject: {fileID: 1876476145}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -399.99997, y: -179.65, z: 0}
-  m_LocalScale: {x: 88.30022, y: 4.415011, z: 88.30022}
+  m_LocalPosition: {x: 0.000030517578, y: 0.02, z: 0}
+  m_LocalScale: {x: 105.51876, y: 5.2759385, z: 105.51876}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 1677856949}
+  m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1936445090 stripped
 GameObject:
@@ -5961,6 +5964,7 @@ SceneRoots:
   - {fileID: 665979325}
   - {fileID: 498382332}
   - {fileID: 1736847583}
+  - {fileID: 1876476149}
   - {fileID: 1677856949}
   - {fileID: 252450085}
   - {fileID: 455651122}
