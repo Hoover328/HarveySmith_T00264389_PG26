@@ -1091,8 +1091,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cdd311dc25cf1174f95678dac5c82332, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  animator: {fileID: 724160708}
-  playerAttack: {fileID: 769386001}
 --- !u!95 &724160708
 Animator:
   serializedVersion: 7
@@ -1198,6 +1196,9 @@ MonoBehaviour:
   dashForce: 400
   dashCooldown: 5
   dashTimer: 0
+  isGrounded: 0
+  canMove: 1
+  canJump: 1
 --- !u!54 &769385997
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -1283,7 +1284,11 @@ MonoBehaviour:
   healthSlider: {fileID: 518263562}
   rectTransform: {fileID: 1856525082}
   playerMovement: {fileID: 769385996}
+  sword1: {fileID: 0}
+  sword2: {fileID: 0}
+  sword3: {fileID: 0}
   duration: 10
+  uiActive: 1
 --- !u!114 &769386001
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1540,11 +1545,18 @@ MonoBehaviour:
   Npc: {fileID: 49705063}
   player: {fileID: 769385996}
   NpcSprite: {fileID: 31930217}
-  backround: {fileID: 1476351751}
+  NPCObject: {fileID: 0}
+  sword1: {fileID: 0}
+  sword2: {fileID: 0}
+  sword3: {fileID: 0}
   textBox: {fileID: 807605337}
   textMeshPro: {fileID: 1069366881}
+  playerCamera: {fileID: 0}
   fadeTime: 1
   isDialogue: 0
+  healthBar: {fileID: 0}
+  staminaBar: {fileID: 0}
+  playerCam: {fileID: 0}
 --- !u!224 &1032446286
 RectTransform:
   m_ObjectHideFlags: 0
@@ -1559,7 +1571,6 @@ RectTransform:
   m_Children:
   - {fileID: 1856525082}
   - {fileID: 518263561}
-  - {fileID: 1476351749}
   - {fileID: 31930215}
   - {fileID: 807605335}
   - {fileID: 1069366883}
@@ -2124,81 +2135,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 5.468}
---- !u!1 &1476351748
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 1476351749}
-  - component: {fileID: 1476351750}
-  - component: {fileID: 1476351751}
-  m_Layer: 5
-  m_Name: Outside
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!224 &1476351749
-RectTransform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1476351748}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 300}
-  m_LocalScale: {x: 8.0238, y: 5.1247, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 1032446286}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.5, y: 0.5}
-  m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -0.00031069992, y: 17}
-  m_SizeDelta: {x: 100, y: 100}
-  m_Pivot: {x: 0.5, y: 0.5}
---- !u!222 &1476351750
-CanvasRenderer:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1476351748}
-  m_CullTransparentMesh: 1
---- !u!114 &1476351751
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1476351748}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: UnityEngine.UI::UnityEngine.UI.Image
-  m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_RaycastTarget: 1
-  m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
-  m_Maskable: 1
-  m_OnCullStateChanged:
-    m_PersistentCalls:
-      m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 8a274ae128938a048b90c383d68a562d, type: 3}
-  m_Type: 0
-  m_PreserveAspect: 0
-  m_FillCenter: 1
-  m_FillMethod: 4
-  m_FillAmount: 1
-  m_FillClockwise: 1
-  m_FillOrigin: 0
-  m_UseSpriteMesh: 0
-  m_PixelsPerUnitMultiplier: 1
 --- !u!1 &1517713611
 GameObject:
   m_ObjectHideFlags: 0
@@ -2251,6 +2187,7 @@ MonoBehaviour:
   maxUp: -60
   maxDown: 30
   cameraHeight: 1.5
+  canMoveCamera: 1
 --- !u!81 &1517713614
 AudioListener:
   m_ObjectHideFlags: 0
@@ -2458,8 +2395,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cdd311dc25cf1174f95678dac5c82332, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  animator: {fileID: 1810424075}
-  playerAttack: {fileID: 769386001}
 --- !u!95 &1810424075
 Animator:
   serializedVersion: 7
@@ -2850,8 +2785,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cdd311dc25cf1174f95678dac5c82332, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  animator: {fileID: 2122734361}
-  playerAttack: {fileID: 769386001}
 --- !u!95 &2122734361
 Animator:
   serializedVersion: 7
