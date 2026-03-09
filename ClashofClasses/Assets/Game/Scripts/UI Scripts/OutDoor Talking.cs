@@ -24,6 +24,7 @@ public class OutDoorTalking : MonoBehaviour
     public Slider healthBar;
     public Slider staminaBar;
     public Camera playerCam;
+    public TextFill textfill;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
@@ -54,7 +55,7 @@ public class OutDoorTalking : MonoBehaviour
 
         }
 
-        if (Npc.talking && Mouse.current.leftButton.wasPressedThisFrame)
+        if (Npc.talking && textfill.dialougeCheck == 0) 
         {
           Npc.talking = false;
           Npc.fadeTransition = true;

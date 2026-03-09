@@ -4326,10 +4326,11 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 
+  m_text: "Meet me in the room behind me... \r                                                         
+    You can take whichever sword you want, free of charge of course..."
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
-  m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: f55511512baaae34282e8a909e0454a8, type: 2}
+  m_sharedMaterial: {fileID: 8819473107042377653, guid: f55511512baaae34282e8a909e0454a8, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -4353,8 +4354,8 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 20
-  m_fontSizeBase: 20
+  m_fontSize: 30
+  m_fontSizeBase: 30
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
@@ -4391,7 +4392,7 @@ MonoBehaviour:
   m_VertexBufferAutoSizeReduction: 0
   m_useMaxVisibleDescender: 1
   m_pageToDisplay: 1
-  m_margin: {x: 0, y: 0, z: -210.54684, w: 0}
+  m_margin: {x: -41.58705, y: 0, z: -292.70667, w: -30.429552}
   m_isUsingLegacyAnimationComponent: 0
   m_isVolumetricText: 0
   m_hasFontAssetChanged: 0
@@ -4421,7 +4422,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -134, y: -107}
+  m_AnchoredPosition: {x: -134, y: -97}
   m_SizeDelta: {x: 200, y: 50}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &1058611609
@@ -8621,6 +8622,7 @@ GameObject:
   - component: {fileID: 2067174489}
   - component: {fileID: 2067174488}
   - component: {fileID: 2067174493}
+  - component: {fileID: 2067174494}
   m_Layer: 5
   m_Name: Canvas
   m_TagString: Untagged
@@ -8656,6 +8658,7 @@ MonoBehaviour:
   healthBar: {fileID: 2038391177}
   staminaBar: {fileID: 581866772}
   playerCam: {fileID: 549412595}
+  textfill: {fileID: 2067174494}
 --- !u!114 &2067174489
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -8763,6 +8766,24 @@ MonoBehaviour:
   OutDoorTalking: {fileID: 2067174488}
   fadeTime: 1
   fadeDelay: 1
+--- !u!114 &2067174494
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2067174486}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 83920a2954479c5479fd53b0a7cd4598, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Npc: {fileID: 735236314}
+  dialougeCheck: 1
+  dialogueText: {fileID: 1005852026}
+  textSpeed: 0.001
+  fade: {fileID: 2067174493}
+  Avold: {fileID: 735236311}
 --- !u!1 &2075067444
 GameObject:
   m_ObjectHideFlags: 0
