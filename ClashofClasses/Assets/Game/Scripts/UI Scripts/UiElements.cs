@@ -122,7 +122,12 @@ public class UiElements : MonoBehaviour
             StartCoroutine(HitCooldown());
 
         }
+
+        if (enemy.CompareTag("Projectile") && canBeHurt)
+        {  StartCoroutine(HitCooldown());}
     }
+
+
 
     IEnumerator HitCooldown()
     {
