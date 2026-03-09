@@ -10,6 +10,7 @@ public class Fade : MonoBehaviour
     public OutDoorTalking OutDoorTalking;
     public float fadeTime = 1f;
     public float fadeDelay = 1f;
+ 
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
@@ -34,14 +35,14 @@ public class Fade : MonoBehaviour
         }
     }
 
-    IEnumerator FadeInOut()
+    public IEnumerator FadeInOut()
     {
         yield return StartCoroutine(FadeTransition(0f, 1f));
         yield return new WaitForSeconds(fadeDelay);
         yield return StartCoroutine(FadeTransition(1f, 0f));
     }
 
-    IEnumerator FadeTransition(float startAlpha, float endAlpha)
+     IEnumerator FadeTransition(float startAlpha, float endAlpha)
     {
         fadeImage.enabled = true;
         float timer = 0f;
