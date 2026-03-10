@@ -100,7 +100,7 @@ public class UiElements : MonoBehaviour
                     }
                 }
             }
-            currentHealth = healthSliderMax;
+            
 
             if (dashSlider == null)
             {
@@ -113,7 +113,7 @@ public class UiElements : MonoBehaviour
                 float percentage = healthSlider.value;
                 dashSlider = GetComponent<Slider>();
             }
-
+        }
             dashSlider.maxValue = dashSliderMax;
             dashSlider.minValue = dashSliderMin;
             healthSlider.maxValue = healthSliderMax;
@@ -121,7 +121,9 @@ public class UiElements : MonoBehaviour
 
             dashSlider.value = dashSliderMax;
             healthSlider.value = healthSliderMax;
-        }
+            currentHealth = healthSliderMax;
+
+    }
 
         // Update is called once per frame
         void Update()
@@ -165,4 +167,7 @@ public class UiElements : MonoBehaviour
             canBeHurt = true;
         }
     }
-}
+
+    
+
+

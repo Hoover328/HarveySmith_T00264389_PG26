@@ -1841,7 +1841,7 @@ MonoBehaviour:
   isLoader: 1
   transition: 0
   fade: {fileID: 1046916055}
-  fadeImage: {fileID: 0}
+  fadeImage: {fileID: 628398506}
 --- !u!64 &481554166
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -8382,6 +8382,7 @@ MonoBehaviour:
   sword3: {fileID: 1160689249}
   duration: 10
   uiActive: 0
+  barsActive: 1
 --- !u!136 &1886974825
 CapsuleCollider:
   m_ObjectHideFlags: 0

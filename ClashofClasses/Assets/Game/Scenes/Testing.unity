@@ -1132,8 +1132,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cdd311dc25cf1174f95678dac5c82332, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  animator: {fileID: 377055020}
-  playerAttack: {fileID: 793181684}
 --- !u!95 &377055020
 Animator:
   serializedVersion: 7
@@ -1641,8 +1639,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cdd311dc25cf1174f95678dac5c82332, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  animator: {fileID: 474342860}
-  playerAttack: {fileID: 793181684}
 --- !u!95 &474342860
 Animator:
   serializedVersion: 7
@@ -2614,8 +2610,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cdd311dc25cf1174f95678dac5c82332, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  animator: {fileID: 772049120}
-  playerAttack: {fileID: 793181684}
 --- !u!95 &772049120
 Animator:
   serializedVersion: 7
@@ -2897,11 +2891,12 @@ MonoBehaviour:
   healthSlider: {fileID: 1293185589}
   rectTransform: {fileID: 1775073440}
   playerMovement: {fileID: 793181681}
-  sword1: {fileID: 0}
-  sword2: {fileID: 0}
-  sword3: {fileID: 0}
+  sword1: {fileID: 772049121}
+  sword2: {fileID: 474342861}
+  sword3: {fileID: 377055021}
   duration: 10
   uiActive: 1
+  barsActive: 0
 --- !u!136 &793181687
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -4722,6 +4717,7 @@ MonoBehaviour:
   healthBar: {fileID: 1293185589}
   staminaBar: {fileID: 1775073441}
   playerCam: {fileID: 920106485}
+  textfill: {fileID: 0}
 --- !u!114 &1677856951
 MonoBehaviour:
   m_ObjectHideFlags: 0
