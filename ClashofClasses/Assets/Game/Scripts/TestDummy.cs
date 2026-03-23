@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using UnityEngine;
 using UnityEngine.InputSystem;
@@ -10,6 +11,8 @@ public class TestDummy : MonoBehaviour
     //bool spin;
     public Rigidbody rb;
     float spinForce = 2000f;
+    public bool isButton = false;
+    public bool isPressed = false;
     void Start()
     {
         changeColor = GetComponent<Renderer>();
@@ -33,6 +36,10 @@ public class TestDummy : MonoBehaviour
         {
           
             StartCoroutine(FlashRed());
+            if (isButton)
+            {
+                isPressed = true;
+            }
             
             
         }

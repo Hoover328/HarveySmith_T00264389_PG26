@@ -12,6 +12,7 @@ TagManager:
   - Projectile
   - Parry
   - Button
+  - Door
   layers:
   - Default
   - TransparentFX

@@ -1093,7 +1093,6 @@ GameObject:
   - component: {fileID: 377055022}
   - component: {fileID: 377055021}
   - component: {fileID: 377055020}
-  - component: {fileID: 377055019}
   m_Layer: 5
   m_Name: Sword 3
   m_TagString: Untagged
@@ -1120,18 +1119,6 @@ RectTransform:
   m_AnchoredPosition: {x: -27.4, y: 8}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
---- !u!114 &377055019
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 377055017}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: cdd311dc25cf1174f95678dac5c82332, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!95 &377055020
 Animator:
   serializedVersion: 7
@@ -1600,7 +1587,6 @@ GameObject:
   - component: {fileID: 474342862}
   - component: {fileID: 474342861}
   - component: {fileID: 474342860}
-  - component: {fileID: 474342859}
   m_Layer: 5
   m_Name: Sword 2
   m_TagString: Untagged
@@ -1627,18 +1613,6 @@ RectTransform:
   m_AnchoredPosition: {x: -22.7, y: 8}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
---- !u!114 &474342859
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 474342857}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: cdd311dc25cf1174f95678dac5c82332, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!95 &474342860
 Animator:
   serializedVersion: 7
@@ -2570,7 +2544,6 @@ GameObject:
   - component: {fileID: 772049122}
   - component: {fileID: 772049121}
   - component: {fileID: 772049120}
-  - component: {fileID: 772049119}
   - component: {fileID: 772049123}
   m_Layer: 5
   m_Name: Sword 1
@@ -2598,18 +2571,6 @@ RectTransform:
   m_AnchoredPosition: {x: -18, y: 8}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
---- !u!114 &772049119
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 772049117}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: cdd311dc25cf1174f95678dac5c82332, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!95 &772049120
 Animator:
   serializedVersion: 7
@@ -3451,6 +3412,7 @@ GameObject:
   - component: {fileID: 920106485}
   - component: {fileID: 920106484}
   - component: {fileID: 920106489}
+  - component: {fileID: 920106490}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -3551,6 +3513,22 @@ MonoBehaviour:
   maxDown: 30
   cameraHeight: 1.5
   canMoveCamera: 1
+--- !u!114 &920106490
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 920106483}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6a3c615c8257cb34580ad8b27e25f051, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  sword1Animator: {fileID: 772049120}
+  sword2Animator: {fileID: 474342860}
+  sword3Animator: {fileID: 377055020}
+  playerAttack: {fileID: 793181684}
 --- !u!1001 &941529487
 PrefabInstance:
   m_ObjectHideFlags: 0
