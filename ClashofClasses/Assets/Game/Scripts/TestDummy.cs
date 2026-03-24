@@ -32,24 +32,30 @@ public class TestDummy : MonoBehaviour
 
     void OnTriggerEnter(Collider attack)
     {
-        if (attack.CompareTag("Attack"))
-        {
-          
-            StartCoroutine(FlashRed());
-            if (isButton)
+       
+            if (attack.CompareTag("Attack"))
             {
-                isPressed = true;
+                StartCoroutine(FlashRed());
+                if (isButton)
+                {
+                    isPressed = true;
+                }
+
             }
+        
+        
+
+            if (attack.CompareTag("ParryAttack"))
+            {
+
+                StartCoroutine(FlashRed());
+                if (isButton)
+                {
+                    isPressed = true;
+                }
+
+
             
-            
-        }
-
-        if (attack.CompareTag("Projectile"))
-        {
-
-            StartCoroutine(FlashRed());
-
-
         }
     }
 

@@ -23,6 +23,7 @@ public class TextFill : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        Debug.Log(dialougeCheck);
         if (Npc.talking)
         {
             if (fireOnce)
@@ -49,6 +50,12 @@ public class TextFill : MonoBehaviour
 
                 }
 
+                else if (dialougeCheck == 5)
+                {
+                    StartCoroutine(TextAnimation("Well..? Which sword would you like?"));
+
+                }
+
             }
                 if (Mouse.current.leftButton.wasPressedThisFrame && !canSkip)
                 {
@@ -64,16 +71,22 @@ public class TextFill : MonoBehaviour
                         fireOnce = true;
                     }
 
-                else if (dialougeCheck == 3)
-                {
-                    dialougeCheck = 0;
-                    fireOnce = true;
-                }
+                    else if (dialougeCheck == 3)
+                    {
+                        dialougeCheck = 4;
+                        fireOnce = true;
+                    }
+
+                    else if (dialougeCheck == 5)
+                    {
+                        dialougeCheck = 6;
+                        fireOnce = true;
+                    }
 
 
 
 
-                }
+            }
            /* if (Mouse.current.leftButton.wasPressedThisFrame && !canSkip)
             {
                 if (dialougeCheck == 1)

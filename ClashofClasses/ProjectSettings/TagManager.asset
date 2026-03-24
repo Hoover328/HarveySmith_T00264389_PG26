@@ -13,6 +13,8 @@ TagManager:
   - Parry
   - Button
   - Door
+  - ParryAttack
+  - ButtonSequence
   layers:
   - Default
   - TransparentFX

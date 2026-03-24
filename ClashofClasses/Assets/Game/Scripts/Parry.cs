@@ -26,7 +26,7 @@ public class Parry : MonoBehaviour
                 projectile.SetDirection(Camera.main.transform.forward);
             }
 
-            gameObject.tag = "Attack";
+            gameObject.tag = "ParryAttack";
 
         }
     }

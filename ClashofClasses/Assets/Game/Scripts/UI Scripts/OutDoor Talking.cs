@@ -55,9 +55,10 @@ public class OutDoorTalking : MonoBehaviour
 
         }
 
-        if (Npc.talking && textfill.dialougeCheck == 0) 
+        if (Npc.talking && textfill.dialougeCheck == 4) 
         {
           Npc.talking = false;
+            textfill.dialougeCheck = 5;
           Npc.fadeTransition = true;
           StartCoroutine(dialogueTransition());
 
