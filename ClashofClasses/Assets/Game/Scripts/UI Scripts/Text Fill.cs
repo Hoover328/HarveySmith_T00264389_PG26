@@ -8,7 +8,7 @@ public class TextFill : MonoBehaviour
     public NpcBody Npc;
     private Coroutine shakeText;
     public int dialougeCheck = 1;
-    bool fireOnce = true;
+    public bool fireOnce = true;
     public TMPro.TextMeshProUGUI dialogueText;  
     public float textSpeed = 0.5f;
     public Fade fade;
@@ -56,6 +56,12 @@ public class TextFill : MonoBehaviour
 
                 }
 
+                else if (dialougeCheck == 8)
+                {
+                    StartCoroutine(TextAnimation("Now then... Take that sword, and enter the temple. If you can make it to the end, you might find something interesting..."));
+
+                }
+
             }
                 if (Mouse.current.leftButton.wasPressedThisFrame && !canSkip)
                 {
@@ -82,6 +88,12 @@ public class TextFill : MonoBehaviour
                         dialougeCheck = 6;
                         fireOnce = true;
                     }
+
+                else if (dialougeCheck == 8)
+                {
+                    dialougeCheck = 9;
+                    fireOnce = true;
+                }
 
 
 
