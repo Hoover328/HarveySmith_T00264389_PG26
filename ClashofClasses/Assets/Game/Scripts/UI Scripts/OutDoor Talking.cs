@@ -63,6 +63,15 @@ public class OutDoorTalking : MonoBehaviour
           StartCoroutine(dialogueTransition());
 
         }
+
+        if (Npc.talking && textfill.dialougeCheck == 9)
+        {
+            Npc.talking = false;
+            textfill.dialougeCheck = 10;
+            Npc.fadeTransition = true;
+            StartCoroutine(dialogueTransition());
+
+        }
     }
 
     IEnumerator dialogueTransition()

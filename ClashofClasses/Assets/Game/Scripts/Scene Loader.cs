@@ -21,10 +21,10 @@ public class StartToMainScene : MonoBehaviour
             return;
         }
 
-        if (transition)
+       /* if (transition)
         {
             StartCoroutine(fade.FadeInOut());
-        }
+        }*/
     }
 
     // Update is called once per frame
