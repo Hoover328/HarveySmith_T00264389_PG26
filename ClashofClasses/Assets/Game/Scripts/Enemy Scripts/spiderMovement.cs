@@ -10,7 +10,7 @@ public class spiderMovement : MonoBehaviour
     public PlayerMovement playerMovement;
     public Rigidbody spiderRb;
     public SpiderDeath spiderDeath;
-    public Collider jumpCollider;
+    public SpiderSight spiderSight;
     public float jumpForce = 10;
     public float movementSpeed = 1f;
     Boolean notJumping = true;
@@ -24,8 +24,9 @@ public class spiderMovement : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (!spiderDeath.dead)
+        if (!spiderDeath.dead && spiderSight.canSee)
         {
+            
             Vector3 direction = transform.position - player.position;
             if (notJumping)
             {
@@ -37,21 +38,12 @@ public class spiderMovement : MonoBehaviour
             transform.position -= transform.forward * movementSpeed * Time.deltaTime;
 
         }
+
+        
     }
-    /*
-     void OnTriggerStay(Collider user)
-    {
-        if (user.CompareTag("Player") && !playerMovement.isGrounded)
-        {
-            Vector3 direction = transform.position - player.position;
-            if (direction.sqrMagnitude > 0.001f)
-                transform.rotation = Quaternion.LookRotation(direction);
 
-            //spiderRb.AddForce(-transform.up, ForceMode.Force);
-            spiderRb.AddForce(-transform.forward * jumpForce, ForceMode.Force);
-            notJumping = false;
-           animator.SetTrigger("isJumping");
-
-        }*/
+   
+  
+   
     
 }
