@@ -6,6 +6,7 @@ using UnityEngine.InputSystem;
 public class NpcBody : MonoBehaviour
 {
     public Transform player;
+    public Fade fade;
     public OutDoorTalking OutDoorTalking;
     public Rigidbody rb;
     public Collider playerNear;
@@ -40,7 +41,7 @@ public class NpcBody : MonoBehaviour
             return;
         }
 
-        if (OutDoorTalking.noInputs == false && Keyboard.current.eKey.isPressed)
+        if (OutDoorTalking.noInputs == false && Keyboard.current.eKey.isPressed && !fade.lockInputs)
         {
             spin = true;
             talking = true;
