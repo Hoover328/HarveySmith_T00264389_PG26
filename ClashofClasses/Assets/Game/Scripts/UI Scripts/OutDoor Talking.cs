@@ -9,9 +9,12 @@ public class OutDoorTalking : MonoBehaviour
 {
     public bool noInputs = false;
     public NpcBody Npc;
+    public NpcBody Npc2;
     public PlayerMovement player;
     public Image NpcSprite;
+    public Image Npc2Sprite;
     public GameObject NPCObject;
+    public GameObject NPC2Object;
     public Image sword1;
     public Image sword2;
     public Image sword3;
@@ -30,6 +33,7 @@ public class OutDoorTalking : MonoBehaviour
     {
         noInputs = false;
         NpcSprite.enabled = false;
+        Npc2Sprite.enabled = false;
         textBox.enabled = false;
         textMeshPro.enabled = false;
 
@@ -49,18 +53,26 @@ public class OutDoorTalking : MonoBehaviour
 
         if (Npc.talking ) 
         {
-
-            StartCoroutine(dialogueTransition());
+       
+            StartCoroutine(dialogueTransition(Npc, NpcSprite, NPCObject));
             noInputs = true;
 
         }
+
+        if (Npc2.talking)
+        {
+            StartCoroutine(dialogueTransition(Npc2, Npc2Sprite, NPC2Object));
+            noInputs = true;
+
+        }
+
 
         if (Npc.talking && textfill.dialougeCheck == 4) 
         {
           Npc.talking = false;
             textfill.dialougeCheck = 5;
           Npc.fadeTransition = true;
-          StartCoroutine(dialogueTransition());
+          StartCoroutine(dialogueTransition(Npc, NpcSprite, NPCObject));
 
         }
 
@@ -69,12 +81,39 @@ public class OutDoorTalking : MonoBehaviour
             Npc.talking = false;
             textfill.dialougeCheck = 10;
             Npc.fadeTransition = true;
-            StartCoroutine(dialogueTransition());
+            StartCoroutine(dialogueTransition(Npc, NpcSprite, NPCObject));
+
+        }
+
+        if (Npc2.talking && textfill.dialougeCheck2 == 2)
+        {
+            Npc2.talking = false;
+            textfill.dialougeCheck2 = 1;
+            Npc2.fadeTransition = true;
+            StartCoroutine(dialogueTransition(Npc2, Npc2Sprite, NPC2Object));
+
+        }
+
+        if (Npc2.talking && textfill.dialougeCheck2 == 3)
+        {
+            Npc2.talking = false;
+            textfill.dialougeCheck2 = 4;
+            Npc2.fadeTransition = true;
+            StartCoroutine(dialogueTransition(Npc2, Npc2Sprite, NPC2Object));
+
+        }
+
+        if (Npc2.talking && textfill.dialougeCheck2 == 5)
+        {
+            Npc2.talking = false;
+            textfill.dialougeCheck2 = 1;
+            Npc2.fadeTransition = true;
+            StartCoroutine(dialogueTransition(Npc2, Npc2Sprite, NPC2Object));
 
         }
     }
 
-    IEnumerator dialogueTransition()
+    IEnumerator dialogueTransition(NpcBody Npc, Image NpcSprite, GameObject NPCObject)
     {
         if (Npc.talking)
         {

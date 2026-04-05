@@ -4,13 +4,16 @@ using UnityEngine;
 using UnityEngine.InputSystem;
 using UnityEngine.UI;
 
+
 public class Fade : MonoBehaviour
 {
     public Image fadeImage;
     public OutDoorTalking OutDoorTalking;
     public float fadeTime = 1f;
     public float fadeDelay = 1f;
- 
+    public bool lockInputs;
+
+
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
@@ -27,7 +30,7 @@ public class Fade : MonoBehaviour
     {
 
 
-        if (OutDoorTalking.Npc.fadeTransition == true)
+        if (OutDoorTalking.Npc.fadeTransition == true || OutDoorTalking.Npc2.fadeTransition == true)
         {
 
             StartCoroutine(FadeInOut());
@@ -37,9 +40,11 @@ public class Fade : MonoBehaviour
 
     public IEnumerator FadeInOut()
     {
+       lockInputs = true;
         yield return StartCoroutine(FadeTransition(0f, 1f));
         yield return new WaitForSeconds(fadeDelay);
         yield return StartCoroutine(FadeTransition(1f, 0f));
+       lockInputs = false;
     }
 
      IEnumerator FadeTransition(float startAlpha, float endAlpha)

@@ -1,6 +1,7 @@
 using UnityEngine;
 using UnityEngine.InputSystem;
 using UnityEngine.UI;
+using UnityEngine.Windows;
 
 public class PlayerMovement : MonoBehaviour
 {
@@ -15,7 +16,19 @@ public class PlayerMovement : MonoBehaviour
     public bool isGrounded;
     public bool canMove = true;
     public bool canJump = true;
+    Vector3 move;
+    private Vector3 velocity;
 
+
+    private void FixedUpdate()
+    {
+        Vector3 targetVelocity = velocity;
+        Vector3 currentVelocity = playerRigidBody.linearVelocity;
+
+        Vector3 velocityChange = new Vector3(targetVelocity.x - currentVelocity.x, 0f, targetVelocity.z - currentVelocity.z);
+
+        playerRigidBody.AddForce(velocityChange, ForceMode.VelocityChange);
+    }
 
 
     void Update()
@@ -59,13 +72,12 @@ public class PlayerMovement : MonoBehaviour
         vertical.Normalize();
         horrizontal.Normalize();
 
-        Vector3 move = vertical * input.z + horrizontal * input.x;
-
-        transform.position += move * speed * Time.deltaTime;
+        move = vertical * input.z + horrizontal * input.x;
+        velocity = move * speed;
 
         if (isGrounded && canJump)
         {
-            if(OutDoorTalking.noInputs == false && Keyboard.current.spaceKey.isPressed)
+            if(OutDoorTalking.noInputs == false && Keyboard.current.spaceKey.wasPressedThisFrame)
             {
                 playerRigidBody.AddForce(Vector3.up * jumpForce, ForceMode.Impulse);
             }
