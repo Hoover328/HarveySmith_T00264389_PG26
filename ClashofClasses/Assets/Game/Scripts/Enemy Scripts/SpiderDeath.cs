@@ -6,9 +6,10 @@ public class SpiderDeath : MonoBehaviour
 
     public Animator animator;
     public PlayerAttack playerAttack;
-
-
-    public Boolean dead;
+    public bool buttonPressed = false;
+    public AudioSource hurt;
+    public bool dead;
+    bool fireOnce = true;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
@@ -20,7 +21,14 @@ public class SpiderDeath : MonoBehaviour
     {
         if (dead == true)
         {
+            
             animator.SetTrigger("isHit");
+            if (fireOnce)
+            {
+                hurt.Play();
+                fireOnce = false;
+            }
+            buttonPressed = true;
         }
     }
 

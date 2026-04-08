@@ -34,17 +34,17 @@ public class Footsteps : MonoBehaviour
 
         if (isMoving)
         {
-            stepTimer -= Time.deltaTime; // count down timer
+            stepTimer -= Time.deltaTime; 
             if (stepTimer <= 0f)
             {
                 footsteps.pitch = Random.Range(0.8f, 1.2f);
                 footsteps.Play();
-                stepTimer = stepInterval; // reset timer
+                stepTimer = stepInterval; 
             }
         }
         else
         {
-            stepTimer = 0f; // reset timer when not moving
+            stepTimer = 0f;
         }
     }
 }

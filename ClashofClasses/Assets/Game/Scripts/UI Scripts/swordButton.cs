@@ -9,6 +9,8 @@ public class swordButton : MonoBehaviour, IPointerClickHandler, IPointerEnterHan
     public Button button;
     public Image sword;
     public TextMeshProUGUI text;
+    public GameObject Swordless;
+    public GameObject SwordArt;
     public bool isPressed = false;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
@@ -41,6 +43,8 @@ public class swordButton : MonoBehaviour, IPointerClickHandler, IPointerEnterHan
     {
         isPressed = true;
         sword.enabled = true;
+        Swordless.SetActive(true);
+        SwordArt.SetActive(false);
     }
 
     
