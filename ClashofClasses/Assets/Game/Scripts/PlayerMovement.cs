@@ -18,6 +18,7 @@ public class PlayerMovement : MonoBehaviour
     public bool canJump = true;
     Vector3 move;
     private Vector3 velocity;
+    public AudioSource dash;
 
 
     private void FixedUpdate()
@@ -80,6 +81,7 @@ public class PlayerMovement : MonoBehaviour
             if(OutDoorTalking.noInputs == false && Keyboard.current.spaceKey.wasPressedThisFrame)
             {
                 playerRigidBody.AddForce(Vector3.up * jumpForce, ForceMode.Impulse);
+          
             }
         }
 
@@ -103,23 +105,27 @@ public class PlayerMovement : MonoBehaviour
             if (OutDoorTalking.noInputs == false && Keyboard.current.wKey.isPressed)
             {
                 dashDirection += camForward;
+                dash.Play();
             }
 
             if (OutDoorTalking.noInputs == false && Keyboard.current.sKey.isPressed)
             {
                 dashDirection -= camForward;
+                dash.Play();
             }
              
 
             if (OutDoorTalking.noInputs == false && Keyboard.current.aKey.isPressed)
             {
                 dashDirection -= camRight;
+                dash.Play();
             }
                
 
             if (OutDoorTalking.noInputs == false && Keyboard.current.dKey.isPressed)
             {
                 dashDirection += camRight;
+                dash.Play();
             }
 
             if (dashDirection != Vector3.zero)

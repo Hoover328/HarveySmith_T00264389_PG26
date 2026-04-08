@@ -20,6 +20,11 @@ public class TextFill : MonoBehaviour
     private bool  canSkip;
     public GameObject Avold;
     public GameObject Cat;
+    public Door door;
+    public bool goodEnd = true;
+    public AudioSource meow;
+    public AudioSource secret;
+    public bool finalState = false;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
@@ -116,14 +121,26 @@ public class TextFill : MonoBehaviour
 
                 fireOnce2 = false;
 
-                if (dialougeCheck2 == 1)
+                if (door.doorOpen && dialougeCheck2 == 1 || door.doorOpen && dialougeCheck2 == 4)
                 {
-                    StartCoroutine(TextAnimation("Meow~", dialogueText2));
+                    StartCoroutine(TextAnimation("Meow~ *The cat points a paw in the direction you came from, almost like he is telling you to go back where you came*", dialogueText2));
+                    finalState = true;
+                    meow.Play();
+
                 }
 
-                if (dialougeCheck2 == 4)
+                else if (dialougeCheck2 == 1)
                 {
+                    StartCoroutine(TextAnimation("Meow~", dialogueText2));
+                    meow.Play();
+
+                }
+
+                else if (dialougeCheck2 == 4)
+                {
+                    goodEnd = true;
                     StartCoroutine(TextAnimation("Do not trust him. You know what will happen.", dialogueText2));
+                    secret.Play();
                 }
             }
 
@@ -186,7 +203,7 @@ public class TextFill : MonoBehaviour
                     shakeText = StartCoroutine(ShakeText(dialogueText));
                 }
 
-                if (dialougeCheck2 == 4 && shakeText2 == null)
+                if (dialougeCheck2 == 4 && shakeText2 == null && !door.doorOpen)
                 {
                    // yield return new WaitForSeconds(fade.fadeDelay);
                     shakeText2 = StartCoroutine(ShakeText(dialogueText2));

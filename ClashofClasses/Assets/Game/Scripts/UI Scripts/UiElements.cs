@@ -21,6 +21,7 @@ public class UiElements : MonoBehaviour
     float healthSliderMin = 0.0f;
     float hurtCoolDown = 2f;
     bool canBeHurt = true;
+    public AudioSource hurt;
 
     public bool uiActive = true;
     public bool barsActive = true;
@@ -163,6 +164,7 @@ public class UiElements : MonoBehaviour
         {
             canBeHurt = false;
             currentHealth -= 40f;
+            hurt.Play();
             yield return new WaitForSeconds(hurtCoolDown);
             canBeHurt = true;
         }

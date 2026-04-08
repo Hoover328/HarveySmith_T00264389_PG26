@@ -6,14 +6,15 @@ public class SpiderJump : MonoBehaviour
 {
     public Animator animator;
     public PlayerMovement playerMovement;
+    public SpiderDeath spiderDeath;
     public Transform player;
     public float jumpForce = 7;
     public Rigidbody spiderRb;
-    Boolean notJumping = true;
+    bool notJumping = true;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
-        
+      
     }
 
     // Update is called once per frame
@@ -24,7 +25,7 @@ public class SpiderJump : MonoBehaviour
 
     void OnTriggerStay(Collider user)
     {
-        if (user.CompareTag("Player") && !playerMovement.isGrounded)
+        if (user.CompareTag("Player") && !playerMovement.isGrounded && !spiderDeath.dead)
         {
             Vector3 direction = transform.position - player.position;
             if (direction.sqrMagnitude > 0.001f)

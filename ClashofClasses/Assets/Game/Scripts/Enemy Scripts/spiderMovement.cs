@@ -13,7 +13,7 @@ public class spiderMovement : MonoBehaviour
     public SpiderSight spiderSight;
     public float jumpForce = 10;
     public float movementSpeed = 1f;
-    Boolean notJumping = true;
+    bool notJumping = true;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
