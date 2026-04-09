@@ -7,6 +7,7 @@ public class Swordtesting : MonoBehaviour
     public Image sword1;
     public Image sword2;
     public Image sword3;
+    public Rigidbody rigidbody1;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
@@ -37,5 +38,16 @@ public class Swordtesting : MonoBehaviour
             sword2.enabled = false;
             sword1.enabled = false;
         }
+
+        if (Keyboard.current.digit1Key.isPressed)
+        {
+            rigidbody1.transform.position = new Vector3(46.49377f, -10.19875f, -299.0454f);
+        }
+
+        if (Keyboard.current.digit2Key.isPressed)
+        {
+            rigidbody1.transform.position = new Vector3(31.98f, 1.11f, 67.18f);
+        }
+
     }
 }

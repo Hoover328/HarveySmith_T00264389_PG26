@@ -7,6 +7,7 @@ public class TextFill : MonoBehaviour
 {
     public NpcBody Npc;
     public NpcBody Npc2;
+    public OutDoorTalking OutDoorTalking;
     private Coroutine shakeText;
     private Coroutine shakeText2;
     public int dialougeCheck = 1;
@@ -21,9 +22,10 @@ public class TextFill : MonoBehaviour
     public GameObject Avold;
     public GameObject Cat;
     public Door door;
-    public bool goodEnd = true;
+    public bool goodEnd = false;
     public AudioSource meow;
     public AudioSource secret;
+    public AudioSource heal;
     public bool finalState = false;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
@@ -34,7 +36,7 @@ public class TextFill : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        //  Debug.Log(dialougeCheck);
+       //Debug.Log(dialougeCheck);
         if (Npc.talking)
         {
             if (fireOnce)
@@ -73,9 +75,35 @@ public class TextFill : MonoBehaviour
 
                 }
 
+                else if (dialougeCheck == 10)
+                {
+                    StartCoroutine(TextAnimation("What are you waiting for...", dialogueText));
+
+                }
+
+                else if (dialougeCheck == 12)
+                {
+                    StartCoroutine(TextAnimation("I understand... You are confused...", dialogueText));
+
+                }
+
+                else if (dialougeCheck == 13)
+                {
+                    StartCoroutine(TextAnimation("Ill escort you out... This place is not safe anymore...", dialogueText));
+
+                }
+
+                else if (dialougeCheck == 14)
+                {
+                    OutDoorTalking.readyToKill = false;
+                    StartCoroutine(TextAnimation("You do trust me right..? The exit is a short distance behind you... Lets go...", dialogueText));
+
+                }
+
+
             }
 
-            
+
             if (Mouse.current.leftButton.wasPressedThisFrame && !canSkip && !fade.lockInputs)
             {
                 if (dialougeCheck == 1)
@@ -108,6 +136,30 @@ public class TextFill : MonoBehaviour
                     fireOnce = true;
                 }
 
+                else if (dialougeCheck == 10)
+                {
+                    dialougeCheck = 11;
+                    fireOnce = true;
+                }
+
+                else if (dialougeCheck == 12)
+                {
+                    dialougeCheck = 13;
+                    fireOnce = true;
+                }
+
+                else if (dialougeCheck == 13)
+                {
+                    dialougeCheck = 14;
+                    fireOnce = true;
+                }
+
+                else if(dialougeCheck == 14 && !goodEnd)
+                {
+                    dialougeCheck = 15;
+                    fireOnce = true;
+                }
+
 
 
 
@@ -121,11 +173,19 @@ public class TextFill : MonoBehaviour
 
                 fireOnce2 = false;
 
-                if (door.doorOpen && dialougeCheck2 == 1 || door.doorOpen && dialougeCheck2 == 4)
+                if (door.doorOpen && !goodEnd && dialougeCheck2 == 1 || door.doorOpen && !goodEnd && dialougeCheck2 == 4)
                 {
                     StartCoroutine(TextAnimation("Meow~ *The cat points a paw in the direction you came from, almost like he is telling you to go back where you came*", dialogueText2));
                     finalState = true;
                     meow.Play();
+
+                }
+
+                else if (door.doorOpen && goodEnd && dialougeCheck2 == 1 || door.doorOpen && goodEnd && dialougeCheck2 == 4)
+                {
+                    StartCoroutine(TextAnimation("Return to Avold, he will be waiting for you. You must destroy him, he cannot be trusted. Do not believe anything he says or does.", dialogueText2));
+                    finalState = true;
+                    secret.Play();
 
                 }
 
@@ -142,35 +202,79 @@ public class TextFill : MonoBehaviour
                     StartCoroutine(TextAnimation("Do not trust him. You know what will happen.", dialogueText2));
                     secret.Play();
                 }
+
+                else if (dialougeCheck2 == 7)
+                {
+                    StartCoroutine(TextAnimation("Meow~ *You feel healthier than before*", dialogueText2));
+                    heal.Play();
+                }
+
+                else if (dialougeCheck2 == 9)
+                {
+                    StartCoroutine(TextAnimation("Ive healed your wounds. Continue through that hole and finish this.", dialogueText2));
+                    heal.Play();
+                }
             }
 
             if (Mouse.current.leftButton.wasPressedThisFrame && !canSkip && !fade.lockInputs)
             {
-                if (Random.value <= 0.2f) 
-                {
-                    dialougeCheck2 = 3;
-                    fireOnce2 = true;
-                }
-                else
-                {
-                    dialougeCheck2 = 2;
-                    fireOnce2 = true;
-                }
-
-                if (dialougeCheck2 == 4) 
+                if (dialougeCheck2 == 4)
                 {
                     StopCoroutine(shakeText2);
                     dialougeCheck2 = 5;
                     fireOnce2 = true;
                 }
 
-                
-            }
+                else if (door.doorOpen && !goodEnd && dialougeCheck2 == 1 || door.doorOpen && !goodEnd && dialougeCheck2 == 4)
+                {
+                    dialougeCheck2 = 6;
+                    fireOnce2 = true;
+                }
+
+                else if (door.doorOpen && goodEnd && dialougeCheck2 == 1 || door.doorOpen && goodEnd && dialougeCheck2 == 4)
+                {
+                    dialougeCheck2 = 8;
+                    fireOnce2 = true;
+                }
+
+                if (dialougeCheck2 == 1)
+                {
+                    if (Random.value <= 0.2f)
+                    {
+                        dialougeCheck2 = 3;
+                        fireOnce2 = true;
+                    }
+                    else
+                    {
+                        dialougeCheck2 = 2;
+                        fireOnce2 = true;
+                    }
+                }
+
+                else if (dialougeCheck2 == 7)
+                {
+                    dialougeCheck2 = 6;
+                    fireOnce2 = true;
+                }
+
+
+                else if (dialougeCheck2 == 9)
+                {
+                    dialougeCheck2 = 10;
+                    fireOnce2 = true;
+                }
             }
 
-        if (!Npc.talking)
+            }
+
+            if (!Npc.talking)
         {
             fireOnce = true;
+            if (shakeText != null)
+            {
+                StopCoroutine(shakeText);
+                shakeText = null;
+            }
             dialogueText.text = "";
         }
 
@@ -203,6 +307,12 @@ public class TextFill : MonoBehaviour
                     shakeText = StartCoroutine(ShakeText(dialogueText));
                 }
 
+                if (dialougeCheck == 10 && shakeText == null)
+                {
+                    // yield return new WaitForSeconds(fade.fadeDelay + 1f);
+                    shakeText = StartCoroutine(ShakeText(dialogueText));
+                }
+
                 if (dialougeCheck2 == 4 && shakeText2 == null && !door.doorOpen)
                 {
                    // yield return new WaitForSeconds(fade.fadeDelay);
@@ -216,12 +326,12 @@ public class TextFill : MonoBehaviour
                 }
 
 
-                 if (dialougeCheck == 1 && shakeText != null)
+                 /*if (dialougeCheck == 1 && shakeText != null)
                 {
                     StopCoroutine(shakeText);
                     shakeText = null;
 
-                 }
+                 }*/
 
         
                 canSkip = true;
@@ -276,5 +386,6 @@ public class TextFill : MonoBehaviour
 
             }
         }
+
     
 
