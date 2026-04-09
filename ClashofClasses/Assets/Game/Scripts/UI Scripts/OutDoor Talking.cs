@@ -28,6 +28,8 @@ public class OutDoorTalking : MonoBehaviour
     public Slider staminaBar;
     public Camera playerCam;
     public TextFill textfill;
+    public bool readyToKill = false;
+
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
@@ -85,6 +87,25 @@ public class OutDoorTalking : MonoBehaviour
 
         }
 
+        if (Npc.talking && textfill.dialougeCheck == 11)
+        {
+            Npc.talking = false;
+            textfill.dialougeCheck = 10;
+            Npc.fadeTransition = true;
+            StartCoroutine(dialogueTransition(Npc, NpcSprite, NPCObject));
+
+        }
+
+        if (Npc.talking && textfill.dialougeCheck == 15)
+        {
+            Npc.talking = false;
+            readyToKill = true;
+            textfill.dialougeCheck = 14;
+            Npc.fadeTransition = true;
+            StartCoroutine(dialogueTransition(Npc, NpcSprite, NPCObject));
+
+        }
+
         if (Npc2.talking && textfill.dialougeCheck2 == 2)
         {
             Npc2.talking = false;
@@ -107,6 +128,42 @@ public class OutDoorTalking : MonoBehaviour
         {
             Npc2.talking = false;
             textfill.dialougeCheck2 = 1;
+            Npc2.fadeTransition = true;
+            StartCoroutine(dialogueTransition(Npc2, Npc2Sprite, NPC2Object));
+
+        }
+
+        if (Npc2.talking && textfill.dialougeCheck2 == 6)
+        {
+            Npc2.talking = false;
+            textfill.dialougeCheck2 = 7;
+            Npc2.fadeTransition = true;
+            StartCoroutine(dialogueTransition(Npc2, Npc2Sprite, NPC2Object));
+
+        }
+
+        if (Npc2.talking && textfill.dialougeCheck2 == 8)
+        {
+            Npc2.talking = false;
+            textfill.dialougeCheck2 = 9;
+            Npc2.fadeTransition = true;
+            StartCoroutine(dialogueTransition(Npc2, Npc2Sprite, NPC2Object));
+
+        }
+
+        if (Npc2.talking && textfill.dialougeCheck2 == 9)
+        {
+            Npc2.talking = false;
+            textfill.dialougeCheck2 = 10;
+            Npc2.fadeTransition = true;
+            StartCoroutine(dialogueTransition(Npc2, Npc2Sprite, NPC2Object));
+
+        }
+
+        if (Npc2.talking && textfill.dialougeCheck2 == 11)
+        {
+            Npc2.talking = false;
+            textfill.dialougeCheck2 = 10;
             Npc2.fadeTransition = true;
             StartCoroutine(dialogueTransition(Npc2, Npc2Sprite, NPC2Object));
 

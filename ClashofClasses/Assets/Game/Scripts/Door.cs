@@ -12,9 +12,13 @@ public class Door : MonoBehaviour
     public List<SpiderDeath> Spiders = new List<SpiderDeath>();
     public bool isEnemyDoor = false;
     public GameObject Cat;
+    public GameObject Avold;
     public bool doorOpen = false;
     private bool soundFireOnce = true;
     public AudioSource doorOpenSound;
+    public bool forceAll;
+    bool fireOnce = true;
+    public AudioSource mainTheme;
 
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
@@ -65,9 +69,9 @@ public class Door : MonoBehaviour
                 }
             }
 
-            if (allPressed)
+            if (allPressed || forceAll)
             {
-                bool fireOnce = true;
+                
                 transform.position += Vector3.down * Time.deltaTime;
                 if (fireOnce)
                 {
