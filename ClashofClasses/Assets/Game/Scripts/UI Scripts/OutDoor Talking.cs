@@ -29,6 +29,7 @@ public class OutDoorTalking : MonoBehaviour
     public Camera playerCam;
     public TextFill textfill;
     public bool readyToKill = false;
+    public bool bossStart = false;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
@@ -100,9 +101,19 @@ public class OutDoorTalking : MonoBehaviour
         {
             Npc.talking = false;
             readyToKill = true;
-            textfill.dialougeCheck = 14;
+            textfill.dialougeCheck = 10;
             Npc.fadeTransition = true;
             StartCoroutine(dialogueTransition(Npc, NpcSprite, NPCObject));
+
+        }
+
+        if (Npc.talking && textfill.dialougeCheck == 20)
+        {
+            Npc.talking = false;
+            textfill.dialougeCheck = 21;
+            Npc.fadeTransition = true;
+            StartCoroutine(dialogueTransition(Npc, NpcSprite, NPCObject));
+            bossStart = true;
 
         }
 
@@ -112,6 +123,7 @@ public class OutDoorTalking : MonoBehaviour
             textfill.dialougeCheck2 = 1;
             Npc2.fadeTransition = true;
             StartCoroutine(dialogueTransition(Npc2, Npc2Sprite, NPC2Object));
+            
 
         }
 

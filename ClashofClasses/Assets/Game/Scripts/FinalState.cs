@@ -50,7 +50,7 @@ public class FinalState : MonoBehaviour
 
             if (fireOnce)
             {
-                Avold.transform.position = new Vector3(17.14f, -77.7f, 118.34f);
+                Avold.transform.position = new Vector3(17.14f, -77.69f, 118.34f);
                 Cat.transform.position = new Vector3(18.915f, 1.92f, 36.772f);
                 fireOnce = false;
             }

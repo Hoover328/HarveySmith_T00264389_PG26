@@ -111,7 +111,7 @@ Material:
     - _FoamAmount: 1
     - _FoamBubbleScale: 5
     - _FoamBubbleSpeed: 0.2
-    - _FoamCutoff: 0.52
+    - _FoamCutoff: 0.772
     - _FoamEdgeBlend: 1
     - _FoamLineWidth: 0.1
     - _FoamNoiseScale: 1.99
@@ -171,7 +171,7 @@ Material:
     - _DeepColor: {r: 0.4762816, g: 0.7215106, b: 0.7264151, a: 0}
     - _EdgeColor: {r: 0.5896226, g: 0.8974057, b: 1, a: 1}
     - _EmissionColor: {r: 0, g: 0, b: 0, a: 1}
-    - _FoamColor: {r: 1, g: 1, b: 1, a: 1}
+    - _FoamColor: {r: 1, g: 0, b: 0, a: 1}
     - _HighlightColor: {r: 1, g: 0, b: 0, a: 1}
     - _HologramColor: {r: 1, g: 1, b: 1, a: 1}
     - _MainColor: {r: 1, g: 1, b: 1, a: 0.5}
