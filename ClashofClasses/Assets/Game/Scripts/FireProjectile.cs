@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.EventSystems;
 
 public class FireProjectile : MonoBehaviour
 {
@@ -14,6 +15,11 @@ public class FireProjectile : MonoBehaviour
     public void SetDirection(Vector3 dir)
     {
         direction = dir.normalized;
+    }
+
+    public void SetDirectionForBoss(Vector3 playerPosition)
+    {
+        direction = (playerPosition - transform.position).normalized;
     }
     void Update()
     {

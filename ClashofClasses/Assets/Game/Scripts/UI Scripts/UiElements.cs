@@ -12,7 +12,7 @@ public class UiElements : MonoBehaviour
     public Image sword1;
     public Image sword2;
     public Image sword3;
-
+    public AvoldKill avoldKill;
     public float duration = 2f;
     float dashSliderMax = 100f;
     float dashSliderMin = 0.0f;
@@ -135,6 +135,12 @@ public class UiElements : MonoBehaviour
 
             healthSlider.value = Mathf.Lerp(healthSlider.value, currentHealth, Time.deltaTime / hurtCoolDown);
 
+        if (avoldKill.instantDeath)
+        {
+            currentHealth -= 100f;
+            dashSlider.value = 0f;
+        }
+
         }
 
         void OnTriggerStay(Collider hurt)
@@ -144,7 +150,7 @@ public class UiElements : MonoBehaviour
                 StartCoroutine(HitCooldown());
 
             }
-        }
+    }
 
         void OnTriggerEnter(Collider enemy)
         {
@@ -163,12 +169,14 @@ public class UiElements : MonoBehaviour
         IEnumerator HitCooldown()
         {
             canBeHurt = false;
-            currentHealth -= 40f;
+            currentHealth -= 20f;
             hurt.Play();
             yield return new WaitForSeconds(hurtCoolDown);
             canBeHurt = true;
         }
-    }
+
+       
+}
 
     
 

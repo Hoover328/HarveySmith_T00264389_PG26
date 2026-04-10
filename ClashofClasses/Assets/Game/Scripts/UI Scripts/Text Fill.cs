@@ -100,6 +100,35 @@ public class TextFill : MonoBehaviour
 
                 }
 
+                else if (dialougeCheck == 16)
+                {
+                    OutDoorTalking.readyToKill = false;
+                    StartCoroutine(TextAnimation("...", dialogueText));
+
+                }
+
+                else if (dialougeCheck == 17)
+                {
+                    OutDoorTalking.readyToKill = false;
+                    secret.Play();
+                    StartCoroutine(TextAnimation("What..? You dont do you? I thought that might happen.", dialogueText));
+
+                }
+
+                else if (dialougeCheck == 18)
+                {
+                    OutDoorTalking.readyToKill = false;
+                    StartCoroutine(TextAnimation("Tell me... Did he warn you?", dialogueText));
+
+                }
+
+                else if (dialougeCheck == 19)
+                {
+                    OutDoorTalking.readyToKill = false;
+                    StartCoroutine(TextAnimation("Very well then... Its time.", dialogueText));
+
+                }
+
 
             }
 
@@ -157,6 +186,36 @@ public class TextFill : MonoBehaviour
                 else if(dialougeCheck == 14 && !goodEnd)
                 {
                     dialougeCheck = 15;
+                    fireOnce = true;
+                }
+
+                else if (dialougeCheck == 14 && goodEnd)
+                {
+                    dialougeCheck = 16;
+                    fireOnce = true;
+                }
+
+                else if (dialougeCheck == 16)
+                {
+                    dialougeCheck = 17;
+                    fireOnce = true;
+                }
+
+                else if (dialougeCheck == 17)
+                {
+                    dialougeCheck = 18;
+                    fireOnce = true;
+                }
+
+                else if (dialougeCheck == 18)
+                {
+                    dialougeCheck = 19;
+                    fireOnce = true;
+                }
+
+                else if (dialougeCheck == 19)
+                {
+                    dialougeCheck = 20;
                     fireOnce = true;
                 }
 
