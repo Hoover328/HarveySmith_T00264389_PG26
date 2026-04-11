@@ -58,7 +58,7 @@ public class Swordtesting : MonoBehaviour
 
         if (Keyboard.current.digit3Key.isPressed)
         {
-            rigidbody1.transform.position = new Vector3(15.93426f, -76.86681f, 83.22967f);
+            rigidbody1.transform.position = new Vector3(15.93426f, -76.86681f, 103.22967f);
         }
 
     }
