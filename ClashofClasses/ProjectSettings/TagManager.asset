@@ -15,6 +15,7 @@ TagManager:
   - Door
   - ParryAttack
   - ButtonSequence
+  - CanHitBoss
   layers:
   - Default
   - TransparentFX

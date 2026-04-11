@@ -13,9 +13,11 @@ GameObject:
   - component: {fileID: 6158891343392037611}
   - component: {fileID: 187348243375290767}
   - component: {fileID: 1270728240682996262}
+  - component: {fileID: 6660508372624323734}
+  - component: {fileID: -2000659102270566940}
   m_Layer: 0
-  m_Name: BossProjectile
-  m_TagString: Hurt
+  m_Name: ParryShot
+  m_TagString: ParryAttack
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -66,7 +68,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 83b3ba2035070d341bd814c2ac5ed5f1, type: 2}
+  - {fileID: 2100000, guid: a370bc9b3e45fad4ba97154cdfdcbdd2, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -121,5 +123,47 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 43689dbae3ee41c42b81d0f4756d610e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 20
-  lifeTime: 1.5
+  speed: 3
+  lifeTime: 10
+--- !u!114 &6660508372624323734
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6797546271338056112}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 45f9a72728ad6a943b46792e6d8716f8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  tennisMatchMode: 1
+  parry: 0
+  enemyPosition: {x: 16.822, y: -73.74677, z: 125.529}
+--- !u!54 &-2000659102270566940
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6797546271338056112}
+  serializedVersion: 5
+  m_Mass: 1
+  m_LinearDamping: 0
+  m_AngularDamping: 0.05
+  m_CenterOfMass: {x: 0, y: 0, z: 0}
+  m_InertiaTensor: {x: 1, y: 1, z: 1}
+  m_InertiaRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ImplicitCom: 1
+  m_ImplicitTensor: 1
+  m_UseGravity: 0
+  m_IsKinematic: 0
+  m_Interpolate: 0
+  m_Constraints: 0
+  m_CollisionDetection: 0
