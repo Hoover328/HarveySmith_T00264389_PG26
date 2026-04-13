@@ -34,20 +34,39 @@ public class OutDoorTalking : MonoBehaviour
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
+
         noInputs = false;
         NpcSprite.enabled = false;
-        Npc2Sprite.enabled = false;
         textBox.enabled = false;
         textMeshPro.enabled = false;
 
-        
+        if (Npc2Sprite != null)
+        {
+            Npc2Sprite.enabled = false;
+        }
 
+        if (NPC2Object == null)
+        {
+            return;
+        }
+
+        if (textfill == null)
+        {
+            return;
+        }
+
+        if (Npc2 == null)
+        {
+            return;
+        }
 
     }
 
     // Update is called once per frame
     void Update()
     {
+        
+           
         if (NPCObject == null)
             return;
 
@@ -62,7 +81,7 @@ public class OutDoorTalking : MonoBehaviour
 
         }
 
-        if (Npc2.talking)
+        if (Npc2 != null && Npc2.talking)
         {
             StartCoroutine(dialogueTransition(Npc2, Npc2Sprite, NPC2Object));
             noInputs = true;
@@ -117,68 +136,81 @@ public class OutDoorTalking : MonoBehaviour
 
         }
 
-        if (Npc2.talking && textfill.dialougeCheck2 == 2)
+        if (Npc.talking && textfill.dialougeCheck == 35)
         {
-            Npc2.talking = false;
-            textfill.dialougeCheck2 = 1;
-            Npc2.fadeTransition = true;
-            StartCoroutine(dialogueTransition(Npc2, Npc2Sprite, NPC2Object));
+            Npc.talking = false;
+            textfill.dialougeCheck = 10;
+            Npc.fadeTransition = true;
+            StartCoroutine(dialogueTransition(Npc, NpcSprite, NPCObject));
             
 
         }
 
-        if (Npc2.talking && textfill.dialougeCheck2 == 3)
+        if (Npc2 != null && textfill != null)
         {
-            Npc2.talking = false;
-            textfill.dialougeCheck2 = 4;
-            Npc2.fadeTransition = true;
-            StartCoroutine(dialogueTransition(Npc2, Npc2Sprite, NPC2Object));
+            if (Npc2.talking && textfill.dialougeCheck2 == 2)
+            {
+                Npc2.talking = false;
+                textfill.dialougeCheck2 = 1;
+                Npc2.fadeTransition = true;
+                StartCoroutine(dialogueTransition(Npc2, Npc2Sprite, NPC2Object));
 
-        }
 
-        if (Npc2.talking && textfill.dialougeCheck2 == 5)
-        {
-            Npc2.talking = false;
-            textfill.dialougeCheck2 = 1;
-            Npc2.fadeTransition = true;
-            StartCoroutine(dialogueTransition(Npc2, Npc2Sprite, NPC2Object));
+            }
 
-        }
+            if (Npc2.talking && textfill.dialougeCheck2 == 3)
+            {
+                Npc2.talking = false;
+                textfill.dialougeCheck2 = 4;
+                Npc2.fadeTransition = true;
+                StartCoroutine(dialogueTransition(Npc2, Npc2Sprite, NPC2Object));
 
-        if (Npc2.talking && textfill.dialougeCheck2 == 6)
-        {
-            Npc2.talking = false;
-            textfill.dialougeCheck2 = 7;
-            Npc2.fadeTransition = true;
-            StartCoroutine(dialogueTransition(Npc2, Npc2Sprite, NPC2Object));
+            }
 
-        }
+            if (Npc2.talking && textfill.dialougeCheck2 == 5)
+            {
+                Npc2.talking = false;
+                textfill.dialougeCheck2 = 1;
+                Npc2.fadeTransition = true;
+                StartCoroutine(dialogueTransition(Npc2, Npc2Sprite, NPC2Object));
 
-        if (Npc2.talking && textfill.dialougeCheck2 == 8)
-        {
-            Npc2.talking = false;
-            textfill.dialougeCheck2 = 9;
-            Npc2.fadeTransition = true;
-            StartCoroutine(dialogueTransition(Npc2, Npc2Sprite, NPC2Object));
+            }
 
-        }
+            if (Npc2.talking && textfill.dialougeCheck2 == 6)
+            {
+                Npc2.talking = false;
+                textfill.dialougeCheck2 = 7;
+                Npc2.fadeTransition = true;
+                StartCoroutine(dialogueTransition(Npc2, Npc2Sprite, NPC2Object));
 
-        if (Npc2.talking && textfill.dialougeCheck2 == 9)
-        {
-            Npc2.talking = false;
-            textfill.dialougeCheck2 = 10;
-            Npc2.fadeTransition = true;
-            StartCoroutine(dialogueTransition(Npc2, Npc2Sprite, NPC2Object));
+            }
 
-        }
+            if (Npc2.talking && textfill.dialougeCheck2 == 8)
+            {
+                Npc2.talking = false;
+                textfill.dialougeCheck2 = 9;
+                Npc2.fadeTransition = true;
+                StartCoroutine(dialogueTransition(Npc2, Npc2Sprite, NPC2Object));
 
-        if (Npc2.talking && textfill.dialougeCheck2 == 11)
-        {
-            Npc2.talking = false;
-            textfill.dialougeCheck2 = 10;
-            Npc2.fadeTransition = true;
-            StartCoroutine(dialogueTransition(Npc2, Npc2Sprite, NPC2Object));
+            }
 
+            if (Npc2.talking && textfill.dialougeCheck2 == 9)
+            {
+                Npc2.talking = false;
+                textfill.dialougeCheck2 = 10;
+                Npc2.fadeTransition = true;
+                StartCoroutine(dialogueTransition(Npc2, Npc2Sprite, NPC2Object));
+
+            }
+
+            if (Npc2.talking && textfill.dialougeCheck2 == 11)
+            {
+                Npc2.talking = false;
+                textfill.dialougeCheck2 = 10;
+                Npc2.fadeTransition = true;
+                StartCoroutine(dialogueTransition(Npc2, Npc2Sprite, NPC2Object));
+
+            }
         }
     }
 

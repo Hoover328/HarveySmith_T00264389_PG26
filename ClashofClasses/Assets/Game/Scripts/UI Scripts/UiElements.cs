@@ -24,7 +24,6 @@ public class UiElements : MonoBehaviour
     public AudioSource hurt;
 
     public bool uiActive = true;
-    public bool barsActive = true;
     int selectedSword;
 
 
@@ -32,6 +31,31 @@ public class UiElements : MonoBehaviour
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
+
+        if (avoldKill == null)
+        {
+            return;
+        }
+        
+
+        if (dashSlider != null && healthSlider != null)
+        {
+            dashSlider.maxValue = dashSliderMax;
+            dashSlider.minValue = dashSliderMin;
+            healthSlider.maxValue = healthSliderMax;
+            healthSlider.minValue = healthSliderMin;
+
+            dashSlider.value = dashSliderMax;
+            healthSlider.value = healthSliderMax;
+            currentHealth = healthSliderMax;
+
+        }
+    }
+
+        // Update is called once per frame
+        void Update()
+        {
+
         if (uiActive)
         {
             healthSlider.gameObject.SetActive(true);
@@ -51,12 +75,11 @@ public class UiElements : MonoBehaviour
                 sword3.enabled = true;
             }
         }
-
-        else if (barsActive)
+        if (!uiActive)
         {
             {
-                healthSlider.gameObject.SetActive(true);
-                dashSlider.gameObject.SetActive(true);
+                healthSlider.gameObject.SetActive(false);
+                dashSlider.gameObject.SetActive(false);
                 if (sword1.IsActive())
                 {
                     selectedSword = 1;
@@ -74,72 +97,19 @@ public class UiElements : MonoBehaviour
                     selectedSword = 3;
                     sword3.enabled = false;
                 }
-
-
-                else
-                {
-                    {
-                        healthSlider.gameObject.SetActive(false);
-                        dashSlider.gameObject.SetActive(false);
-                        if (sword1.IsActive())
-                        {
-                            selectedSword = 1;
-                            sword1.enabled = false;
-                        }
-
-                        if (sword2.IsActive())
-                        {
-                            selectedSword = 2;
-                            sword2.enabled = false;
-                        }
-
-                        if (sword3.IsActive())
-                        {
-                            selectedSword = 3;
-                            sword3.enabled = false;
-                        }
-                    }
-                }
-            }
-            
-
-            if (dashSlider == null)
-            {
-                float percentage = dashSlider.value;
-                dashSlider = GetComponent<Slider>();
-            }
-
-            if (healthSlider == null)
-            {
-                float percentage = healthSlider.value;
-                dashSlider = GetComponent<Slider>();
             }
         }
-            dashSlider.maxValue = dashSliderMax;
-            dashSlider.minValue = dashSliderMin;
-            healthSlider.maxValue = healthSliderMax;
-            healthSlider.minValue = healthSliderMin;
 
-            dashSlider.value = dashSliderMax;
-            healthSlider.value = healthSliderMax;
-            currentHealth = healthSliderMax;
-
-    }
-
-        // Update is called once per frame
-        void Update()
-        {
-
-            float barTimer = Mathf.Clamp01(playerMovement.dashTimer / playerMovement.dashCooldown);
+        float barTimer = Mathf.Clamp01(playerMovement.dashTimer / playerMovement.dashCooldown);
             dashSlider.value = (1f - barTimer) * 100f;
 
             healthSlider.value = Mathf.Lerp(healthSlider.value, currentHealth, Time.deltaTime / hurtCoolDown);
 
-        if (avoldKill.instantDeath)
-        {
-            currentHealth -= 100f;
-            dashSlider.value = 0f;
-        }
+            if (avoldKill != null && avoldKill.instantDeath)
+            {
+                currentHealth -= 100f;
+                dashSlider.value = 0f;
+            }
 
         }
 
@@ -150,7 +120,7 @@ public class UiElements : MonoBehaviour
                 StartCoroutine(HitCooldown());
 
             }
-    }
+        }
 
         void OnTriggerEnter(Collider enemy)
         {
@@ -175,7 +145,8 @@ public class UiElements : MonoBehaviour
             canBeHurt = true;
         }
 
-       
+
+    
 }
 
     

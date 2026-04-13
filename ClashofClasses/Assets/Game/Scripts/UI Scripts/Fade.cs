@@ -1,4 +1,5 @@
 using System.Collections;
+using System.Runtime.InteropServices.WindowsRuntime;
 using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.InputSystem;
@@ -23,18 +24,35 @@ public class Fade : MonoBehaviour
         fadeColor.a = 0f;
         fadeImage.color = fadeColor;
         fadeImage.enabled = false;
+
+        if (OutDoorTalking == null)
+        {
+            return;
+        }
     }
 
     // Update is called once per frame
     void Update()
     {
 
-
-        if (OutDoorTalking.Npc.fadeTransition == true || OutDoorTalking.Npc2.fadeTransition == true)
+        if (OutDoorTalking.Npc != null)
         {
+            if (OutDoorTalking.Npc.fadeTransition == true)
+            {
 
-            StartCoroutine(FadeInOut());
+                StartCoroutine(FadeInOut());
 
+            }
+        }
+
+        else if (OutDoorTalking.Npc2 != null)
+        {
+            if (OutDoorTalking.Npc2.fadeTransition == true)
+            {
+
+                StartCoroutine(FadeInOut());
+
+            }
         }
     }
 
