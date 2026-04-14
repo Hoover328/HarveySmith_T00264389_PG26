@@ -12,6 +12,7 @@ public class Swordtesting : MonoBehaviour
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
+
         sword2.enabled = false;
         sword3.enabled = false;
     }

@@ -19,11 +19,14 @@ public class Fade : MonoBehaviour
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
-        fadeImage.enabled = true;
-        Color fadeColor = fadeImage.color;
-        fadeColor.a = 0f;
-        fadeImage.color = fadeColor;
-        fadeImage.enabled = false;
+        if (fadeImage != null)
+        {
+            fadeImage.enabled = true;
+            Color fadeColor = fadeImage.color;
+            fadeColor.a = 0f;
+            fadeImage.color = fadeColor;
+            fadeImage.enabled = false;
+        }
 
         if (OutDoorTalking == null)
         {
@@ -45,7 +48,7 @@ public class Fade : MonoBehaviour
             }
         }
 
-        else if (OutDoorTalking.Npc2 != null)
+        if (OutDoorTalking.Npc2 != null)
         {
             if (OutDoorTalking.Npc2.fadeTransition == true)
             {

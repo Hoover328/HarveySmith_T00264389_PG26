@@ -39,10 +39,23 @@ public class PlayerAttack : MonoBehaviour
             cooldownTimer -= Time.deltaTime;
         }
 
-        if (OutDoorTalking.noInputs == false && Mouse.current.leftButton.wasPressedThisFrame && cooldownTimer <= 0f)
+        if (OutDoorTalking != null)
+        {
+            if (OutDoorTalking.noInputs == false && Mouse.current.leftButton.wasPressedThisFrame && cooldownTimer <= 0f)
+            {
+                Transform cam = Camera.main.transform;
+
+
+                GameObject atkInstance = Instantiate(attack, cam.position + cam.forward * 1f, cam.rotation);
+                Destroy(atkInstance, attackDuration);
+
+                cooldownTimer = attackCooldown;
+            }
+        }
+        else if (Mouse.current.leftButton.wasPressedThisFrame && cooldownTimer <= 0f)
         {
             Transform cam = Camera.main.transform;
-       
+
 
             GameObject atkInstance = Instantiate(attack, cam.position + cam.forward * 1f, cam.rotation);
             Destroy(atkInstance, attackDuration);

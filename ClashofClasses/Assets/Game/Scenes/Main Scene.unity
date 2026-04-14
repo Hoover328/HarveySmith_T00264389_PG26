@@ -21956,7 +21956,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   speed: 10
   OutDoorTalking: {fileID: 2067174488}
-  camera: {fileID: 549412596}
+  playerCamera: {fileID: 549412596}
   playerRigidBody: {fileID: 1089610827}
   jumpForce: 300
   dashForce: 10000
@@ -22169,7 +22169,6 @@ MonoBehaviour:
   duration: 10
   hurt: {fileID: 146437887}
   uiActive: 1
-  barsActive: 0
 --- !u!136 &1089610833
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -38906,7 +38905,7 @@ MonoBehaviour:
   dialogueText2: {fileID: 563158574}
   textSpeed: 0.01
   fade: {fileID: 2067174493}
-  Avold: {fileID: 735236311}
+  Npc1: {fileID: 735236311}
   Cat: {fileID: 424441812}
   door: {fileID: 1085519003}
   goodEnd: 0

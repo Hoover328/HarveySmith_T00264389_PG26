@@ -36,13 +36,23 @@ public class OutDoorTalking : MonoBehaviour
     {
 
         noInputs = false;
-        NpcSprite.enabled = false;
-        textBox.enabled = false;
-        textMeshPro.enabled = false;
+        if (textBox != null)
+        {
+            textBox.enabled = false;
+        }
+        if (textMeshPro != null)
+        {
+            textMeshPro.enabled = false;
+        }
 
         if (Npc2Sprite != null)
         {
             Npc2Sprite.enabled = false;
+        }
+
+        if (NpcSprite != null)
+        {
+            NpcSprite.enabled = false;
         }
 
         if (NPC2Object == null)
@@ -56,6 +66,11 @@ public class OutDoorTalking : MonoBehaviour
         }
 
         if (Npc2 == null)
+        {
+            return;
+        }
+
+        if (Npc == null)
         {
             return;
         }

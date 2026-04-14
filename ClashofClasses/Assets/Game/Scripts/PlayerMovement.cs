@@ -7,7 +7,7 @@ public class PlayerMovement : MonoBehaviour
 {
     public float speed;
     public OutDoorTalking OutDoorTalking;
-    public Transform camera;
+    public Transform playerCamera;
     public Rigidbody playerRigidBody;
     public float jumpForce = 5f;
     public float dashForce = 2f;
@@ -20,6 +20,16 @@ public class PlayerMovement : MonoBehaviour
     private Vector3 velocity;
     public AudioSource dash;
 
+    private void Start()
+    {
+            if (OutDoorTalking == null)
+            {
+                return;
+        }
+
+            
+             
+    }
 
     private void FixedUpdate()
     {
@@ -35,9 +45,9 @@ public class PlayerMovement : MonoBehaviour
     void Update()
     {
 
-       
-        Vector3 vertical = camera.forward;
-        Vector3 horrizontal = camera.right;
+
+        Vector3 vertical = playerCamera.forward;
+        Vector3 horrizontal = playerCamera.right;
 
         if (Keyboard.current == null)
             return;
@@ -45,24 +55,27 @@ public class PlayerMovement : MonoBehaviour
         float xAxis = 0f;
         float zAxis = 0f;
 
-        if (OutDoorTalking.noInputs == false && Keyboard.current.wKey.isPressed && canMove) 
+        if (OutDoorTalking != null)
         {
-            zAxis += 1;
-        }
+            if (OutDoorTalking.noInputs == false && Keyboard.current.wKey.isPressed && canMove)
+            {
+                zAxis += 1;
+            }
 
-        if (OutDoorTalking.noInputs == false && Keyboard.current.sKey.isPressed && canMove) 
-        { 
-            zAxis -= 1; 
-        }
+            if (OutDoorTalking.noInputs == false && Keyboard.current.sKey.isPressed && canMove)
+            {
+                zAxis -= 1;
+            }
 
-        if (OutDoorTalking.noInputs == false && Keyboard.current.aKey.isPressed && canMove) 
-        {
-            xAxis -= 1; 
-        }
+            if (OutDoorTalking.noInputs == false && Keyboard.current.aKey.isPressed && canMove)
+            {
+                xAxis -= 1;
+            }
 
-        if (OutDoorTalking.noInputs == false && Keyboard.current.dKey.isPressed && canMove) 
-        { 
-            xAxis += 1; 
+            if (OutDoorTalking.noInputs == false && Keyboard.current.dKey.isPressed && canMove)
+            {
+                xAxis += 1;
+            }
         }
 
         Vector3 input = new Vector3(xAxis, 0f, zAxis).normalized;
@@ -78,10 +91,17 @@ public class PlayerMovement : MonoBehaviour
 
         if (isGrounded && canJump)
         {
-            if(OutDoorTalking.noInputs == false && Keyboard.current.spaceKey.wasPressedThisFrame)
+            if (OutDoorTalking != null)
+            {
+                if (OutDoorTalking.noInputs == false && Keyboard.current.spaceKey.wasPressedThisFrame)
+                {
+                    playerRigidBody.AddForce(Vector3.up * jumpForce, ForceMode.Impulse);
+
+                }
+            }
+            else if (Keyboard.current.spaceKey.wasPressedThisFrame)
             {
                 playerRigidBody.AddForce(Vector3.up * jumpForce, ForceMode.Impulse);
-          
             }
         }
 
@@ -90,10 +110,59 @@ public class PlayerMovement : MonoBehaviour
             dashTimer -= Time.deltaTime;
         }
 
-        if (OutDoorTalking.noInputs == false && Keyboard.current.shiftKey.isPressed && dashTimer <= 0f)
+        if (OutDoorTalking != null)
         {
-            Vector3 camForward = camera.forward;
-            Vector3 camRight = camera.right;
+            if (OutDoorTalking.noInputs == false && Keyboard.current.shiftKey.isPressed && dashTimer <= 0f)
+            {
+                Vector3 camForward = playerCamera.forward;
+                Vector3 camRight = playerCamera.right;
+
+                camForward.y = 0;
+                camRight.y = 0;
+                camForward.Normalize();
+                camRight.Normalize();
+
+                Vector3 dashDirection = Vector3.zero;
+
+                if (OutDoorTalking.noInputs == false && Keyboard.current.wKey.isPressed)
+                {
+                    dashDirection += camForward;
+                    dash.Play();
+                }
+
+                if (OutDoorTalking.noInputs == false && Keyboard.current.sKey.isPressed)
+                {
+                    dashDirection -= camForward;
+                    dash.Play();
+                }
+
+
+                if (OutDoorTalking.noInputs == false && Keyboard.current.aKey.isPressed)
+                {
+                    dashDirection -= camRight;
+                    dash.Play();
+                }
+
+
+                if (OutDoorTalking.noInputs == false && Keyboard.current.dKey.isPressed)
+                {
+                    dashDirection += camRight;
+                    dash.Play();
+                }
+
+                if (dashDirection != Vector3.zero)
+                {
+                    playerRigidBody.AddForce(dashDirection.normalized * dashForce, ForceMode.Impulse);
+                    dashTimer = dashCooldown;
+                }
+
+
+            }
+        }
+        else if (Keyboard.current.shiftKey.isPressed && dashTimer <= 0f)
+        {
+            Vector3 camForward = playerCamera.forward;
+            Vector3 camRight = playerCamera.right;
 
             camForward.y = 0;
             camRight.y = 0;
@@ -102,27 +171,27 @@ public class PlayerMovement : MonoBehaviour
 
             Vector3 dashDirection = Vector3.zero;
 
-            if (OutDoorTalking.noInputs == false && Keyboard.current.wKey.isPressed)
+            if (Keyboard.current.wKey.isPressed)
             {
                 dashDirection += camForward;
                 dash.Play();
             }
 
-            if (OutDoorTalking.noInputs == false && Keyboard.current.sKey.isPressed)
+            if (Keyboard.current.sKey.isPressed)
             {
                 dashDirection -= camForward;
                 dash.Play();
             }
-             
 
-            if (OutDoorTalking.noInputs == false && Keyboard.current.aKey.isPressed)
+
+            if (Keyboard.current.aKey.isPressed)
             {
                 dashDirection -= camRight;
                 dash.Play();
             }
-               
 
-            if (OutDoorTalking.noInputs == false && Keyboard.current.dKey.isPressed)
+
+            if (Keyboard.current.dKey.isPressed)
             {
                 dashDirection += camRight;
                 dash.Play();
@@ -133,13 +202,8 @@ public class PlayerMovement : MonoBehaviour
                 playerRigidBody.AddForce(dashDirection.normalized * dashForce, ForceMode.Impulse);
                 dashTimer = dashCooldown;
             }
-
-
         }
-
-
     }
-
     void OnCollisionEnter(Collision collision)
     {
         if (collision.gameObject.CompareTag("Ground"))

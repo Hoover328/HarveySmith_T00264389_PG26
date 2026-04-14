@@ -84,269 +84,272 @@ public class TextFill : MonoBehaviour
             dialougeCheck = 21;
             
         }
-       //Debug.Log(dialougeCheck);
-        if (Npc.talking)
+        //Debug.Log(dialougeCheck);
+        if (Npc != null)
         {
-            if (fireOnce)
+            if (Npc.talking)
             {
-
-                fireOnce = false;
-
-                if (dialougeCheck == 1)
+                if (fireOnce)
                 {
-                    StartCoroutine(TextAnimation("Hello... Ive been waiting for you to come back.", dialogueText));
-                }
 
-                else if (dialougeCheck == 2)
-                {
-                    StartCoroutine(TextAnimation("You dont have any weapon in your possesion, correct?", dialogueText));
-                    Npc1.transform.position = new Vector3(13.14f, 1.287f, 40.44f);
+                    fireOnce = false;
 
-                }
+                    if (dialougeCheck == 1)
+                    {
+                        StartCoroutine(TextAnimation("Hello... Ive been waiting for you to come back.", dialogueText));
+                    }
 
-                else if (dialougeCheck == 3)
-                {
-                    StartCoroutine(TextAnimation("Meet me in the room behind me... " +
-                        "You can take whichever sword you want, free of charge of course...", dialogueText));
+                    else if (dialougeCheck == 2)
+                    {
+                        StartCoroutine(TextAnimation("You dont have any weapon in your possesion, correct?", dialogueText));
+                        Npc1.transform.position = new Vector3(13.14f, 1.287f, 40.44f);
 
-                }
+                    }
 
-                else if (dialougeCheck == 5)
-                {
-                    StartCoroutine(TextAnimation("Well..? Which sword would you like?", dialogueText));
+                    else if (dialougeCheck == 3)
+                    {
+                        StartCoroutine(TextAnimation("Meet me in the room behind me... " +
+                            "You can take whichever sword you want, free of charge of course...", dialogueText));
 
-                }
+                    }
 
-                else if (dialougeCheck == 8)
-                {
-                    StartCoroutine(TextAnimation("Now then... Take that sword, and enter the temple. If you can make it to the end, you might find something interesting...", dialogueText));
+                    else if (dialougeCheck == 5)
+                    {
+                        StartCoroutine(TextAnimation("Well..? Which sword would you like?", dialogueText));
 
-                }
+                    }
 
-                else if (dialougeCheck == 10)
-                {
-                    StartCoroutine(TextAnimation("What are you waiting for...", dialogueText));
+                    else if (dialougeCheck == 8)
+                    {
+                        StartCoroutine(TextAnimation("Now then... Take that sword, and enter the temple. If you can make it to the end, you might find something interesting...", dialogueText));
 
-                }
+                    }
 
-                else if (dialougeCheck == 12)
-                {
-                    StartCoroutine(TextAnimation("I understand... You are confused...", dialogueText));
+                    else if (dialougeCheck == 10)
+                    {
+                        StartCoroutine(TextAnimation("What are you waiting for...", dialogueText));
 
-                }
+                    }
 
-                else if (dialougeCheck == 13)
-                {
-                    StartCoroutine(TextAnimation("Ill escort you out... This place is not safe anymore...", dialogueText));
+                    else if (dialougeCheck == 12)
+                    {
+                        StartCoroutine(TextAnimation("I understand... You are confused...", dialogueText));
 
-                }
+                    }
 
-                else if (dialougeCheck == 14)
-                {
-                    OutDoorTalking.readyToKill = false;
-                    StartCoroutine(TextAnimation("You do trust me right..? The exit is a short distance behind you... Lets go...", dialogueText));
+                    else if (dialougeCheck == 13)
+                    {
+                        StartCoroutine(TextAnimation("Ill escort you out... This place is not safe anymore...", dialogueText));
 
-                }
+                    }
 
-                else if (dialougeCheck == 16)
-                {
-                    OutDoorTalking.readyToKill = false;
-                    StartCoroutine(TextAnimation("...", dialogueText));
+                    else if (dialougeCheck == 14)
+                    {
+                        OutDoorTalking.readyToKill = false;
+                        StartCoroutine(TextAnimation("You do trust me right..? The exit is a short distance behind you... Lets go...", dialogueText));
 
-                }
+                    }
 
-                else if (dialougeCheck == 17)
-                {
-                    OutDoorTalking.readyToKill = false;
-                    secret.Play();
-                    StartCoroutine(TextAnimation("What..? You dont do you? I thought that might happen.", dialogueText));
+                    else if (dialougeCheck == 16)
+                    {
+                        OutDoorTalking.readyToKill = false;
+                        StartCoroutine(TextAnimation("...", dialogueText));
 
-                }
+                    }
 
-                else if (dialougeCheck == 18)
-                {
-                    OutDoorTalking.readyToKill = false;
-                    StartCoroutine(TextAnimation("Tell me... Did he warn you?", dialogueText));
+                    else if (dialougeCheck == 17)
+                    {
+                        OutDoorTalking.readyToKill = false;
+                        secret.Play();
+                        StartCoroutine(TextAnimation("What..? You dont do you? I thought that might happen.", dialogueText));
 
-                }
+                    }
 
-                else if (dialougeCheck == 19)
-                {
-                    OutDoorTalking.readyToKill = false;
-                    StartCoroutine(TextAnimation("Very well then... Its time.", dialogueText));
+                    else if (dialougeCheck == 18)
+                    {
+                        OutDoorTalking.readyToKill = false;
+                        StartCoroutine(TextAnimation("Tell me... Did he warn you?", dialogueText));
 
-                }
+                    }
 
-                else if (dialougeCheck == 21)
-                {
-                    OutDoorTalking.readyToKill = false;
-                    StartCoroutine(TextAnimation("You are... Strong... but im not finished...", dialogueText));
+                    else if (dialougeCheck == 19)
+                    {
+                        OutDoorTalking.readyToKill = false;
+                        StartCoroutine(TextAnimation("Very well then... Its time.", dialogueText));
 
-                }
+                    }
 
-                else if (dialougeCheck == 22)
-                {
-                    OutDoorTalking.readyToKill = false;
-                    StartCoroutine(killAvold());
-                    StartCoroutine(TextAnimation("Its time for us to end this", dialogueText));
+                    else if (dialougeCheck == 21)
+                    {
+                        OutDoorTalking.readyToKill = false;
+                        StartCoroutine(TextAnimation("You are... Strong... but im not finished...", dialogueText));
 
-                }
+                    }
 
-                else if (dialougeCheck == 30)
-                {
-                    StartCoroutine(TextAnimation("I would turn back if I were you. But if you really wont, ill teach you how to survive!", dialogueText));
-                }
+                    else if (dialougeCheck == 22)
+                    {
+                        OutDoorTalking.readyToKill = false;
+                        StartCoroutine(killAvold());
+                        StartCoroutine(TextAnimation("Its time for us to end this", dialogueText));
 
-                else if (dialougeCheck == 31)
-                {
-                    StartCoroutine(TextAnimation("Use WASD to move those legs of yours, thats pretty important...", dialogueText));
-                }
+                    }
 
-                else if (dialougeCheck == 32)
-                {
-                    StartCoroutine(TextAnimation("Use SPACE to jump, and SHIFT to give yourself a boost in the direction youre moving", dialogueText));
-                }
+                    else if (dialougeCheck == 30)
+                    {
+                        StartCoroutine(TextAnimation("I would turn back if I were you. But if you really wont, ill teach you how to survive!", dialogueText));
+                    }
 
-                else if (dialougeCheck == 33)
-                {
-                    StartCoroutine(TextAnimation("Oh... And if you get your hands on a weapon, use LEFTCLICK to attack", dialogueText));
-                }
+                    else if (dialougeCheck == 31)
+                    {
+                        StartCoroutine(TextAnimation("Use WASD to move those legs of yours, thats pretty important...", dialogueText));
+                    }
 
-                else if (dialougeCheck == 34)
-                {
-                    StartCoroutine(TextAnimation("Thats all... Now get out of here!", dialogueText));
-                }
+                    else if (dialougeCheck == 32)
+                    {
+                        StartCoroutine(TextAnimation("Use SPACE to jump, and SHIFT to give yourself a boost in the direction youre moving", dialogueText));
+                    }
+
+                    else if (dialougeCheck == 33)
+                    {
+                        StartCoroutine(TextAnimation("Oh... And if you get your hands on a weapon, use LEFTCLICK to attack", dialogueText));
+                    }
+
+                    else if (dialougeCheck == 34)
+                    {
+                        StartCoroutine(TextAnimation("Thats all... Now get out of here!", dialogueText));
+                    }
 
 
 
-            }
-
-
-            if (Mouse.current.leftButton.wasPressedThisFrame && !canSkip && !fade.lockInputs)
-            {
-                if (dialougeCheck == 1)
-                {
-                    dialougeCheck = 2;
-                    fireOnce = true;
-                }
-
-                else if (dialougeCheck == 2)
-                {
-                    dialougeCheck = 3;
-                    fireOnce = true;
-                }
-
-                else if (dialougeCheck == 3)
-                {
-                    dialougeCheck = 4;
-                    fireOnce = true;
-                }
-
-                else if (dialougeCheck == 5)
-                {
-                    dialougeCheck = 6;
-                    fireOnce = true;
-                }
-
-                else if (dialougeCheck == 8)
-                {
-                    dialougeCheck = 9;
-                    fireOnce = true;
-                }
-
-                else if (dialougeCheck == 10)
-                {
-                    dialougeCheck = 11;
-                    fireOnce = true;
-                }
-
-                else if (dialougeCheck == 12)
-                {
-                    dialougeCheck = 13;
-                    fireOnce = true;
-                }
-
-                else if (dialougeCheck == 13)
-                {
-                    dialougeCheck = 14;
-                    fireOnce = true;
-                }
-
-                else if(dialougeCheck == 14 && !goodEnd)
-                {
-                    dialougeCheck = 15;
-                    fireOnce = true;
-                }
-
-                else if (dialougeCheck == 14 && goodEnd)
-                {
-                    dialougeCheck = 16;
-                    fireOnce = true;
-                }
-
-                else if (dialougeCheck == 16)
-                {
-                    dialougeCheck = 17;
-                    fireOnce = true;
-                }
-
-                else if (dialougeCheck == 17)
-                {
-                    dialougeCheck = 18;
-                    fireOnce = true;
-                }
-
-                else if (dialougeCheck == 18)
-                {
-                    dialougeCheck = 19;
-                    fireOnce = true;
-                }
-
-                else if (dialougeCheck == 19)
-                {
-                    dialougeCheck = 20;
-                    fireOnce = true;
-                }
-
-                else if (dialougeCheck == 21)
-                {
-                    dialougeCheck = 22;
-                    fireOnce = true;
-                }
-
-                else if (dialougeCheck == 30)
-                {
-                    dialougeCheck = 31;
-                    fireOnce = true;
-                }
-
-                else if (dialougeCheck == 31)
-                {
-                    dialougeCheck = 32;
-                    fireOnce = true;
-                }
-
-                else if (dialougeCheck == 32)
-                {
-                    dialougeCheck = 33;
-                    fireOnce = true;
-                }
-
-                else if (dialougeCheck == 33)
-                {
-                    dialougeCheck = 34;
-                    fireOnce = true;
-                }
-
-                else if (dialougeCheck == 34)
-                {
-                    dialougeCheck = 35;
-                    fireOnce = true;
                 }
 
 
+                if (Mouse.current.leftButton.wasPressedThisFrame && !canSkip && !fade.lockInputs)
+                {
+                    if (dialougeCheck == 1)
+                    {
+                        dialougeCheck = 2;
+                        fireOnce = true;
+                    }
+
+                    else if (dialougeCheck == 2)
+                    {
+                        dialougeCheck = 3;
+                        fireOnce = true;
+                    }
+
+                    else if (dialougeCheck == 3)
+                    {
+                        dialougeCheck = 4;
+                        fireOnce = true;
+                    }
+
+                    else if (dialougeCheck == 5)
+                    {
+                        dialougeCheck = 6;
+                        fireOnce = true;
+                    }
+
+                    else if (dialougeCheck == 8)
+                    {
+                        dialougeCheck = 9;
+                        fireOnce = true;
+                    }
+
+                    else if (dialougeCheck == 10)
+                    {
+                        dialougeCheck = 11;
+                        fireOnce = true;
+                    }
+
+                    else if (dialougeCheck == 12)
+                    {
+                        dialougeCheck = 13;
+                        fireOnce = true;
+                    }
+
+                    else if (dialougeCheck == 13)
+                    {
+                        dialougeCheck = 14;
+                        fireOnce = true;
+                    }
+
+                    else if (dialougeCheck == 14 && !goodEnd)
+                    {
+                        dialougeCheck = 15;
+                        fireOnce = true;
+                    }
+
+                    else if (dialougeCheck == 14 && goodEnd)
+                    {
+                        dialougeCheck = 16;
+                        fireOnce = true;
+                    }
+
+                    else if (dialougeCheck == 16)
+                    {
+                        dialougeCheck = 17;
+                        fireOnce = true;
+                    }
+
+                    else if (dialougeCheck == 17)
+                    {
+                        dialougeCheck = 18;
+                        fireOnce = true;
+                    }
+
+                    else if (dialougeCheck == 18)
+                    {
+                        dialougeCheck = 19;
+                        fireOnce = true;
+                    }
+
+                    else if (dialougeCheck == 19)
+                    {
+                        dialougeCheck = 20;
+                        fireOnce = true;
+                    }
+
+                    else if (dialougeCheck == 21)
+                    {
+                        dialougeCheck = 22;
+                        fireOnce = true;
+                    }
+
+                    else if (dialougeCheck == 30)
+                    {
+                        dialougeCheck = 31;
+                        fireOnce = true;
+                    }
+
+                    else if (dialougeCheck == 31)
+                    {
+                        dialougeCheck = 32;
+                        fireOnce = true;
+                    }
+
+                    else if (dialougeCheck == 32)
+                    {
+                        dialougeCheck = 33;
+                        fireOnce = true;
+                    }
+
+                    else if (dialougeCheck == 33)
+                    {
+                        dialougeCheck = 34;
+                        fireOnce = true;
+                    }
+
+                    else if (dialougeCheck == 34)
+                    {
+                        dialougeCheck = 35;
+                        fireOnce = true;
+                    }
 
 
+
+
+                }
             }
         }
 
@@ -454,15 +457,18 @@ public class TextFill : MonoBehaviour
             }
         }
 
-            if (!Npc.talking)
+        if (Npc != null)
         {
-            fireOnce = true;
-            if (shakeText != null)
+            if (!Npc.talking)
             {
-                StopCoroutine(shakeText);
-                shakeText = null;
+                fireOnce = true;
+                if (shakeText != null)
+                {
+                    StopCoroutine(shakeText);
+                    shakeText = null;
+                }
+                dialogueText.text = "";
             }
-            dialogueText.text = "";
         }
         if (Npc2 != null)
         {
@@ -481,7 +487,8 @@ public class TextFill : MonoBehaviour
             IEnumerator TextAnimation(string text, TMPro.TextMeshProUGUI speaking)
             {
 
-                 speaking.text = "";
+                 dialogueText.text = "";
+                 dialogueText2.text = "";
 
                
                  while (fade.lockInputs)

@@ -31,31 +31,6 @@ public class UiElements : MonoBehaviour
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
-
-        if (avoldKill == null)
-        {
-            return;
-        }
-        
-
-        if (dashSlider != null && healthSlider != null)
-        {
-            dashSlider.maxValue = dashSliderMax;
-            dashSlider.minValue = dashSliderMin;
-            healthSlider.maxValue = healthSliderMax;
-            healthSlider.minValue = healthSliderMin;
-
-            dashSlider.value = dashSliderMax;
-            healthSlider.value = healthSliderMax;
-            currentHealth = healthSliderMax;
-
-        }
-    }
-
-        // Update is called once per frame
-        void Update()
-        {
-
         if (uiActive)
         {
             healthSlider.gameObject.SetActive(true);
@@ -99,6 +74,33 @@ public class UiElements : MonoBehaviour
                 }
             }
         }
+        
+        
+
+        if (dashSlider != null && healthSlider != null)
+        {
+            dashSlider.maxValue = dashSliderMax;
+            dashSlider.minValue = dashSliderMin;
+            healthSlider.maxValue = healthSliderMax;
+            healthSlider.minValue = healthSliderMin;
+
+            dashSlider.value = dashSliderMax;
+            healthSlider.value = healthSliderMax;
+            currentHealth = healthSliderMax;
+
+        }
+
+        if (avoldKill == null)
+        {
+            return;
+        }
+    }
+
+        // Update is called once per frame
+        void Update()
+        {
+
+        
 
         float barTimer = Mathf.Clamp01(playerMovement.dashTimer / playerMovement.dashCooldown);
             dashSlider.value = (1f - barTimer) * 100f;

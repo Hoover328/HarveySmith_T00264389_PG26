@@ -4987,7 +4987,7 @@ MonoBehaviour:
   fireOnce2: 1
   dialogueText: {fileID: 325479315}
   dialogueText2: {fileID: 0}
-  textSpeed: 0.5
+  textSpeed: 0.01
   fade: {fileID: 1046916055}
   Npc1: {fileID: 0}
   Cat: {fileID: 0}
@@ -9855,7 +9855,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   speed: 10
   OutDoorTalking: {fileID: 1046916053}
-  camera: {fileID: 307224628}
+  playerCamera: {fileID: 307224628}
   playerRigidBody: {fileID: 1886974818}
   jumpForce: 20
   dashForce: 400

@@ -16,10 +16,18 @@ public class UiSwords : MonoBehaviour
     {
         if (Mouse.current.leftButton.wasPressedThisFrame && playerAttack.cooldownTimer <= 0)
         {
-
-            sword1Animator.SetTrigger("Attack");
-            sword2Animator.SetTrigger("Attack");
-            sword3Animator.SetTrigger("Attack");
+            if (sword1Animator != null)
+            {
+                sword1Animator.SetTrigger("Attack");
+            }
+            if (sword2Animator != null)
+            {
+                sword2Animator.SetTrigger("Attack");
+            }
+            if (sword3Animator != null)
+            {
+                sword3Animator.SetTrigger("Attack");
+            }
         }
 
 

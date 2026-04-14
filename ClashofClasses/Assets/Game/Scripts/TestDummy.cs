@@ -10,7 +10,6 @@ public class TestDummy : MonoBehaviour
     Color defaultColor;
     //bool spin;
     public Rigidbody rb;
-    float spinForce = 2000f;
     public bool isButton = false;
     public bool isPressed = false;
     void Start()

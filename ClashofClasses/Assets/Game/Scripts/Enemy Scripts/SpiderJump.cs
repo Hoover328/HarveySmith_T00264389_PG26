@@ -10,7 +10,7 @@ public class SpiderJump : MonoBehaviour
     public Transform player;
     public float jumpForce = 7;
     public Rigidbody spiderRb;
-    bool notJumping = true;
+
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
@@ -33,7 +33,6 @@ public class SpiderJump : MonoBehaviour
 
             //spiderRb.AddForce(-transform.up, ForceMode.Force);
             spiderRb.AddForce(-transform.forward * jumpForce, ForceMode.Force);
-            notJumping = false;
             animator.SetTrigger("isJumping");
 
         }
