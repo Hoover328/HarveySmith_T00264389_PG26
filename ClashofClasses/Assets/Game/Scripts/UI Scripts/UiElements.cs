@@ -3,7 +3,7 @@ using System.Security.Cryptography;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class UiElements : MonoBehaviour
+public class UiElements : MonoBehaviour, I_Projectiles
 {
     public Slider dashSlider;
     public Slider healthSlider;
@@ -137,8 +137,14 @@ public class UiElements : MonoBehaviour
         }
 
 
+    public void onHit(Collider other)
+    {
+        
+    }
 
-        IEnumerator HitCooldown()
+
+
+    IEnumerator HitCooldown()
         {
             canBeHurt = false;
             currentHealth -= 20f;

@@ -549,19 +549,17 @@ public class TextFill : MonoBehaviour
 
                     for (int i = 0; i < textInfo.characterCount; i++)
                     {
-                        if (!textInfo.characterInfo[i].isVisible)
+                    if (!textInfo.characterInfo[i].isVisible)
+                        {
                             continue;
+                        }
 
                         int materialIndex = textInfo.characterInfo[i].materialReferenceIndex;
                         int vertexIndex = textInfo.characterInfo[i].vertexIndex;
 
                         Vector3[] vertices = textInfo.meshInfo[materialIndex].vertices;
 
-                        Vector3 offset = new Vector3(
-                            Random.Range(-1f, 1f),
-                            Random.Range(-1f, 1f),
-                            0
-                        );
+                        Vector3 offset = new Vector3(Random.Range(-1f, 1f),Random.Range(-1f, 1f), 0);
 
                         vertices[vertexIndex + 0] += offset;
                         vertices[vertexIndex + 1] += offset;
