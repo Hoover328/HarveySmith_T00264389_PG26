@@ -1,4 +1,6 @@
+using System;
 using System.Collections;
+using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
 using UnityEngine.InputSystem;
@@ -11,7 +13,7 @@ public class TextFill : MonoBehaviour
     public OutDoorTalking OutDoorTalking;
     private Coroutine shakeText;
     private Coroutine shakeText2;
-    public int dialougeCheck = 1;
+    internal int dialougeCheck = 0;
     public int dialougeCheck2 = 1;
     public bool fireOnce = true;
     public bool fireOnce2 = true;
@@ -35,6 +37,10 @@ public class TextFill : MonoBehaviour
     public Image deadAvold;
     public TextMeshProUGUI endText;
     public Fade fade2;
+    public int index = 0;
+    internal string[] dialouge = { "Hello... Ive been waiting for you to come back.", 
+        "You dont have any weapon in your possesion, correct?", "Meet me in the room behind me... You can take whichever sword you want, free of charge of course..." };
+
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
@@ -93,26 +99,11 @@ public class TextFill : MonoBehaviour
                 {
 
                     fireOnce = false;
+                    StartCoroutine(TextAnimation(dialouge[dialougeCheck], dialogueText));
 
-                    if (dialougeCheck == 1)
-                    {
-                        StartCoroutine(TextAnimation("Hello... Ive been waiting for you to come back.", dialogueText));
-                    }
-
-                    else if (dialougeCheck == 2)
-                    {
-                        StartCoroutine(TextAnimation("You dont have any weapon in your possesion, correct?", dialogueText));
-                        Npc1.transform.position = new Vector3(13.14f, 1.287f, 40.44f);
-
-                    }
-
-                    else if (dialougeCheck == 3)
-                    {
-                        StartCoroutine(TextAnimation("Meet me in the room behind me... " +
-                            "You can take whichever sword you want, free of charge of course...", dialogueText));
-
-                    }
-
+                    /* 
+                     
+                     
                     else if (dialougeCheck == 5)
                     {
                         StartCoroutine(TextAnimation("Well..? Which sword would you like?", dialogueText));
@@ -217,16 +208,17 @@ public class TextFill : MonoBehaviour
                     else if (dialougeCheck == 34)
                     {
                         StartCoroutine(TextAnimation("Thats all... Now get out of here!", dialogueText));
-                    }
-
-
-
+                    }*/
                 }
 
 
                 if (Mouse.current.leftButton.wasPressedThisFrame && !canSkip && !fade.lockInputs)
                 {
-                    if (dialougeCheck == 1)
+                 
+                   
+                    dialougeCheck++;
+                    fireOnce = true;
+                   /* if (dialougeCheck == 1)
                     {
                         dialougeCheck = 2;
                         fireOnce = true;
@@ -344,7 +336,7 @@ public class TextFill : MonoBehaviour
                     {
                         dialougeCheck = 35;
                         fireOnce = true;
-                    }
+                    }*/
 
 
 
@@ -428,7 +420,7 @@ public class TextFill : MonoBehaviour
 
                     if (dialougeCheck2 == 1)
                     {
-                        if (Random.value <= 0.2f)
+                        if (UnityEngine.Random.value <= 0.2f)
                         {
                             dialougeCheck2 = 3;
                             fireOnce2 = true;
@@ -497,7 +489,7 @@ public class TextFill : MonoBehaviour
                  }
      
                
-               if (dialougeCheck == 1 && shakeText == null)
+               if (dialougeCheck == 0 && shakeText == null)
                 {
                    // yield return new WaitForSeconds(fade.fadeDelay + 1f);
                     shakeText = StartCoroutine(ShakeText(dialogueText));
@@ -515,7 +507,7 @@ public class TextFill : MonoBehaviour
                     shakeText2 = StartCoroutine(ShakeText(dialogueText2));
                 }
 
-                if (dialougeCheck == 2 && shakeText != null)
+                if (dialougeCheck == 1 && shakeText != null)
                 {
                     StopCoroutine(shakeText);
                     shakeText = null; 
@@ -559,7 +551,7 @@ public class TextFill : MonoBehaviour
 
                         Vector3[] vertices = textInfo.meshInfo[materialIndex].vertices;
 
-                        Vector3 offset = new Vector3(Random.Range(-1f, 1f),Random.Range(-1f, 1f), 0);
+                        Vector3 offset = new Vector3(UnityEngine.Random.Range(-1f, 1f),UnityEngine.Random.Range(-1f, 1f), 0);
 
                         vertices[vertexIndex + 0] += offset;
                         vertices[vertexIndex + 1] += offset;

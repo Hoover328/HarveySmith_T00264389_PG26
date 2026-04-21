@@ -80,6 +80,7 @@ public class OutDoorTalking : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        Debug.Log(textfill.dialougeCheck);
         if (Npc.talking)
         {
             readyToKill = false;
@@ -232,12 +233,20 @@ public class OutDoorTalking : MonoBehaviour
         }
     }
 
-    public void EndDialouge(NpcBody Npc, TextFill textfill, Image NpcSprite, GameObject NpcObject)
+    public void EndDialougeNpc1()
     {
         Npc.talking = false;
-        textfill.dialougeCheck2 = 10;
+        textfill.dialougeCheck++;
         Npc.fadeTransition = true;
-        StartCoroutine(dialogueTransition(Npc, NpcSprite, NpcObject));
+        StartCoroutine(dialogueTransition(Npc, NpcSprite, NPCObject));
+    }
+
+    public void EndDialougeNpc2()
+    {
+        Npc2.talking = false;
+        textfill.dialougeCheck2++;
+        Npc2.fadeTransition = true;
+        StartCoroutine(dialogueTransition(Npc2, Npc2Sprite, NPC2Object));
     }
 
     IEnumerator dialogueTransition(NpcBody Npc, Image NpcSprite, GameObject NPCObject)
