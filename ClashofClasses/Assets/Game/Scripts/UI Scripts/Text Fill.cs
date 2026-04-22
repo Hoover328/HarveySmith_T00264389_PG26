@@ -21,7 +21,7 @@ public class TextFill : MonoBehaviour
     public TMPro.TextMeshProUGUI dialogueText2;
     public float textSpeed = 0.5f;
     public Fade fade;
-    private bool  canSkip;
+    private bool canSkip;
     public GameObject Npc1;
     public GameObject Cat;
     public Door door;
@@ -38,8 +38,29 @@ public class TextFill : MonoBehaviour
     public TextMeshProUGUI endText;
     public Fade fade2;
     public int index = 0;
-    internal string[] dialouge = { "Hello... Ive been waiting for you to come back.", 
-        "You dont have any weapon in your possesion, correct?", "Meet me in the room behind me... You can take whichever sword you want, free of charge of course..." };
+    internal string[] dialouge1 = { "Hello... Ive been waiting for you to come back.",
+        "You dont have any weapon in your possesion, correct?", "Meet me in the room behind me... You can take whichever sword you want, free of charge of course...",
+        "Well..? Which sword would you like?", "Now then... Take that sword, and enter the temple. If you can make it to the end, you might find something interesting...",
+    "What are you waiting for...", "I understand... You are confused...",
+        "Ill escort you out... This place is not safe anymore...", "You do trust me right..? The exit is a short distance behind you... Lets go..."};
+
+    internal string[] dialouge2 = { "...", "What..? You dont do you? I thought that might happen.", "Tell me... Did he warn you?", 
+        "Very well then... Its time.", "You are... Strong... but im not finished...", "Its time for us to end this" };
+
+    internal string[] dialouge3 = { "I would turn back if I were you. But if you really wont, ill teach you how to survive!", 
+        "Use WASD to move those legs of yours, thats pretty important...", "Use SPACE to jump, and SHIFT to give yourself a boost in the direction youre moving",
+        "Oh... And if you get your hands on a weapon, use LEFTCLICK to attack", "Thats all... Now get out of here!" };
+
+    internal string[] dialouge4 = { "Meow~", "Do not trust him. You know what will happen." };
+
+    internal string[] dialouge5 = { "Meow ~ *The cat points a paw in the direction you came from, almost like he is telling you to go back where you came*", 
+        "Meow~ *You feel healthier than before*" };
+
+    internal string[] dialouge6 = { "Return to Avold, he will be waiting for you.You must destroy him, he cannot be trusted.Do not believe anything he says or does.",
+        "Meow~ *You feel healthier than before*"  };
+    
+
+
 
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
@@ -99,45 +120,13 @@ public class TextFill : MonoBehaviour
                 {
 
                     fireOnce = false;
-                    StartCoroutine(TextAnimation(dialouge[dialougeCheck], dialogueText));
+                    StartCoroutine(TextAnimation(dialouge1[dialougeCheck], dialogueText));
 
                     /* 
-                     
-                     
-                    else if (dialougeCheck == 5)
-                    {
-                        StartCoroutine(TextAnimation("Well..? Which sword would you like?", dialogueText));
-
-                    }
-
-                    else if (dialougeCheck == 8)
-                    {
-                        StartCoroutine(TextAnimation("Now then... Take that sword, and enter the temple. If you can make it to the end, you might find something interesting...", dialogueText));
-
-                    }
-
-                    else if (dialougeCheck == 10)
-                    {
-                        StartCoroutine(TextAnimation("What are you waiting for...", dialogueText));
-
-                    }
-
-                    else if (dialougeCheck == 12)
-                    {
-                        StartCoroutine(TextAnimation("I understand... You are confused...", dialogueText));
-
-                    }
-
-                    else if (dialougeCheck == 13)
-                    {
-                        StartCoroutine(TextAnimation("Ill escort you out... This place is not safe anymore...", dialogueText));
-
-                    }
-
                     else if (dialougeCheck == 14)
                     {
                         OutDoorTalking.readyToKill = false;
-                        StartCoroutine(TextAnimation("You do trust me right..? The exit is a short distance behind you... Lets go...", dialogueText));
+                     
 
                     }
 

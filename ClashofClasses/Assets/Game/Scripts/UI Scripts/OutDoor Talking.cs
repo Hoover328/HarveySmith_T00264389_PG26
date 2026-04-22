@@ -20,7 +20,7 @@ public class OutDoorTalking : MonoBehaviour
     public Image sword3;
     public Image textBox;
     public TextMeshProUGUI textMeshPro;
-    int selectedSword;
+    private int selectedSword;
     public PlayerCamera playerCamera;
     public float fadeTime = 3f;
     public bool isDialogue = false;
