@@ -9,6 +9,7 @@ public class SwordButtonControl : MonoBehaviour
     public List<swordButton> Buttons = new List<swordButton>();
     public Fade fade;
     public Image npc;
+    public NpcBody NPC;
     public Image background;
     public Image textBox;
     public TextMeshProUGUI textMeshPro;
@@ -30,11 +31,11 @@ public class SwordButtonControl : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (textFill.dialougeCheck == 6)
+        if (textFill.dialougeCheck == 4)
         {
             StartCoroutine(MenuEnter());
         }
-        if (textFill.dialougeCheck == 7)
+        if (textFill.dialougeCheck == 5)
         {
             Cursor.visible = true;
             Cursor.lockState = CursorLockMode.None;
@@ -42,11 +43,13 @@ public class SwordButtonControl : MonoBehaviour
             {
                 if (button.isPressed)
                 {
+                    Debug.Log("button pressed");
                     Cursor.lockState = CursorLockMode.Locked;
                     Cursor.visible = false;
                     closeMenu = true;
                     button.isPressed = false;
-                   
+
+
 
                     if (closeMenu)
                     {
@@ -62,7 +65,7 @@ public class SwordButtonControl : MonoBehaviour
     public IEnumerator MenuEnter()
     {
         closeMenu = false;
-        textFill.dialougeCheck = 7;
+        textFill.dialougeCheck++;
         StartCoroutine(fade.FadeInOut());
         yield return new WaitForSeconds(1f);
         npc.enabled = false;
@@ -79,7 +82,9 @@ public class SwordButtonControl : MonoBehaviour
         }
     public IEnumerator MenuExit()
     {
-        textFill.dialougeCheck = 8;
+        Debug.Log("works");
+        textFill.dialougeCheck++;
+        NPC.talking = true;
         textFill.fireOnce = true;
         StartCoroutine(fade.FadeInOut());
         foreach (swordButton button2 in Buttons)

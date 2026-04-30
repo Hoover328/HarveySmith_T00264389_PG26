@@ -31,10 +31,13 @@ public class OutDoorTalking : MonoBehaviour
     public bool readyToKill = false;
     public bool bossStart = false;
 
+    internal int[] NPC1Flags = {3, 5, 7};
+    public int NPC1FlagsIndex = 0;
+
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
-
+        
         noInputs = false;
         if (textBox != null)
         {
@@ -108,11 +111,12 @@ public class OutDoorTalking : MonoBehaviour
         }
 
 
-        if (Npc.talking && textfill.dialougeCheck == 4) 
+        if (Npc.talking && textfill.dialougeCheck == NPC1Flags[NPC1FlagsIndex]) 
         {
           Npc.talking = false;
-            textfill.dialougeCheck = 5;
-          Npc.fadeTransition = true;
+        //  textfill.dialougeCheck++;
+          NPC1FlagsIndex++;
+          Npc.fadeTransition = true; 
           StartCoroutine(dialogueTransition(Npc, NpcSprite, NPCObject));
 
         }

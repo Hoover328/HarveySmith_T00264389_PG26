@@ -40,7 +40,7 @@ public class TextFill : MonoBehaviour
     public int index = 0;
     internal string[] dialouge1 = { "Hello... Ive been waiting for you to come back.",
         "You dont have any weapon in your possesion, correct?", "Meet me in the room behind me... You can take whichever sword you want, free of charge of course...",
-        "Well..? Which sword would you like?", "Now then... Take that sword, and enter the temple. If you can make it to the end, you might find something interesting...",
+        "Well..? Which sword would you like?", "", "", "Now then... Take that sword, and enter the temple. If you can make it to the end, you might find something interesting...",
     "What are you waiting for...", "I understand... You are confused...",
         "Ill escort you out... This place is not safe anymore...", "You do trust me right..? The exit is a short distance behind you... Lets go..."};
 
@@ -58,7 +58,9 @@ public class TextFill : MonoBehaviour
 
     internal string[] dialouge6 = { "Return to Avold, he will be waiting for you.You must destroy him, he cannot be trusted.Do not believe anything he says or does.",
         "Meow~ *You feel healthier than before*"  };
-    
+
+    private bool flagged;
+
 
 
 
@@ -106,10 +108,18 @@ public class TextFill : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if (dialougeCheck == OutDoorTalking.NPC1Flags[OutDoorTalking.NPC1FlagsIndex])
+        {
+            flagged = true;
+        }
+        else
+        {
+            flagged = false;
+        }
         if (avoldBeaten)
         {
             dialougeCheck = 21;
-            
+
         }
         //Debug.Log(dialougeCheck);
         if (Npc != null)
@@ -118,6 +128,7 @@ public class TextFill : MonoBehaviour
             {
                 if (fireOnce)
                 {
+                    if(!flagged) { 
 
                     fireOnce = false;
                     StartCoroutine(TextAnimation(dialouge1[dialougeCheck], dialogueText));
@@ -198,6 +209,7 @@ public class TextFill : MonoBehaviour
                     {
                         StartCoroutine(TextAnimation("Thats all... Now get out of here!", dialogueText));
                     }*/
+                    }
                 }
 
 

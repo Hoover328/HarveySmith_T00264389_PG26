@@ -38760,6 +38760,7 @@ MonoBehaviour:
   textfill: {fileID: 2067174494}
   readyToKill: 0
   bossStart: 0
+  NPC1FlagsIndex: 0
 --- !u!114 &2067174489
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -38897,7 +38898,6 @@ MonoBehaviour:
   Npc: {fileID: 735236314}
   Npc2: {fileID: 424441815}
   OutDoorTalking: {fileID: 2067174488}
-  dialougeCheck: 1
   dialougeCheck2: 1
   fireOnce: 1
   fireOnce2: 1
@@ -38920,6 +38920,7 @@ MonoBehaviour:
   deadAvold: {fileID: 1562718139}
   endText: {fileID: 1743710492}
   fade2: {fileID: 1317347576}
+  index: 0
 --- !u!114 &2067174495
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -38938,6 +38939,7 @@ MonoBehaviour:
   - {fileID: 354823790}
   fade: {fileID: 2067174493}
   npc: {fileID: 899599048}
+  NPC: {fileID: 735236314}
   background: {fileID: 810005576}
   textBox: {fileID: 811482354}
   textMeshPro: {fileID: 1005852026}
