@@ -3,7 +3,7 @@ using System.Collections;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
-public class TestDummy : MonoBehaviour
+public class TestDummy : MonoBehaviour, IActivate
 {
     public Transform player;
     Renderer changeColor;
@@ -56,6 +56,11 @@ public class TestDummy : MonoBehaviour
 
             
         }
+    }
+
+    public bool isActivated()
+    {
+        return isPressed;
     }
 
     IEnumerator FlashRed()
