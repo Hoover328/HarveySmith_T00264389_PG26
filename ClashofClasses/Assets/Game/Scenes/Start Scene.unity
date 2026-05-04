@@ -4837,13 +4837,17 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::OutDoorTalking
   noInputs: 0
-  Npc: {fileID: 1849846674}
+  Npc: {fileID: 0}
   Npc2: {fileID: 0}
+  Npc3: {fileID: 1849846674}
   player: {fileID: 1886974817}
-  NpcSprite: {fileID: 1162412257}
+  NpcSprite: {fileID: 0}
   Npc2Sprite: {fileID: 0}
-  NPCObject: {fileID: 1849846671}
+  Npc3Sprite: {fileID: 1162412257}
+  fade: {fileID: 1046916055}
+  NPCObject: {fileID: 0}
   NPC2Object: {fileID: 0}
+  NPC3Object: {fileID: 1849846671}
   sword1: {fileID: 1370469165}
   sword2: {fileID: 611465813}
   sword3: {fileID: 1160689249}
@@ -4858,6 +4862,12 @@ MonoBehaviour:
   textfill: {fileID: 1046916059}
   readyToKill: 0
   bossStart: 0
+  NPC1FlagsIndex: 0
+  NPC1HoldFlagsIndex: 0
+  NPC1TeleportsIndex: 0
+  NPC2FlagsIndex: 0
+  NPC2HoldFlagsIndex: 0
+  NPC2TeleportsIndex: 0
 --- !u!224 &1046916054
 RectTransform:
   m_ObjectHideFlags: 0
@@ -4978,17 +4988,20 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 83920a2954479c5479fd53b0a7cd4598, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Npc: {fileID: 1849846674}
+  Npc: {fileID: 0}
   Npc2: {fileID: 0}
+  Npc3: {fileID: 1849846674}
   OutDoorTalking: {fileID: 1046916053}
-  dialougeCheck: 30
   dialougeCheck2: 1
+  dialougeCheck3: 0
   fireOnce: 1
   fireOnce2: 1
-  dialogueText: {fileID: 325479315}
+  dialogueText: {fileID: 0}
   dialogueText2: {fileID: 0}
+  dialogueText3: {fileID: 325479315}
   textSpeed: 0.01
   fade: {fileID: 1046916055}
+  canSkip: 0
   Npc1: {fileID: 0}
   Cat: {fileID: 0}
   door: {fileID: 0}
@@ -5004,6 +5017,7 @@ MonoBehaviour:
   deadAvold: {fileID: 0}
   endText: {fileID: 0}
   fade2: {fileID: 0}
+  index: 0
 --- !u!1001 &1066790143
 PrefabInstance:
   m_ObjectHideFlags: 0

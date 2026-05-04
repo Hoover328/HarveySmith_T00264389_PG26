@@ -10,11 +10,15 @@ public class OutDoorTalking : MonoBehaviour
     public bool noInputs = false;
     public NpcBody Npc;
     public NpcBody Npc2;
+    public NpcBody Npc3;
     public PlayerMovement player;
     public Image NpcSprite;
     public Image Npc2Sprite;
+    public Image Npc3Sprite;
+    public Fade fade;
     public GameObject NPCObject;
     public GameObject NPC2Object;
+    public GameObject NPC3Object;
     public Image sword1;
     public Image sword2;
     public Image sword3;
@@ -30,9 +34,28 @@ public class OutDoorTalking : MonoBehaviour
     public TextFill textfill;
     public bool readyToKill = false;
     public bool bossStart = false;
+    private Vector3 avoldHouse= new Vector3(13.17f, 1.287f, 40.79f);
+    private int readyToKillChecker = 10;
+    private int bossStartChecker = 14;
 
-    internal int[] NPC1Flags = {3, 5, 7};
+    private int[] NPC1Flags = {3, 5, 7, 10, 14, 100};
+    private int[] NPC1HoldFlags = { 7, 10, 14, 100 };
     public int NPC1FlagsIndex = 0;
+    public int NPC1HoldFlagsIndex = 0;
+    public int[] NPC1Teleports = {1, 100};
+    public int NPC1TeleportsIndex = 0;
+
+    private int[] NPC2Flags = {1, 2};
+    private int[] NPC2HoldFlags = {1};
+    private int NPC2FlagsIndex = 0;
+    private int NPC2HoldFlagsIndex = 0;
+    private int[] NPC2Teleports = {100};
+    private int NPC2TeleportsIndex = 0;
+
+    private int NPC3Flag = 5;
+    private int NPC3Reset = 0;
+
+
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
@@ -48,6 +71,11 @@ public class OutDoorTalking : MonoBehaviour
             textMeshPro.enabled = false;
         }
 
+        if (Npc3Sprite != null)
+        {
+            Npc3Sprite.enabled = false;
+        }
+
         if (Npc2Sprite != null)
         {
             Npc2Sprite.enabled = false;
@@ -58,69 +86,132 @@ public class OutDoorTalking : MonoBehaviour
             NpcSprite.enabled = false;
         }
 
-        if (NPC2Object == null)
-        {
-            return;
-        }
-
-        if (textfill == null)
-        {
-            return;
-        }
-
-        if (Npc2 == null)
-        {
-            return;
-        }
-
-        if (Npc == null)
-        {
-            return;
-        }
+     
 
     }
 
     // Update is called once per frame
     void Update()
     {
-        Debug.Log(textfill.dialougeCheck);
-        if (Npc.talking)
+        //Debug.Log("Dialouge Check " + textfill.dialougeCheck2);
+        //Debug.Log("Flags " + NPC2Flags[NPC2FlagsIndex]);
+        //Debug.Log("Hold " + NPC2HoldFlags[NPC2HoldFlagsIndex]);
+
+
+        // Debug.Log(NPC1Flags[NPC1FlagsIndex]);
+        // Debug.Log(NPC1HoldFlags[NPC1HoldFlagsIndex]);
+        if (textfill.dialougeCheck == NPC1Teleports[NPC1TeleportsIndex])
         {
-            readyToKill = false;
+            NPCTeleport(NPCObject, avoldHouse);
         }
+
+        if (Npc != null) {
+            if (Npc.talking)
+            {
+                readyToKill = false;
+            }
+        }
+
+        if (bossStartChecker == textfill.dialougeCheck && !Npc.talking)
+        {
+            bossStart = true;
+        }
+
+        if (readyToKillChecker == textfill.dialougeCheck && !textfill.goodEnd)
+        {
+            readyToKill = true;
+        }
+
+        if (Npc != null)
+        {
+            if (Npc.talking)
+            {
+
+                StartCoroutine(dialogueTransition(Npc, NpcSprite, NPCObject));
+                noInputs = true;
+
+            }
+        }
+
+        if (Npc2 != null)
+        {
+            if (Npc2.talking)
+            {
+                StartCoroutine(dialogueTransition(Npc2, Npc2Sprite, NPC2Object));
+                noInputs = true;
+
+            }
+        }
+
+        if (Npc3 != null)
+        {
+            if (Npc3 != null && Npc3.talking)
+            {
+                StartCoroutine(dialogueTransition(Npc3, Npc3Sprite, NPC3Object));
+                noInputs = true;
+
+            }
+        }
+
+        if (Npc != null)
+        {
+            if (Npc.talking && textfill.dialougeCheck == NPC1HoldFlags[NPC1HoldFlagsIndex])
+            {
+                if (Mouse.current.leftButton.wasPressedThisFrame)
+                {
+                    Npc.talking = false;
+                    Npc.fadeTransition = true;
+                    StartCoroutine(dialogueTransition(Npc, NpcSprite, NPCObject));
+                }
+            }
+
+
+            else if (Npc.talking && textfill.dialougeCheck == NPC1Flags[NPC1FlagsIndex])
+            {
+                Npc.talking = false;
+                NPC1FlagsIndex++;
+                Npc.fadeTransition = true;
+                StartCoroutine(dialogueTransition(Npc, NpcSprite, NPCObject));
+
+            }
+        }
+
+        if (Npc2 != null)
+        {
+            if (Npc2.talking && textfill.dialougeCheck2 == NPC2HoldFlags[NPC2HoldFlagsIndex] || Npc2.talking && !textfill.finalState)
+            {
+                if (Mouse.current.leftButton.wasPressedThisFrame)
+                {
+                    Npc2.talking = false; 
+                    Npc2.fadeTransition = true;
+                    StartCoroutine(dialogueTransition(Npc2, Npc2Sprite, NPC2Object));
+                }
+            }
+
+
+            else if (Npc2.talking && textfill.dialougeCheck2 == NPC2Flags[NPC2FlagsIndex])
+            {
+                Npc2.talking = false;
+                NPC2FlagsIndex++;
+                Npc2.fadeTransition = true;
+                StartCoroutine(dialogueTransition(Npc2, Npc2Sprite, NPC2Object));
+
+            }
+        }
+
+        if (Npc3 != null)
+        {
            
-        if (NPCObject == null)
-            return;
+           if (Npc3.talking && textfill.dialougeCheck3 == NPC3Flag)
+            {
+                Npc3.talking = false;
+                textfill.dialougeCheck3 = NPC3Reset;
+                Npc3.fadeTransition = true;
+                StartCoroutine(dialogueTransition(Npc3, Npc3Sprite, NPC3Object));
 
-        if (Npc == null)
-            return;
-
-        if (Npc.talking ) 
-        {
-       
-            StartCoroutine(dialogueTransition(Npc, NpcSprite, NPCObject));
-            noInputs = true;
-
+            }
         }
-
-        if (Npc2 != null && Npc2.talking)
-        {
-            StartCoroutine(dialogueTransition(Npc2, Npc2Sprite, NPC2Object));
-            noInputs = true;
-
-        }
-
-
-        if (Npc.talking && textfill.dialougeCheck == NPC1Flags[NPC1FlagsIndex]) 
-        {
-          Npc.talking = false;
-        //  textfill.dialougeCheck++;
-          NPC1FlagsIndex++;
-          Npc.fadeTransition = true; 
-          StartCoroutine(dialogueTransition(Npc, NpcSprite, NPCObject));
-
-        }
-
+        /*
         if (Npc.talking && textfill.dialougeCheck == 9)
         {
             Npc.talking = false;
@@ -168,6 +259,7 @@ public class OutDoorTalking : MonoBehaviour
             
 
         }
+        */
 
         if (Npc2 != null && textfill != null)
         {
@@ -237,20 +329,9 @@ public class OutDoorTalking : MonoBehaviour
         }
     }
 
-    public void EndDialougeNpc1()
+    public void NPCTeleport(GameObject NPC, Vector3 position)
     {
-        Npc.talking = false;
-        textfill.dialougeCheck++;
-        Npc.fadeTransition = true;
-        StartCoroutine(dialogueTransition(Npc, NpcSprite, NPCObject));
-    }
-
-    public void EndDialougeNpc2()
-    {
-        Npc2.talking = false;
-        textfill.dialougeCheck2++;
-        Npc2.fadeTransition = true;
-        StartCoroutine(dialogueTransition(Npc2, Npc2Sprite, NPC2Object));
+        NPC.transform.localPosition = position;
     }
 
     IEnumerator dialogueTransition(NpcBody Npc, Image NpcSprite, GameObject NPCObject)

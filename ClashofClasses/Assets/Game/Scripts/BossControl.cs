@@ -10,6 +10,7 @@ public class BossControl : MonoBehaviour
     public AudioSource MainTheme;
     public AudioSource FightTheme;
     public OutDoorTalking outDoorTalking;
+    public TextFill textFill;
     private bool fireOnce = true;
     public GameObject Avold;
     public GameObject bossProjectile;
@@ -42,13 +43,14 @@ public class BossControl : MonoBehaviour
     private bool attackFireOnce3 = true;
     private bool parryAttackonce = true;
     private bool parryAttackonce2 = true;
+    private bool dialougeFireOnce = true;
     public float projectileSpeed = 20f;
     private float random = 0.1f;
     private bool fireOnceParry1 = true;
     private bool fireOnceParry2 = false;
     private bool fireOncePitch = true;
     private float parryTimeLimit = 10f;
-    private int counter = 0;
+    [SerializeField] private int counter = 0;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
@@ -137,7 +139,28 @@ public class BossControl : MonoBehaviour
         {
             outDoorTalking.bossStart = false;
             StopAllCoroutines();
+            FightTheme.Stop();
             Avold.transform.position = new Vector3(17.14f, -77.69f, 118.34f);
+            foreach (GameObject spiders in Spiders)
+            {
+                spiders.SetActive(false);
+            }
+            foreach (GameObject canons2 in Canons2)
+            {
+                canons2.SetActive(false);
+            }
+            foreach (GameObject canons1 in Canons1)
+            {
+                canons1.SetActive(false);
+            }
+
+            if (dialougeFireOnce)
+            {
+                outDoorTalking.NPC1FlagsIndex++;
+                outDoorTalking.NPC1HoldFlagsIndex++;
+                textFill.dialougeCheck++;
+                dialougeFireOnce = false;
+            }
 
         }
     }
