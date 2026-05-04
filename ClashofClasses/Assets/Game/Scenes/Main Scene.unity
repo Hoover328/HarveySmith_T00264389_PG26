@@ -248,7 +248,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   animator: {fileID: 935751226}
   playerAttack: {fileID: 1089610825}
-  buttonPressed: 0
+  isPressed: 0
   hurt: {fileID: 1519600183}
   dead: 0
 --- !u!65 &11837201
@@ -1939,7 +1939,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   animator: {fileID: 591197888}
   playerAttack: {fileID: 1089610825}
-  buttonPressed: 0
+  isPressed: 0
   hurt: {fileID: 1519600183}
   dead: 0
 --- !u!65 &162036406
@@ -2403,7 +2403,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   animator: {fileID: 1020942105}
   playerAttack: {fileID: 1089610825}
-  buttonPressed: 0
+  isPressed: 0
   hurt: {fileID: 1519600183}
   dead: 0
 --- !u!65 &178924827
@@ -2700,7 +2700,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 81cf7b7b9e6c42c478f205ec8a4d5766, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -11.70586
+      value: -11.28
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 81cf7b7b9e6c42c478f205ec8a4d5766, type: 3}
       propertyPath: m_LocalPosition.y
@@ -2708,7 +2708,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 81cf7b7b9e6c42c478f205ec8a4d5766, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 80.957245
+      value: 82.38
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 81cf7b7b9e6c42c478f205ec8a4d5766, type: 3}
       propertyPath: m_LocalRotation.w
@@ -2732,11 +2732,23 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 81cf7b7b9e6c42c478f205ec8a4d5766, type: 3}
       propertyPath: m_LocalEulerAnglesHint.y
-      value: -90
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 81cf7b7b9e6c42c478f205ec8a4d5766, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
-      value: 180
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -7468062814121731192, guid: 81cf7b7b9e6c42c478f205ec8a4d5766, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -7468062814121731192, guid: 81cf7b7b9e6c42c478f205ec8a4d5766, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 90
+      objectReference: {fileID: 0}
+    - target: {fileID: -7468062814121731192, guid: 81cf7b7b9e6c42c478f205ec8a4d5766, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: -90
       objectReference: {fileID: 0}
     - target: {fileID: -6532055803787292656, guid: 81cf7b7b9e6c42c478f205ec8a4d5766, type: 3}
       propertyPath: 'm_Materials.Array.data[0]'
@@ -2750,9 +2762,29 @@ PrefabInstance:
       propertyPath: 'm_Materials.Array.data[0]'
       value: 
       objectReference: {fileID: 2100000, guid: 28539f07551b13b488d9e95d3cd18711, type: 2}
+    - target: {fileID: -3762202535249147109, guid: 81cf7b7b9e6c42c478f205ec8a4d5766, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 90
+      objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: 81cf7b7b9e6c42c478f205ec8a4d5766, type: 3}
       propertyPath: m_Name
       value: Cannon
+      objectReference: {fileID: 0}
+    - target: {fileID: 3454134674947584440, guid: 81cf7b7b9e6c42c478f205ec8a4d5766, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: -0.1487516
+      objectReference: {fileID: 0}
+    - target: {fileID: 3454134674947584440, guid: 81cf7b7b9e6c42c478f205ec8a4d5766, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0.036476254
+      objectReference: {fileID: 0}
+    - target: {fileID: 3454134674947584440, guid: 81cf7b7b9e6c42c478f205ec8a4d5766, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: -90.31838
+      objectReference: {fileID: 0}
+    - target: {fileID: 5018941026818894445, guid: 81cf7b7b9e6c42c478f205ec8a4d5766, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 125.10701
       objectReference: {fileID: 0}
     - target: {fileID: 7015757380890176582, guid: 81cf7b7b9e6c42c478f205ec8a4d5766, type: 3}
       propertyPath: 'm_Materials.Array.data[0]'
@@ -5611,7 +5643,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   animator: {fileID: 1386584985}
   playerAttack: {fileID: 1089610825}
-  buttonPressed: 0
+  isPressed: 0
   hurt: {fileID: 1519600183}
   dead: 0
 --- !u!65 &297598053
@@ -6138,7 +6170,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   animator: {fileID: 1365672819}
   playerAttack: {fileID: 1089610825}
-  buttonPressed: 0
+  isPressed: 0
   hurt: {fileID: 1519600183}
   dead: 0
 --- !u!65 &329361913
@@ -9376,7 +9408,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   animator: {fileID: 1309894491}
   playerAttack: {fileID: 1089610825}
-  buttonPressed: 0
+  isPressed: 0
   hurt: {fileID: 1519600183}
   dead: 0
 --- !u!65 &499611009
@@ -11969,7 +12001,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   animator: {fileID: 938419825}
   playerAttack: {fileID: 1089610825}
-  buttonPressed: 0
+  isPressed: 0
   hurt: {fileID: 1519600183}
   dead: 0
 --- !u!65 &606375575
@@ -12318,7 +12350,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   animator: {fileID: 605973510}
   playerAttack: {fileID: 1089610825}
-  buttonPressed: 0
+  isPressed: 0
   hurt: {fileID: 1519600183}
   dead: 0
 --- !u!65 &628792596
@@ -13434,7 +13466,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   animator: {fileID: 1062379467}
   playerAttack: {fileID: 1089610825}
-  buttonPressed: 0
+  isPressed: 0
   hurt: {fileID: 1519600183}
   dead: 0
 --- !u!65 &693265876
@@ -15614,7 +15646,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   animator: {fileID: 1704437195}
   playerAttack: {fileID: 1089610825}
-  buttonPressed: 0
+  isPressed: 0
   hurt: {fileID: 1519600183}
   dead: 0
 --- !u!65 &789991561
@@ -17843,7 +17875,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   animator: {fileID: 1306305366}
   playerAttack: {fileID: 1089610825}
-  buttonPressed: 0
+  isPressed: 0
   hurt: {fileID: 1519600183}
   dead: 0
 --- !u!65 &866818408
@@ -21832,9 +21864,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2af30a99693b4e04cbdc8594948c43ef, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  button: {fileID: 996444873}
-  ButtonObjects: []
-  Spiders:
+  buttons:
   - {fileID: 2077440357}
   - {fileID: 789991560}
   - {fileID: 297598052}
@@ -21853,11 +21883,12 @@ MonoBehaviour:
   - {fileID: 693265875}
   isEnemyDoor: 1
   Cat: {fileID: 424441812}
-  Avold: {fileID: 735236311}
+  Avold: {fileID: 0}
   doorOpen: 0
   doorOpenSound: {fileID: 723019073}
   forceAll: 1
   mainTheme: {fileID: 513764208}
+  catDoor: 1
 --- !u!4 &1085582920 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 4523286703032312, guid: 24b4d8ad04155c244b2b776c5532e76f, type: 3}
@@ -23768,14 +23799,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2af30a99693b4e04cbdc8594948c43ef, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  button: {fileID: 996444873}
-  ButtonObjects:
+  buttons:
   - {fileID: 746998497}
   - {fileID: 859759714}
   - {fileID: 1665089496}
   - {fileID: 347708031}
   - {fileID: 1570260972}
-  Spiders: []
   isEnemyDoor: 0
   Cat: {fileID: 424441812}
   Avold: {fileID: 0}
@@ -23783,6 +23812,7 @@ MonoBehaviour:
   doorOpenSound: {fileID: 723019073}
   forceAll: 0
   mainTheme: {fileID: 513764208}
+  catDoor: 0
 --- !u!4 &1191346361 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 8126234637730377396, guid: 41a2edecaedc0bb4e8c1ad3055928721, type: 3}
@@ -25348,7 +25378,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   animator: {fileID: 935983158}
   playerAttack: {fileID: 1089610825}
-  buttonPressed: 0
+  isPressed: 0
   hurt: {fileID: 1519600183}
   dead: 0
 --- !u!65 &1298815389
@@ -30267,7 +30297,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   animator: {fileID: 1605204457}
   playerAttack: {fileID: 1089610825}
-  buttonPressed: 0
+  isPressed: 0
   hurt: {fileID: 1519600183}
   dead: 0
 --- !u!65 &1607128467
@@ -35504,7 +35534,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   animator: {fileID: 976352528}
   playerAttack: {fileID: 1089610825}
-  buttonPressed: 0
+  isPressed: 0
   hurt: {fileID: 1519600183}
   dead: 0
 --- !u!65 &1878359950
@@ -35575,7 +35605,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   animator: {fileID: 352614014}
   playerAttack: {fileID: 1089610825}
-  buttonPressed: 0
+  isPressed: 0
   hurt: {fileID: 1519600183}
   dead: 0
 --- !u!65 &1884012579
@@ -37003,10 +37033,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2af30a99693b4e04cbdc8594948c43ef, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  button: {fileID: 996444873}
-  ButtonObjects:
+  buttons:
   - {fileID: 996444875}
-  Spiders: []
   isEnemyDoor: 0
   Cat: {fileID: 424441812}
   Avold: {fileID: 0}
@@ -37014,6 +37042,7 @@ MonoBehaviour:
   doorOpenSound: {fileID: 723019073}
   forceAll: 0
   mainTheme: {fileID: 513764208}
+  catDoor: 0
 --- !u!1 &1975403233
 GameObject:
   m_ObjectHideFlags: 0
@@ -37221,7 +37250,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   animator: {fileID: 321691080}
   playerAttack: {fileID: 1089610825}
-  buttonPressed: 0
+  isPressed: 0
   hurt: {fileID: 1519600183}
   dead: 0
 --- !u!65 &1978920636
@@ -37704,7 +37733,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   animator: {fileID: 1940155076}
   playerAttack: {fileID: 1089610825}
-  buttonPressed: 0
+  isPressed: 0
   hurt: {fileID: 1519600183}
   dead: 0
 --- !u!65 &2019684475
@@ -38953,7 +38982,7 @@ MonoBehaviour:
   Npc1: {fileID: 735236311}
   Cat: {fileID: 424441812}
   door: {fileID: 1085519003}
-  goodEnd: 1
+  goodEnd: 0
   meow: {fileID: 2067174496}
   mainTheme: {fileID: 513764208}
   secret: {fileID: 1755497801}
@@ -39473,7 +39502,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   animator: {fileID: 1207109020}
   playerAttack: {fileID: 1089610825}
-  buttonPressed: 0
+  isPressed: 0
   hurt: {fileID: 1519600183}
   dead: 0
 --- !u!65 &2077440358
