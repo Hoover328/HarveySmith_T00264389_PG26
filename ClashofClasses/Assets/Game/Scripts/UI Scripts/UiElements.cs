@@ -3,7 +3,7 @@ using System.Security.Cryptography;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class UiElements : MonoBehaviour, I_Projectiles
+public class UiElements : MonoBehaviour, IProjectile
 {
     public Slider dashSlider;
     public Slider healthSlider;

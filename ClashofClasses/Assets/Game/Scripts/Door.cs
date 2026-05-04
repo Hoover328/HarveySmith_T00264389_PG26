@@ -7,9 +7,10 @@ using UnityEngine.UIElements;
 
 public class Door : MonoBehaviour
 {
-    public GameObject button;
-    public List<TestDummy> ButtonObjects = new List<TestDummy>();
-    public List<SpiderDeath> Spiders = new List<SpiderDeath>();
+
+    public List<MonoBehaviour> buttons = new List<MonoBehaviour>();
+  //  public List<TestDummy> ButtonObjects = new List<TestDummy>();
+  //  public List<SpiderDeath> Spiders = new List<SpiderDeath>();
     public bool isEnemyDoor = false;
     public GameObject Cat;
     public GameObject Avold;
@@ -19,6 +20,7 @@ public class Door : MonoBehaviour
     public bool forceAll;
     bool fireOnce = true;
     public AudioSource mainTheme;
+    [SerializeField] private bool catDoor = false;
 
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
@@ -31,63 +33,33 @@ public class Door : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (!isEnemyDoor)
+
+        bool allPressed = true;
+
+        foreach (MonoBehaviour button in buttons)
         {
-            bool allPressed = true;
+            IActivate activatedButton = button as IActivate;
+          //  Debug.Log(activatedButton.isActivated());
 
-            foreach (TestDummy testDummy in ButtonObjects)
+            if (activatedButton == null || !activatedButton.isActivated())
             {
-                if (!testDummy.isPressed)
-                {
-                    allPressed = false;
-                    break;
-                }
-            }
-
-            if (allPressed)
-            {
-                transform.position += Vector3.down * Time.deltaTime;
-                if (soundFireOnce)
-                {
-                    doorOpenSound.Play();
-                    soundFireOnce = false;
-                }
-                doorOpen = true;
+                allPressed = false;
+                break;
             }
         }
 
-        else
+
+        if (allPressed || forceAll)
         {
-            bool allPressed = true;
-
-            foreach (SpiderDeath spider in Spiders)
+            doorOpenSound.Play();
+            doorOpen = true;
+            transform.position += Vector3.down * Time.deltaTime;
+            if (fireOnce && catDoor)
             {
-                if (!spider.buttonPressed)
-                {
-                    allPressed = false;
-                    break;
-                }
-            }
-
-            if (allPressed || forceAll)
-            {
-                
-                transform.position += Vector3.down * Time.deltaTime;
-                if (fireOnce)
-                {
-                    Cat.transform.position = new Vector3(45.98077f, -9.114f, -304.0461f);
-                    fireOnce = false;
-                }
-                doorOpen = true;
-                if (soundFireOnce)
-                {
-                    doorOpenSound.Play();
-                    soundFireOnce = false;
-                }
+                Cat.transform.position = new Vector3(45.98077f, -9.114f, -304.0461f);
+                fireOnce = false;
             }
         }
-
-       
     }
 
    

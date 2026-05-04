@@ -1,15 +1,18 @@
 using System;
 using UnityEngine;
 
-public class SpiderDeath : MonoBehaviour
+public class SpiderDeath : MonoBehaviour, IActivate
 {
 
     public Animator animator;
     public PlayerAttack playerAttack;
-    public bool buttonPressed = false;
+    public bool isPressed = false;
     public AudioSource hurt;
     public bool dead;
     bool fireOnce = true;
+
+    public event Action OnActivated;
+
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
@@ -28,8 +31,14 @@ public class SpiderDeath : MonoBehaviour
                 hurt.Play();
                 fireOnce = false;
             }
-            buttonPressed = true;
+            isPressed = true;
+
         }
+    }
+
+    public bool isActivated()
+    {
+        return isPressed;
     }
 
     void OnTriggerEnter(Collider attack)
