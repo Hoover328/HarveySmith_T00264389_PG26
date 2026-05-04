@@ -57,6 +57,16 @@ public class Fade : MonoBehaviour
 
             }
         }
+
+        if (OutDoorTalking.Npc3 != null)
+        {
+            if (OutDoorTalking.Npc3.fadeTransition == true)
+            {
+
+                StartCoroutine(FadeInOut());
+
+            }
+        }
     }
 
     public IEnumerator FadeInOut()

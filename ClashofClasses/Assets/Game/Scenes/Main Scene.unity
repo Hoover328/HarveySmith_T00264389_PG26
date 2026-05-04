@@ -2776,7 +2776,10 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: -8679921383154817045, guid: 81cf7b7b9e6c42c478f205ec8a4d5766, type: 3}
       insertIndex: 0
       addedObject: {fileID: 2039488574}
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 81cf7b7b9e6c42c478f205ec8a4d5766, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 867131876}
   m_SourcePrefab: {fileID: 100100000, guid: 81cf7b7b9e6c42c478f205ec8a4d5766, type: 3}
 --- !u!4 &192657884 stripped
 Transform:
@@ -6174,6 +6177,11 @@ Transform:
   m_Children: []
   m_Father: {fileID: 1365672820}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &330300397 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: 81cf7b7b9e6c42c478f205ec8a4d5766, type: 3}
+  m_PrefabInstance: {fileID: 190836052}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &330849055
 GameObject:
   m_ObjectHideFlags: 0
@@ -10381,6 +10389,7 @@ MonoBehaviour:
   - {fileID: 970089312}
   - {fileID: 1072950605}
   textFill: {fileID: 2067174494}
+  outDoorTalking: {fileID: 2067174488}
   forceFinalState: 0
   Avold: {fileID: 735236311}
   Cat: {fileID: 424441812}
@@ -14317,6 +14326,7 @@ MonoBehaviour:
   MainTheme: {fileID: 513764208}
   FightTheme: {fileID: 1574899147}
   outDoorTalking: {fileID: 2067174488}
+  textFill: {fileID: 2067174494}
   Avold: {fileID: 735236311}
   bossProjectile: {fileID: 6797546271338056112, guid: 28383077cd713024b9bba0e3e4dc32f8, type: 3}
   bossProjectileParry: {fileID: 6797546271338056112, guid: 38006b80d02c9ac489faffdf283048ed, type: 3}
@@ -14343,6 +14353,7 @@ MonoBehaviour:
   attackingTime: 5
   attackDelay: 2
   projectileSpeed: 20
+  counter: 0
 --- !u!4 &740368366 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 439968197971259357, guid: 7c87c77e24344db44af20c4872109381, type: 3}
@@ -17876,6 +17887,28 @@ Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: 81cf7b7b9e6c42c478f205ec8a4d5766, type: 3}
   m_PrefabInstance: {fileID: 190836052}
   m_PrefabAsset: {fileID: 0}
+--- !u!95 &867131876
+Animator:
+  serializedVersion: 7
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 330300397}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 0a4c031727a3a9244b189363b2d4e0b5, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_AnimatePhysics: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
 --- !u!1001 &867258358
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -21823,7 +21856,7 @@ MonoBehaviour:
   Avold: {fileID: 735236311}
   doorOpen: 0
   doorOpenSound: {fileID: 723019073}
-  forceAll: 0
+  forceAll: 1
   mainTheme: {fileID: 513764208}
 --- !u!4 &1085582920 stripped
 Transform:
@@ -38741,11 +38774,15 @@ MonoBehaviour:
   noInputs: 0
   Npc: {fileID: 735236314}
   Npc2: {fileID: 424441815}
+  Npc3: {fileID: 0}
   player: {fileID: 1089610826}
   NpcSprite: {fileID: 899599048}
   Npc2Sprite: {fileID: 2119421865}
+  Npc3Sprite: {fileID: 0}
+  fade: {fileID: 2067174493}
   NPCObject: {fileID: 735236311}
   NPC2Object: {fileID: 424441812}
+  NPC3Object: {fileID: 0}
   sword1: {fileID: 426998897}
   sword2: {fileID: 1743792553}
   sword3: {fileID: 1100579342}
@@ -38761,6 +38798,9 @@ MonoBehaviour:
   readyToKill: 0
   bossStart: 0
   NPC1FlagsIndex: 0
+  NPC1HoldFlagsIndex: 0
+  NPC1Teleports: 0100000064000000
+  NPC1TeleportsIndex: 0
 --- !u!114 &2067174489
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -38897,18 +38937,23 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Npc: {fileID: 735236314}
   Npc2: {fileID: 424441815}
+  Npc3: {fileID: 0}
   OutDoorTalking: {fileID: 2067174488}
-  dialougeCheck2: 1
+  dialougeCheck2: 0
+  dialougeCheck3: 0
   fireOnce: 1
   fireOnce2: 1
+  fireOnce3: 1
   dialogueText: {fileID: 1005852026}
   dialogueText2: {fileID: 563158574}
+  dialogueText3: {fileID: 0}
   textSpeed: 0.01
   fade: {fileID: 2067174493}
+  canSkip: 0
   Npc1: {fileID: 735236311}
   Cat: {fileID: 424441812}
   door: {fileID: 1085519003}
-  goodEnd: 0
+  goodEnd: 1
   meow: {fileID: 2067174496}
   mainTheme: {fileID: 513764208}
   secret: {fileID: 1755497801}

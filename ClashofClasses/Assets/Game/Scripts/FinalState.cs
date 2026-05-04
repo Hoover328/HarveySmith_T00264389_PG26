@@ -8,6 +8,7 @@ public class FinalState : MonoBehaviour
 {
     public List<GameObject> HouseItems = new List<GameObject>();
     public TextFill textFill;
+    public OutDoorTalking outDoorTalking;
     public bool forceFinalState = false;
     public GameObject Avold;
     public GameObject Cat;
@@ -58,7 +59,15 @@ public class FinalState : MonoBehaviour
             RenderSettings.skybox = skybox;
             skyLight.color = Color.red;
             RenderSettings.fogColor = Color.black;
-            textFill.dialougeCheck = 12;
+            textFill.dialougeCheck++;
+            outDoorTalking.NPC1HoldFlagsIndex++;
+            outDoorTalking.NPC1FlagsIndex++;
+
+            if (textFill.goodEnd)
+            {
+                outDoorTalking.NPC1HoldFlagsIndex++;
+                outDoorTalking.NPC1FlagsIndex++;
+            }
 
 
             foreach (var item in water)
