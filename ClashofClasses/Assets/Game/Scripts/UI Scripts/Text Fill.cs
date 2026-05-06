@@ -91,7 +91,7 @@ public class TextFill : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-
+      //  Debug.Log(dialougeCheck2);
         if (avoldDeath == dialougeCheck)
         {
             StartCoroutine(killAvold());
@@ -132,15 +132,24 @@ public class TextFill : MonoBehaviour
 
                     catRandom = 0;
 
-                    if (UnityEngine.Random.value <= 0.1f)
+                    if (UnityEngine.Random.value <= 0.2f)
                     {
                         catRandom = goodEndText;
+                        goodEnd = true;
                     }
 
                     if (fireOnce2)
                     {
                         fireOnce2 = false;
                         StartCoroutine(TextAnimation(dialouge3[catRandom], dialogueText2));
+                        if (catRandom == goodEndText)
+                        {
+                            secret.Play();
+                        }
+                        else
+                        {
+                            meow.Play();
+                        }
                     }
 
                     if (Mouse.current.leftButton.wasPressedThisFrame && !canSkip && !fade.lockInputs)
@@ -262,40 +271,6 @@ public class TextFill : MonoBehaviour
         {
             yield return null;
         }
-
-        /*
-        if (dialougeCheck == 0 && shakeText == null)
-        {
-            // yield return new WaitForSeconds(fade.fadeDelay + 1f);
-            shakeText = StartCoroutine(ShakeText(dialogueText));
-        }
-
-        if (dialougeCheck == 10 && shakeText == null)
-        {
-            // yield return new WaitForSeconds(fade.fadeDelay + 1f);
-            shakeText = StartCoroutine(ShakeText(dialogueText));
-        }
-
-        if (dialougeCheck2 == 4 && shakeText2 == null && !door.doorOpen)
-        {
-            // yield return new WaitForSeconds(fade.fadeDelay);
-            shakeText2 = StartCoroutine(ShakeText(dialogueText2));
-        }
-
-        if (dialougeCheck == 1 && shakeText != null)
-        {
-            StopCoroutine(shakeText);
-            shakeText = null;
-        }
-
-
-        /*if (dialougeCheck == 1 && shakeText != null)
-       {
-           StopCoroutine(shakeText);
-           shakeText = null;
-
-        }*/
-
 
         canSkip = true;
         foreach (char character in text)

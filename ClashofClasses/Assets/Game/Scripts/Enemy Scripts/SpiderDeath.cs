@@ -11,8 +11,6 @@ public class SpiderDeath : MonoBehaviour, IActivate
     public bool dead;
     bool fireOnce = true;
 
-    public event Action OnActivated;
-
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {

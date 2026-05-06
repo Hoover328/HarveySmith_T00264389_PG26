@@ -8,8 +8,8 @@ using UnityEngine.UI;
 
 public class Fade : MonoBehaviour
 {
-    public Image fadeImage;
-    public OutDoorTalking OutDoorTalking;
+    [SerializeField] private Image fadeImage;
+    [SerializeField] private OutDoorTalking OutDoorTalking;
     public float fadeTime = 1f;
     public float fadeDelay = 1f;
     public bool lockInputs;
@@ -43,7 +43,7 @@ public class Fade : MonoBehaviour
             if (OutDoorTalking.Npc.fadeTransition == true)
             {
 
-                StartCoroutine(FadeInOut());
+                startFade();
 
             }
         }
@@ -53,7 +53,7 @@ public class Fade : MonoBehaviour
             if (OutDoorTalking.Npc2.fadeTransition == true)
             {
 
-                StartCoroutine(FadeInOut());
+                startFade();
 
             }
         }
@@ -63,11 +63,21 @@ public class Fade : MonoBehaviour
             if (OutDoorTalking.Npc3.fadeTransition == true)
             {
 
-                StartCoroutine(FadeInOut());
+                startFade();
 
             }
         }
     }
+
+    public void startFade()
+    {
+        StartCoroutine(FadeInOut());
+    }
+    public void startFadeTransition(float start, float end)
+    {
+        StartCoroutine(FadeInOut());
+    }
+
 
     public IEnumerator FadeInOut()
     {

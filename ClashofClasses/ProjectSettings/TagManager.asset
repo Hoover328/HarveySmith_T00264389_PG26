@@ -16,6 +16,7 @@ TagManager:
   - ParryAttack
   - ButtonSequence
   - CanHitBoss
+  - Water
   layers:
   - Default
   - TransparentFX
