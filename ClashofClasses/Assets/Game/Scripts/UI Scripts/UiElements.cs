@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Security.Cryptography;
 using UnityEngine;
@@ -9,6 +10,7 @@ public class UiElements : MonoBehaviour, IProjectile
     public Slider healthSlider;
     public RectTransform rectTransform;
     public PlayerMovement playerMovement;
+    [SerializeField] private AudioSource waterSplash;
     public Image sword1;
     public Image sword2;
     public Image sword3;
@@ -17,11 +19,13 @@ public class UiElements : MonoBehaviour, IProjectile
     float dashSliderMax = 100f;
     float dashSliderMin = 0.0f;
     float healthSliderMax = 100f;
-    float currentHealth;
+    public float currentHealth;
     float healthSliderMin = 0.0f;
     float hurtCoolDown = 2f;
     bool canBeHurt = true;
     public AudioSource hurt;
+
+    public event Action healthDepleted;
 
     public bool uiActive = true;
     int selectedSword;
@@ -100,18 +104,23 @@ public class UiElements : MonoBehaviour, IProjectile
         void Update()
         {
 
-        
 
         float barTimer = Mathf.Clamp01(playerMovement.dashTimer / playerMovement.dashCooldown);
             dashSlider.value = (1f - barTimer) * 100f;
 
             healthSlider.value = Mathf.Lerp(healthSlider.value, currentHealth, Time.deltaTime / hurtCoolDown);
 
-            if (avoldKill != null && avoldKill.instantDeath)
-            {
-                currentHealth -= 100f;
+        if (avoldKill != null && avoldKill.instantDeath)
+        { 
+                currentHealth = 1f;
                 dashSlider.value = 0f;
-            }
+
+        }
+
+        if (currentHealth <= 0f)
+        {
+            healthDepleted?.Invoke();
+        }
 
         }
 
@@ -126,15 +135,31 @@ public class UiElements : MonoBehaviour, IProjectile
 
         void OnTriggerEnter(Collider enemy)
         {
-            if (enemy.CompareTag("Enemy") && canBeHurt)
-            {
-                StartCoroutine(HitCooldown());
-
-            }
-
-            if (enemy.CompareTag("Projectile") && canBeHurt)
-            { StartCoroutine(HitCooldown()); }
+        if (enemy.CompareTag("Enemy") && canBeHurt)
+        {
+            StartCoroutine(HitCooldown());
         }
+
+            
+
+        if (enemy.CompareTag("Projectile") && canBeHurt)
+        {
+            StartCoroutine(HitCooldown());
+        }
+
+        if (enemy.CompareTag("ParryAttack") && canBeHurt)
+        {
+            StartCoroutine(HitCooldown());
+        }
+
+        if (enemy.CompareTag("Water"))
+        {
+            currentHealth = 0;
+            waterSplash.Play();
+        }
+
+
+    }
 
 
     public void onHit(Collider other)

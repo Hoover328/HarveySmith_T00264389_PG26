@@ -12,6 +12,7 @@ public class OutDoorTalking : MonoBehaviour
     public NpcBody Npc2;
     public NpcBody Npc3;
     public PlayerMovement player;
+    [SerializeField] private UiElements uiElements;
     public Image NpcSprite;
     public Image Npc2Sprite;
     public Image Npc3Sprite;
@@ -23,6 +24,7 @@ public class OutDoorTalking : MonoBehaviour
     public Image sword2;
     public Image sword3;
     public Image textBox;
+    public AudioSource heal;
     public TextMeshProUGUI textMeshPro;
     private int selectedSword;
     public PlayerCamera playerCamera;
@@ -49,11 +51,13 @@ public class OutDoorTalking : MonoBehaviour
     private int[] NPC2HoldFlags = {1};
     private int NPC2FlagsIndex = 0;
     private int NPC2HoldFlagsIndex = 0;
+    private int NPC2HealIndex = 1;
     private int[] NPC2Teleports = {100};
     private int NPC2TeleportsIndex = 0;
 
     private int NPC3Flag = 5;
     private int NPC3Reset = 0;
+    private bool healOnce = true;
 
 
 
@@ -103,6 +107,21 @@ public class OutDoorTalking : MonoBehaviour
         if (textfill.dialougeCheck == NPC1Teleports[NPC1TeleportsIndex])
         {
             NPCTeleport(NPCObject, avoldHouse);
+        }
+
+        if (!Npc2.talking)
+        {
+            healOnce = true;
+        }
+
+        if (textfill.dialougeCheck2 == NPC2HealIndex && Npc2.talking)
+        {
+            if (healOnce)
+            {
+                uiElements.currentHealth = 100;
+                heal.Play();
+                healOnce = false;
+            }
         }
 
         if (Npc != null) {

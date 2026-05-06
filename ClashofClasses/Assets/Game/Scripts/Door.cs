@@ -8,18 +8,17 @@ using UnityEngine.UIElements;
 public class Door : MonoBehaviour
 {
 
-    public List<MonoBehaviour> buttons = new List<MonoBehaviour>();
-  //  public List<TestDummy> ButtonObjects = new List<TestDummy>();
-  //  public List<SpiderDeath> Spiders = new List<SpiderDeath>();
+    [SerializeField] private List<MonoBehaviour> buttons = new List<MonoBehaviour>();
+    [SerializeField] private List<TestDummy> ButtonObjects = new List<TestDummy>();
+    [SerializeField] private List<SpiderDeath> Spiders = new List<SpiderDeath>();
     public bool isEnemyDoor = false;
-    public GameObject Cat;
-    public GameObject Avold;
+    [SerializeField] private GameObject Cat;
+    [SerializeField] private GameObject Avold;
     public bool doorOpen = false;
-    private bool soundFireOnce = true;
-    public AudioSource doorOpenSound;
+    [SerializeField] private AudioSource doorOpenSound;
     public bool forceAll;
     bool fireOnce = true;
-    public AudioSource mainTheme;
+    [SerializeField] private AudioSource mainTheme;
     [SerializeField] private bool catDoor = false;
 
 
