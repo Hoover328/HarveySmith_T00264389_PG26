@@ -8,6 +8,7 @@ public class SpiderDeath : MonoBehaviour, IActivate
     public PlayerAttack playerAttack;
     public bool isPressed = false;
     public AudioSource hurt;
+    public GameObject spider;
     public bool dead;
     bool fireOnce = true;
 
@@ -24,8 +25,10 @@ public class SpiderDeath : MonoBehaviour, IActivate
         {
             
             animator.SetTrigger("isHit");
+
             if (fireOnce)
             {
+                spider.tag = "dead";
                 hurt.Play();
                 fireOnce = false;
             }

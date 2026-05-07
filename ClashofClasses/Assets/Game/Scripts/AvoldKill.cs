@@ -50,9 +50,9 @@ public class AvoldKill : MonoBehaviour
 
         if (!GeometryUtility.TestPlanesAABB(planes, render.bounds))
         {
-            
-                if (outDoorTalking.readyToKill && stabBox.playerInside == true || forceKill && stabBox.playerInside == true)
-                {
+
+            if (outDoorTalking.readyToKill && stabBox.playerInside == true || forceKill && stabBox.playerInside == true)
+            {
                 if (fireOnce)
                 {
                     instantDeath = true;
@@ -63,10 +63,11 @@ public class AvoldKill : MonoBehaviour
                     StartCoroutine(DeathSequence());
                     fireOnce = false;
                 }
-                    Vector2 target = new Vector2(7.06f, -146.82f);
-                    rt.anchoredPosition = Vector2.MoveTowards(rt.anchoredPosition,target,moveSpeed * Time.deltaTime);
-                   
-                }
+
+                Vector2 target = new Vector2(7.06f, -146.82f);
+                rt.anchoredPosition = Vector2.MoveTowards(rt.anchoredPosition, target, moveSpeed * Time.deltaTime);
+
+            }
             }
         }
 

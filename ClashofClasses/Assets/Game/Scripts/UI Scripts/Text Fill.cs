@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Runtime.CompilerServices;
 using TMPro;
 using UnityEngine;
 using UnityEngine.InputSystem;
@@ -45,6 +46,11 @@ public class TextFill : MonoBehaviour
     public Fade fade2;
     private int avoldDeath = 16;
     public int index = 0;
+    private int[] shakeDialouges = {0, 10, 13};
+    private int secretSoundIndex = 12;
+    private Coroutine shakyText;
+    private bool startShake = false;
+
 
     internal string[] dialouge1 = { "Hello... Ive been waiting for you to come back.",
         "You dont have any weapon in your possesion, correct?", "Meet me in the room behind me... You can take whichever sword you want, free of charge of course...",
@@ -91,11 +97,19 @@ public class TextFill : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-      //  Debug.Log(dialougeCheck2);
+
         if (avoldDeath == dialougeCheck)
         {
             StartCoroutine(killAvold());
             avoldDeath--;
+        }
+
+        if (dialougeCheck == secretSoundIndex)
+        {
+            if (fireOnce)
+            {
+                secret.Play();
+            }
         }
 
         if (Npc != null)
@@ -167,9 +181,8 @@ public class TextFill : MonoBehaviour
                         StartCoroutine(TextAnimation(dialouge4[dialougeCheck2], dialogueText2));
                     }
 
-                    if (Mouse.current.leftButton.wasPressedThisFrame && !canSkip && !fade.lockInputs)
+                    if (Mouse.current.leftButton.wasPressedThisFrame)
                     {
-                        dialougeCheck2++;
                         dialougeCheck2++;
                         fireOnce = true;
                     }
@@ -184,9 +197,8 @@ public class TextFill : MonoBehaviour
                         StartCoroutine(TextAnimation(dialouge5[dialougeCheck2], dialogueText2));
                     }
 
-                    if (Mouse.current.leftButton.wasPressedThisFrame && !canSkip && !fade.lockInputs)
+                    if (Mouse.current.leftButton.wasPressedThisFrame)
                     {
-                        dialougeCheck2++;
                         dialougeCheck2++;
                         fireOnce = true;
                     }
@@ -252,6 +264,36 @@ public class TextFill : MonoBehaviour
 
     IEnumerator TextAnimation(string text, TMPro.TextMeshProUGUI speaking)
     {
+        if (Npc != null)
+        {
+            if (Npc.talking)
+            {
+                startShake = false;
+
+                foreach (var items in shakeDialouges)
+                {
+                    if (dialougeCheck == items)
+                    {
+                        startShake = true;
+                        break;
+                    }
+                }
+
+
+                if (startShake)
+                {
+                    shakyText = StartCoroutine(ShakeText(speaking));
+                }
+                else
+                {
+                    if (shakyText != null)
+                    {
+                        StopCoroutine(shakyText);
+                    }
+                }
+            }
+        }
+
         if (dialogueText != null)
         {
             dialogueText.text = "";
@@ -264,8 +306,6 @@ public class TextFill : MonoBehaviour
         {
             dialogueText3.text = "";
         }
-
-
 
         while (fade.lockInputs)
         {
@@ -281,6 +321,8 @@ public class TextFill : MonoBehaviour
         canSkip = false;
 
     }
+
+    
 
     IEnumerator ShakeText(TMPro.TextMeshProUGUI speaking)
     {

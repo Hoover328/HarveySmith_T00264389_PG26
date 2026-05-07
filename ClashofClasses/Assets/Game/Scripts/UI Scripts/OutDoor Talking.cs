@@ -47,13 +47,13 @@ public class OutDoorTalking : MonoBehaviour
     public int[] NPC1Teleports = {1, 100};
     public int NPC1TeleportsIndex = 0;
 
-    private int[] NPC2Flags = {1, 2};
-    private int[] NPC2HoldFlags = {1};
-    private int NPC2FlagsIndex = 0;
-    private int NPC2HoldFlagsIndex = 0;
-    private int NPC2HealIndex = 1;
-    private int[] NPC2Teleports = {100};
-    private int NPC2TeleportsIndex = 0;
+    public int[] NPC2Flags = {1, 2};
+    public int[] NPC2HoldFlags = {1};
+    public int NPC2FlagsIndex = 0;
+    public int NPC2HoldFlagsIndex = 0;
+    public int NPC2HealIndex = 1;
+    public int[] NPC2Teleports = {100};
+    public int NPC2TeleportsIndex = 0;
 
     private int NPC3Flag = 5;
     private int NPC3Reset = 0;
@@ -97,30 +97,29 @@ public class OutDoorTalking : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        //Debug.Log("Dialouge Check " + textfill.dialougeCheck2);
-        //Debug.Log("Flags " + NPC2Flags[NPC2FlagsIndex]);
-        //Debug.Log("Hold " + NPC2HoldFlags[NPC2HoldFlagsIndex]);
-
-
-        // Debug.Log(NPC1Flags[NPC1FlagsIndex]);
-        // Debug.Log(NPC1HoldFlags[NPC1HoldFlagsIndex]);
         if (textfill.dialougeCheck == NPC1Teleports[NPC1TeleportsIndex])
         {
             NPCTeleport(NPCObject, avoldHouse);
         }
 
-        if (!Npc2.talking)
+        if (Npc2 != null)
         {
-            healOnce = true;
+            if (!Npc2.talking)
+            {
+                healOnce = true;
+            }
         }
 
-        if (textfill.dialougeCheck2 == NPC2HealIndex && Npc2.talking)
+        if (Npc2 != null)
         {
-            if (healOnce)
+            if (textfill.dialougeCheck2 == NPC2HealIndex && Npc2.talking)
             {
-                uiElements.currentHealth = 100;
-                heal.Play();
-                healOnce = false;
+                if (healOnce)
+                {
+                    uiElements.currentHealth = 100;
+                    heal.Play();
+                    healOnce = false;
+                }
             }
         }
 
@@ -229,123 +228,7 @@ public class OutDoorTalking : MonoBehaviour
                 StartCoroutine(dialogueTransition(Npc3, Npc3Sprite, NPC3Object));
 
             }
-        }
-        /*
-        if (Npc.talking && textfill.dialougeCheck == 9)
-        {
-            Npc.talking = false;
-            textfill.dialougeCheck = 10;
-            Npc.fadeTransition = true;
-            StartCoroutine(dialogueTransition(Npc, NpcSprite, NPCObject));
-
-        }
-
-        if (Npc.talking && textfill.dialougeCheck == 11)
-        {
-            Npc.talking = false;
-            textfill.dialougeCheck = 10;
-            Npc.fadeTransition = true;
-            StartCoroutine(dialogueTransition(Npc, NpcSprite, NPCObject));
-
-        }
-
-        if (Npc.talking && textfill.dialougeCheck == 15)
-        {
-            Npc.talking = false;
-            readyToKill = true;
-            textfill.dialougeCheck = 10;
-            Npc.fadeTransition = true;
-            StartCoroutine(dialogueTransition(Npc, NpcSprite, NPCObject));
-
-        }
-
-        if (Npc.talking && textfill.dialougeCheck == 20)
-        {
-            Npc.talking = false;
-            textfill.dialougeCheck = 21;
-            Npc.fadeTransition = true;
-            StartCoroutine(dialogueTransition(Npc, NpcSprite, NPCObject));
-            bossStart = true;
-
-        }
-
-        if (Npc.talking && textfill.dialougeCheck == 35)
-        {
-            Npc.talking = false;
-            textfill.dialougeCheck = 10;
-            Npc.fadeTransition = true;
-            StartCoroutine(dialogueTransition(Npc, NpcSprite, NPCObject));
-            
-
-        }
-        */
-
-        if (Npc2 != null && textfill != null)
-        {
-            if (Npc2.talking && textfill.dialougeCheck2 == 2)
-            {
-                Npc2.talking = false;
-                textfill.dialougeCheck2 = 1;
-                Npc2.fadeTransition = true;
-                StartCoroutine(dialogueTransition(Npc2, Npc2Sprite, NPC2Object));
-
-
-            }
-
-            if (Npc2.talking && textfill.dialougeCheck2 == 3)
-            {
-                Npc2.talking = false;
-                textfill.dialougeCheck2 = 4;
-                Npc2.fadeTransition = true;
-                StartCoroutine(dialogueTransition(Npc2, Npc2Sprite, NPC2Object));
-
-            }
-
-            if (Npc2.talking && textfill.dialougeCheck2 == 5)
-            {
-                Npc2.talking = false;
-                textfill.dialougeCheck2 = 1;
-                Npc2.fadeTransition = true;
-                StartCoroutine(dialogueTransition(Npc2, Npc2Sprite, NPC2Object));
-
-            }
-
-            if (Npc2.talking && textfill.dialougeCheck2 == 6)
-            {
-                Npc2.talking = false;
-                textfill.dialougeCheck2 = 7;
-                Npc2.fadeTransition = true;
-                StartCoroutine(dialogueTransition(Npc2, Npc2Sprite, NPC2Object));
-
-            }
-
-            if (Npc2.talking && textfill.dialougeCheck2 == 8)
-            {
-                Npc2.talking = false;
-                textfill.dialougeCheck2 = 9;
-                Npc2.fadeTransition = true;
-                StartCoroutine(dialogueTransition(Npc2, Npc2Sprite, NPC2Object));
-
-            }
-
-            if (Npc2.talking && textfill.dialougeCheck2 == 9)
-            {
-                Npc2.talking = false;
-                textfill.dialougeCheck2 = 10;
-                Npc2.fadeTransition = true;
-                StartCoroutine(dialogueTransition(Npc2, Npc2Sprite, NPC2Object));
-
-            }
-
-            if (Npc2.talking && textfill.dialougeCheck2 == 11)
-            {
-                Npc2.talking = false;
-                textfill.dialougeCheck2 = 10;
-                Npc2.fadeTransition = true;
-                StartCoroutine(dialogueTransition(Npc2, Npc2Sprite, NPC2Object));
-
-            }
-        }
+        } 
     }
 
     public void NPCTeleport(GameObject NPC, Vector3 position)

@@ -14,6 +14,7 @@ public class UiElements : MonoBehaviour, IProjectile
     public Image sword1;
     public Image sword2;
     public Image sword3;
+    [SerializeField] private GameObject portal;
     public AvoldKill avoldKill;
     public float duration = 2f;
     float dashSliderMax = 100f;
@@ -156,6 +157,11 @@ public class UiElements : MonoBehaviour, IProjectile
         {
             currentHealth = 0;
             waterSplash.Play();
+        }
+
+        if (enemy.CompareTag("PortalDestroy"))
+        {
+            Destroy(portal);
         }
 
 

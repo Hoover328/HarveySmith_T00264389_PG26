@@ -50,12 +50,18 @@ public class Door : MonoBehaviour
 
         if (allPressed || forceAll)
         {
-            doorOpenSound.Play();
+            
             doorOpen = true;
             transform.position += Vector3.down * Time.deltaTime;
             if (fireOnce && catDoor)
             {
                 Cat.transform.position = new Vector3(45.98077f, -9.114f, -304.0461f);
+                doorOpenSound.Play();
+                fireOnce = false;
+            }
+            else if (fireOnce)
+            {
+                doorOpenSound.Play();
                 fireOnce = false;
             }
         }

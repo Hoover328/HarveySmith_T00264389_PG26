@@ -17,6 +17,8 @@ TagManager:
   - ButtonSequence
   - CanHitBoss
   - Water
+  - PortalDestroy
+  - dead
   layers:
   - Default
   - TransparentFX
