@@ -82,7 +82,6 @@ public class SwordButtonControl : MonoBehaviour
         }
     public IEnumerator MenuExit()
     {
-        Debug.Log("works");
         textFill.dialougeCheck++;
         NPC.talking = true;
         textFill.fireOnce = true;

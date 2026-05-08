@@ -6,6 +6,9 @@ public class Footsteps : MonoBehaviour
 {
     public AudioSource footsteps;
     public OutDoorTalking OutDoorTalking;
+    public NpcBody Npc1;
+    public NpcBody Npc2;
+    public NpcBody Npc3;
     public PlayerMovement playerMovement;
 
     bool isMoving;
